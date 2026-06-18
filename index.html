@@ -84,9 +84,9 @@
 
       <!-- Hero content -->
       <div class="hero__content">
-        <h1 class="hero__title reveal d2">
-          Уникальные данные о&nbsp;рекламной активности рынка —
-          <span class="accent">уже через час</span> после запуска кампаний
+        <h1 class="hero__title hero-typewriter" id="hero-title">
+          <span class="hero-typewriter__output" aria-hidden="true"></span><span class="hero-typewriter__cursor" aria-hidden="true"></span>
+          <span class="visually-hidden">Уникальные данные о рекламной активности рынка — уже через час после запуска кампаний</span>
         </h1>
 
         <aside class="hero__aside reveal d4">
@@ -267,8 +267,7 @@
       </header>
 
       <div class="demo__body">
-        <div class="demo__side">
-          <div class="demo__nav" role="tablist" aria-label="Демонстрация интерфейса">
+        <div class="demo__nav" role="tablist" aria-label="Демонстрация интерфейса">
             <button class="demo-tab is-active" type="button" role="tab" aria-selected="true" data-demo="0" id="demo-tab-0" aria-controls="demo-panel">
               <span class="demo-tab__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none">
@@ -295,17 +294,16 @@
                 <span class="demo-tab__desc">Медиасплит, SOV, топ материалов</span>
               </span>
             </button>
-          </div>
+        </div>
 
-          <ul class="demo__points" id="demo-points" data-active="0" aria-live="polite">
+        <ul class="demo__points" id="demo-points" data-active="0" aria-live="polite">
             <li data-demo="0">Автоматический сбор из ТВ, OOH, OLV, баннеров и маркетплейсов</li>
             <li data-demo="0">Расчёт показов, объёмов размещений и рекламных затрат</li>
             <li data-demo="0">Динамика активности рынка и конкурентов</li>
             <li data-demo="1">Медиасплит брендов и категорий в одном окне</li>
             <li data-demo="1">SOV, OTS и инвестиции — с первого экрана</li>
             <li data-demo="1">Топ креативов по каждому медиаканалу</li>
-          </ul>
-        </div>
+        </ul>
 
         <div class="demo__stage" id="demo-panel" role="tabpanel" aria-labelledby="demo-tab-0">
           <div class="demo__glow" aria-hidden="true"></div>
@@ -622,6 +620,84 @@
 
   <script src="js/hero-bg.js"></script>
   <script>
+    // Hero title — typewriter
+    (function () {
+      const title = document.getElementById("hero-title");
+      const output = title && title.querySelector(".hero-typewriter__output");
+      if (!title || !output) return;
+
+      const parts = [
+        "Уникальные данные о\u00a0рекламной активности рынка — ",
+        { text: "уже через час", accent: true },
+        " после запуска кампаний",
+      ];
+
+      function renderAll() {
+        output.innerHTML =
+          parts[0] +
+          '<span class="accent">' + parts[1].text + "</span>" +
+          parts[2];
+        title.classList.add("is-done");
+      }
+
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        renderAll();
+        return;
+      }
+
+      let partIdx = 0;
+      let charIdx = 0;
+      let accentEl = null;
+      let timer = null;
+
+      function charDelay(ch) {
+        if (ch === "—") return 160;
+        if (ch === " ") return 28;
+        return 42;
+      }
+
+      function tick() {
+        if (partIdx >= parts.length) {
+          title.classList.add("is-done");
+          return;
+        }
+
+        const part = parts[partIdx];
+
+        if (typeof part === "string") {
+          if (charIdx >= part.length) {
+            partIdx += 1;
+            charIdx = 0;
+            accentEl = null;
+            timer = setTimeout(tick, 80);
+            return;
+          }
+          output.appendChild(document.createTextNode(part.charAt(charIdx)));
+          charIdx += 1;
+          timer = setTimeout(tick, charDelay(part.charAt(charIdx - 1)));
+          return;
+        }
+
+        if (!accentEl) {
+          accentEl = document.createElement("span");
+          accentEl.className = "accent";
+          output.appendChild(accentEl);
+        }
+        if (charIdx >= part.text.length) {
+          partIdx += 1;
+          charIdx = 0;
+          accentEl = null;
+          timer = setTimeout(tick, 100);
+          return;
+        }
+        accentEl.appendChild(document.createTextNode(part.text.charAt(charIdx)));
+        charIdx += 1;
+        timer = setTimeout(tick, charDelay(part.text.charAt(charIdx - 1)));
+      }
+
+      timer = setTimeout(tick, 500);
+    })();
+
     // Live clock (Moscow time)
     (function () {
       const el = document.getElementById("clock");
@@ -1067,6 +1143,9 @@
       }
 
       window.addEventListener("resize", () => layout(false));
+      if (window.visualViewport) {
+        window.visualViewport.addEventListener("resize", () => layout(false));
+      }
       window.addEventListener("load", () => layout(false));
       layout(false);
     })();
