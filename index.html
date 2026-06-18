@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Октопус — AI-система мониторинга рекламной активности рынка</title>
+  <meta
+    name="description"
+    content="Октопус — единая AI-система для мониторинга активности конкурентов и оперативной оценки медиастратегий. Уникальные данные о рекламном рынке уже через час после запуска кампаний."
+  />
+  <link rel="preconnect" href="" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Sticky header — appears after the hero -->
+  <header class="site-header" id="site-header">
+    <a href="#top" class="site-header__home" aria-label="Октопус — наверх">
+      <img class="site-header__logo site-header__logo--color" src="assets/octopus-logo-color.png" alt="Октопус" />
+      <img class="site-header__logo site-header__logo--white" src="assets/octopus-logo-white.png" alt="" aria-hidden="true" />
+    </a>
+    <button class="site-header__menu js-menu-open" aria-label="Открыть меню" aria-controls="menu">
+      <span class="site-header__burger"><span></span><span></span></span>
+    </button>
+  </header>
+
+  <!-- =========================================================
+       Полноэкранное окно меню
+       ========================================================= -->
+  <nav class="menu" id="menu" aria-hidden="true">
+    <canvas class="menu__bg" id="menu-bg"></canvas>
+    <div class="menu__fade"></div>
+
+    <div class="menu__top">
+      <button class="menu__close js-menu-close" aria-label="Закрыть меню">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+          <path d="M2 2L11 11M11 2L2 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        Закрыть
+      </button>
+    </div>
+
+    <div class="menu__panel">
+      <ul class="menu__list">
+        <li><a href="#platform">О платформе</a></li>
+        <li><a href="#how">Как это работает</a></li>
+        <li><a href="#benefits">Преимущества</a></li>
+        <li><a href="#cases">Кейсы и аналитика</a></li>
+        <li class="is-dim"><a href="#contacts">Контакты</a></li>
+        <li class="menu__cta-item">
+          <a href="#access" class="menu__cta">
+            Получить доступ
+            <svg width="22" height="22" viewBox="0 0 13 13" fill="none">
+              <path d="M3 10L10 3M10 3H4M10 3V9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- =========================================================
+       Блок 1 — Шапка / Hero
+       ========================================================= -->
+  <section class="hero" id="top">
+    <canvas id="hero-bg" class="hero__bg"></canvas>
+    <div class="hero__scrim"></div>
+    <div class="hero__grain"></div>
+
+    <div class="hero__inner">
+      <!-- Top bar -->
+      <header class="nav reveal d1">
+        <div class="nav__right">
+          <a href="#access" class="nav__cta">
+            <span>Получить доступ</span>
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+              <path d="M3 10L10 3M10 3H4M10 3V9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <button class="nav__menu js-menu-open" aria-label="Меню" aria-controls="menu">
+            <span></span><span></span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Hero content -->
+      <div class="hero__content">
+        <h1 class="hero__title reveal d2">
+          Уникальные данные о&nbsp;рекламной активности рынка —
+          <span class="accent">уже через час</span> после запуска кампаний
+        </h1>
+
+        <aside class="hero__aside reveal d4">
+          <p class="hero__lead">
+            <b>Октопус</b> — единая AI-система для мониторинга активности
+            конкурентов и&nbsp;оперативной оценки медиастратегий.
+          </p>
+          <a href="#access" class="btn-primary">
+            Получить доступ
+            <svg width="15" height="15" viewBox="0 0 13 13" fill="none">
+              <path d="M3 10L10 3M10 3H4M10 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </aside>
+      </div>
+
+      <!-- Bottom bar -->
+      <footer class="hero__foot reveal d5">
+        <span class="hero__clock">
+          <span class="dot"></span>
+          <span id="clock">--:--:-- MSK</span>
+        </span>
+        <button class="hero__toggle" id="bg-toggle" type="button" aria-label="Сменить анимацию фона">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 7a5 5 0 0 1 8.5-3.5M12 7a5 5 0 0 1-8.5 3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+            <path d="M10.5 1.5v2h-2M3.5 12.5v-2h2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span id="bg-toggle-label">Анимация: новая</span>
+        </button>
+        <span class="hero__scroll">
+          <span>Листайте вниз</span>
+          <span class="track"></span>
+        </span>
+      </footer>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       Блок 2 — О платформе  (горизонтальный скролл-сторителлинг)
+       ========================================================= -->
+  <section class="about" id="platform">
+    <div class="about__sticky">
+      <div class="about__track" id="about-track">
+
+        <!-- intro -->
+        <div class="about__intro">
+          <span class="about__eyebrow"><span class="about__dot"></span> О платформе</span>
+          <h2 class="about__title">
+            Октопус — AI-платформа с&nbsp;<span class="accent-c">собственными технологиями мониторинга</span> рекламы для&nbsp;<span class="accent-c">полной картины</span> активности рынка и&nbsp;конкурентов
+          </h2>
+          <span class="about__hint">
+            <svg width="34" height="14" viewBox="0 0 34 14" fill="none">
+              <path d="M1 7h31M26 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Листайте, чтобы узнать больше
+          </span>
+        </div>
+
+        <!-- 01 -->
+        <article class="about-card">
+          <span class="about-card__icon">
+            <svg viewBox="0 0 64 64" fill="none">
+              <circle cx="32" cy="32" r="22" stroke="currentColor" stroke-width="2" pathLength="1"/>
+              <path d="M32 19V32L42 38" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/>
+              <circle cx="32" cy="32" r="2.6" fill="currentColor"/>
+            </svg>
+          </span>
+          <div class="about-card__body">
+            <span class="about-card__num">01</span>
+            <h3>Рынок меняется каждый час</h3>
+            <p>Рекламный рынок меняется каждый день, а данные о конкурентах распределены между разными каналами и площадками. Чтобы понять, что делают конкуренты, приходится собирать данные из разных источников и тратить много времени на анализ.</p>
+          </div>
+        </article>
+
+        <!-- 02 -->
+        <article class="about-card">
+          <span class="about-card__icon">
+            <svg viewBox="0 0 64 64" fill="none">
+              <path d="M32 32L14 18M32 32L50 16M32 32L48 48M32 32L16 50" stroke="currentColor" stroke-width="2" stroke-linecap="round" pathLength="1"/>
+              <circle cx="14" cy="18" r="5" stroke="currentColor" stroke-width="2" pathLength="1"/>
+              <circle cx="50" cy="16" r="5" stroke="currentColor" stroke-width="2" pathLength="1"/>
+              <circle cx="16" cy="50" r="5" stroke="currentColor" stroke-width="2" pathLength="1"/>
+              <circle cx="32" cy="32" r="6" stroke="currentColor" stroke-width="2" pathLength="1"/>
+              <circle cx="48" cy="48" r="6.5" fill="currentColor"/>
+            </svg>
+          </span>
+          <div class="about-card__body">
+            <span class="about-card__num">02</span>
+            <h3>Решение есть</h3>
+            <p>Октопус автоматизирует сбор и анализ рекламной активности. Собственная технология парсинга собирает размещения по ключевым медиаканалам — ТВ, OOH, OLV, баннеры и маркетплейсы — каждый час, а AI объединяет и анализирует данные в единой системе.</p>
+          </div>
+        </article>
+
+        <!-- 03 -->
+        <article class="about-card">
+          <span class="about-card__icon">
+            <svg viewBox="0 0 64 64" fill="none">
+              <path d="M12 52H54" stroke="currentColor" stroke-width="2" stroke-linecap="round" pathLength="1"/>
+              <path d="M18 52V40M30 52V32M42 52V36" stroke="currentColor" stroke-width="2" stroke-linecap="round" pathLength="1"/>
+              <path d="M14 30L26 22L38 26L52 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/>
+              <circle cx="52" cy="12" r="3" fill="currentColor"/>
+            </svg>
+          </span>
+          <div class="about-card__body">
+            <span class="about-card__num">03</span>
+            <h3>От данных к&nbsp;аналитике за&nbsp;час</h3>
+            <p>Актуальная картина рынка, данные по конкурентам, объёмам размещений, инвестициям и медиастратегиям — за несколько кликов. То, что раньше требовало недели анализа, теперь доступно за минуты.</p>
+          </div>
+        </article>
+
+        <!-- 04 -->
+        <article class="about-card about-card--list">
+          <span class="about-card__icon">
+            <svg viewBox="0 0 64 64" fill="none">
+              <path d="M32 10L54 22L32 34L10 22L32 10Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" pathLength="1"/>
+              <path d="M10 32L32 44L54 32" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/>
+              <path d="M10 42L32 54L54 42" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/>
+            </svg>
+          </span>
+          <div class="about-card__body">
+            <span class="about-card__num">04</span>
+            <h3>Что анализирует Октопус</h3>
+            <ul class="about-card__list">
+              <li>ТВ</li>
+              <li>OOH</li>
+              <li>OLV</li>
+              <li>Реклама на маркетплейсах</li>
+              <li>Баннерная реклама</li>
+              <li>Мобильная реклама</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 05 -->
+        <article class="about-card about-card--list">
+          <span class="about-card__icon">
+            <svg viewBox="0 0 64 64" fill="none">
+              <circle cx="32" cy="32" r="22" stroke="currentColor" stroke-width="2" pathLength="1"/>
+              <circle cx="32" cy="32" r="12" stroke="currentColor" stroke-width="2" pathLength="1"/>
+              <path d="M26 32L30 36L39 27" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/>
+              <circle cx="32" cy="32" r="3" fill="currentColor"/>
+            </svg>
+          </span>
+          <div class="about-card__body">
+            <span class="about-card__num">05</span>
+            <h3>Что вы получаете</h3>
+            <ul class="about-card__list">
+              <li>Мониторинг стартов кампаний конкурентов</li>
+              <li>Объёмы размещений и рекламные затраты</li>
+              <li>Креативы во всех медиаканалах</li>
+              <li>Медиасплит брендов и категорий</li>
+              <li>Динамику и сезонность рынка</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       Блок 3 — Демонстрация платформы  (десктоп + мобайл)
+       ========================================================= -->
+  <section class="demo" id="how">
+    <div class="demo__bg" aria-hidden="true"></div>
+
+    <div class="demo__inner">
+      <header class="demo__head">
+        <span class="demo__eyebrow"><span class="demo__dot"></span> Как это работает</span>
+        <h2 class="demo__title">
+          Интерфейс платформы —
+          <span class="demo__accent">аналитика за несколько кликов</span>
+        </h2>
+        <p class="demo__lead">
+          От автоматического сбора данных до готовых отчётов: десктоп для глубокого анализа,
+          мобильная версия — для быстрых проверок на ходу.
+        </p>
+      </header>
+
+      <div class="demo__body">
+        <div class="demo__side">
+          <div class="demo__nav" role="tablist" aria-label="Демонстрация интерфейса">
+            <button class="demo-tab is-active" type="button" role="tab" aria-selected="true" data-demo="0" id="demo-tab-0" aria-controls="demo-panel">
+              <span class="demo-tab__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <rect x="3" y="4" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M3 9h18" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M7 17h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span class="demo-tab__text">
+                <span class="demo-tab__label">Дашборд рынка</span>
+                <span class="demo-tab__desc">Обзор активности и динамики</span>
+              </span>
+            </button>
+            <button class="demo-tab" type="button" role="tab" aria-selected="false" data-demo="1" id="demo-tab-1" aria-controls="demo-panel">
+              <span class="demo-tab__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M12 4v16" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M4 12h16" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+              </span>
+              <span class="demo-tab__text">
+                <span class="demo-tab__label">Сводка и креативы</span>
+                <span class="demo-tab__desc">Медиасплит, SOV, топ материалов</span>
+              </span>
+            </button>
+          </div>
+
+          <ul class="demo__points" id="demo-points" data-active="0" aria-live="polite">
+            <li data-demo="0">Автоматический сбор из ТВ, OOH, OLV, баннеров и маркетплейсов</li>
+            <li data-demo="0">Расчёт показов, объёмов размещений и рекламных затрат</li>
+            <li data-demo="0">Динамика активности рынка и конкурентов</li>
+            <li data-demo="1">Медиасплит брендов и категорий в одном окне</li>
+            <li data-demo="1">SOV, OTS и инвестиции — с первого экрана</li>
+            <li data-demo="1">Топ креативов по каждому медиаканалу</li>
+          </ul>
+        </div>
+
+        <div class="demo__stage" id="demo-panel" role="tabpanel" aria-labelledby="demo-tab-0">
+          <div class="demo__glow" aria-hidden="true"></div>
+
+          <div class="demo__desk">
+            <div class="demo__desk-bar" aria-hidden="true">
+              <span class="demo__desk-dots"><i></i><i></i><i></i></span>
+              <span class="demo__desk-url" id="demo-url">октопус.app / dashboard</span>
+            </div>
+            <div class="demo__desk-screen">
+              <img class="demo__shot is-active" data-demo="0" src="assets/shot-desktop-dashboard.png" alt="Дашборд Октопус — обзор рекламной активности рынка" width="1440" height="900" />
+              <img class="demo__shot" data-demo="1" src="assets/shot-desktop-summary.png" alt="Сводка по бренду — медиасплит и метрики" width="1440" height="900" loading="lazy" />
+            </div>
+          </div>
+
+          <div class="demo__phone">
+            <div class="demo__phone-notch" aria-hidden="true"></div>
+            <div class="demo__phone-screen">
+              <img class="demo__shot is-active" data-demo="0" src="assets/shot-mobile-graphs.png" alt="Мобильная аналитика — графики и динамика" width="390" height="844" />
+              <img class="demo__shot" data-demo="1" src="assets/shot-mobile-creative.png" alt="Мобильный просмотр креативов" width="390" height="844" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       Блок 4 — Преимущества  (тёмная сетка + свет под курсором)
+       ========================================================= -->
+  <section class="adv" id="benefits">
+    <div class="adv__head">
+      <span class="adv__eyebrow"><span class="adv__dot"></span> Преимущества</span>
+      <h2 class="adv__title">Почему команды выбирают <span class="accent">Октопус</span></h2>
+    </div>
+
+    <div class="adv__grid" id="adv-grid">
+
+      <article class="adv-card">
+        <span class="adv-card__icon">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 3l7 3v5c0 4-3 6.6-7 8-4-1.4-7-4-7-8V6l7-3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M12 9.2v4.4M9.8 11.4h4.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <div class="adv-card__body">
+          <h3>Уникальные данные</h3>
+          <p>Собственная инфраструктура сбора данных в digital и AI-обработка измерений формируют единую картину рекламной активности по всем ключевым медиаканалам.</p>
+        </div>
+      </article>
+
+      <article class="adv-card">
+        <span class="adv-card__icon">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M13 2L5 13h6l-1 9 9-12h-6l1-8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <div class="adv-card__body">
+          <h3>Скорость</h3>
+          <p>Данные о новых кампаниях конкурентов появляются в системе уже в течение часа после старта размещения в digital и на маркетплейсах.</p>
+        </div>
+      </article>
+
+      <article class="adv-card">
+        <span class="adv-card__icon">
+          <svg viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="4" width="18" height="16" rx="2.5" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M3 8.5h18" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M8 12.5h8M8 16h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <div class="adv-card__body">
+          <h3>Весь медиарынок в&nbsp;одном окне</h3>
+          <p>Все каналы в едином интерфейсе — от баннеров и OLV до маркетплейсов, ТВ и наружной рекламы. Фокусируйтесь на том, что важно вашему бизнесу.</p>
+        </div>
+      </article>
+
+      <article class="adv-card">
+        <span class="adv-card__icon">
+          <svg viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M12 4a8 8 0 0 1 7.1 4.4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/>
+          </svg>
+        </span>
+        <div class="adv-card__body">
+          <h3>Полноценная аналитика рынка</h3>
+          <p>Не только креативы: оценка объёмов размещений, динамики и рекламных инвестиций по брендам и категориям.</p>
+        </div>
+      </article>
+
+      <article class="adv-card">
+        <span class="adv-card__icon">
+          <svg viewBox="0 0 24 24" fill="none">
+            <rect x="6" y="2.5" width="12" height="19" rx="2.6" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M10.5 18.5h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <div class="adv-card__body">
+          <h3>Данные всегда под рукой</h3>
+          <p>Полный доступ к платформе с любого устройства и мгновенные уведомления в Telegram обо всех изменениях рынка.</p>
+        </div>
+      </article>
+
+      <!-- октопус accent tile -->
+      <article class="adv-card adv-card--octopus">
+        <div class="adv-octo__mesh" aria-hidden="true"></div>
+        <div class="adv-octo__watermark" aria-hidden="true">
+          <img src="assets/octopus-mark.png" alt="" class="adv-octo__mark" />
+        </div>
+
+        <span class="adv-card__icon">
+          <svg viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="24" r="11" stroke="currentColor" stroke-width="2" pathLength="1"/>
+            <path d="M22 34c-3 7-5 14-7 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" pathLength="1"/>
+            <path d="M28 35c-1 8-1 16-1 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" pathLength="1"/>
+            <path d="M36 35c1 8 1 16 1 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" pathLength="1"/>
+            <path d="M42 34c3 7 5 14 7 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" pathLength="1"/>
+            <path d="M26 22c2-3 10-3 12 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" pathLength="1"/>
+            <circle cx="28" cy="23" r="1.5" fill="currentColor"/>
+            <circle cx="36" cy="23" r="1.5" fill="currentColor"/>
+          </svg>
+        </span>
+
+        <div class="adv-card__body">
+          <h3>6+ медиаканалов в&nbsp;одной системе</h3>
+          <p>
+            <span class="adv-octo__brand">Октопус</span> охватывает весь рынок — от digital и&nbsp;маркетплейсов
+            до&nbsp;ТВ и&nbsp;наружной рекламы.
+          </p>
+          <ul class="adv-octo__channels">
+            <li>Digital</li>
+            <li>ТВ</li>
+            <li>OLV</li>
+            <li>OOH</li>
+            <li>Баннеры</li>
+            <li>Маркетплейсы</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- =========================================================
+       Блок 5 — Кейсы и аналитика рынка  (светлая карусель)
+       ========================================================= -->
+  <section class="cases" id="cases">
+    <div class="cases__bg" aria-hidden="true"></div>
+
+    <div class="cases__head">
+      <span class="cases__eyebrow"><span class="cases__dot"></span> Кейсы и аналитика</span>
+      <h2 class="cases__title">
+        <span class="cases__title-accent">Кейсы</span> и&nbsp;аналитика рынка
+      </h2>
+      <p class="cases__lead">Исследования, тренды и аналитика на основе данных Октопус</p>
+    </div>
+
+    <div class="cases__slider" id="cases-slider" tabindex="0">
+      <button class="cases__arrow cases__arrow--prev" type="button" aria-label="Предыдущий кейс">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button class="cases__arrow cases__arrow--next" type="button" aria-label="Следующий кейс">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="cases__track" id="cases-track">
+
+        <article class="cases-card">
+          <div class="cases-card__media cases-card__media--placeholder cases-card__media--ph1" aria-hidden="true">
+            <svg class="cases-card__ph-svg" viewBox="0 0 360 220" fill="none">
+              <rect x="48" y="36" width="264" height="148" rx="10" stroke="currentColor" stroke-width="1.4" stroke-opacity="0.22"/>
+              <rect x="72" y="128" width="28" height="36" rx="4" fill="currentColor" fill-opacity="0.12"/>
+              <rect x="112" y="108" width="28" height="56" rx="4" fill="currentColor" fill-opacity="0.16"/>
+              <rect x="152" y="92" width="28" height="72" rx="4" fill="currentColor" fill-opacity="0.2"/>
+              <rect x="192" y="116" width="28" height="48" rx="4" fill="currentColor" fill-opacity="0.14"/>
+              <path d="M72 88h216" stroke="currentColor" stroke-width="1.2" stroke-opacity="0.14" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="cases-card__body">
+            <h3 class="cases-card__title">Рекламная активность e-commerce</h3>
+            <p class="cases-card__text">Как менялись объёмы размещений и инвестиции ключевых игроков в digital и на маркетплейсах в первом квартале.</p>
+          </div>
+          <div class="cases-card__foot">
+            <button class="cases-card__link" type="button" aria-label="Читать исследование">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </article>
+
+        <article class="cases-card">
+          <div class="cases-card__media cases-card__media--placeholder cases-card__media--ph2" aria-hidden="true">
+            <svg class="cases-card__ph-svg" viewBox="0 0 360 220" fill="none">
+              <rect x="48" y="36" width="264" height="148" rx="10" stroke="currentColor" stroke-width="1.4" stroke-opacity="0.22"/>
+              <circle cx="180" cy="110" r="46" stroke="currentColor" stroke-width="1.4" stroke-opacity="0.18"/>
+              <path d="M180 64a46 46 0 0 1 39.8 23" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-opacity="0.14"/>
+              <path d="M180 64a46 46 0 0 0-33.6 19.5" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-opacity="0.1"/>
+            </svg>
+          </div>
+          <div class="cases-card__body">
+            <h3 class="cases-card__title">Медиасплит FMCG-брендов</h3>
+            <p class="cases-card__text">Сравнение медиастратегий категории: ТВ, OLV, баннеры и наружная реклама — на основе данных Октопус.</p>
+          </div>
+          <div class="cases-card__foot">
+            <button class="cases-card__link" type="button" aria-label="Читать исследование">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </article>
+
+        <article class="cases-card">
+          <div class="cases-card__media cases-card__media--placeholder cases-card__media--ph3" aria-hidden="true">
+            <svg class="cases-card__ph-svg" viewBox="0 0 360 220" fill="none">
+              <rect x="48" y="36" width="264" height="148" rx="10" stroke="currentColor" stroke-width="1.4" stroke-opacity="0.22"/>
+              <path d="M72 148c32-44 56-52 80-28s48 10 64-20 40-36 72-16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.22"/>
+              <circle cx="152" cy="100" r="4" fill="currentColor" fill-opacity="0.28"/>
+              <circle cx="216" cy="84" r="4" fill="currentColor" fill-opacity="0.28"/>
+              <circle cx="280" cy="116" r="4" fill="currentColor" fill-opacity="0.28"/>
+            </svg>
+          </div>
+          <div class="cases-card__body">
+            <h3 class="cases-card__title">Тренды OLV и видеорекламы</h3>
+            <p class="cases-card__text">Какие форматы и бренды доминируют в видеорекламе — динамика креативов и объёмов размещений по рынку.</p>
+          </div>
+          <div class="cases-card__foot">
+            <button class="cases-card__link" type="button" aria-label="Читать исследование">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </article>
+
+        <article class="cases-card">
+          <div class="cases-card__media cases-card__media--placeholder cases-card__media--ph4" aria-hidden="true">
+            <svg class="cases-card__ph-svg" viewBox="0 0 360 220" fill="none">
+              <rect x="48" y="36" width="264" height="148" rx="10" stroke="currentColor" stroke-width="1.4" stroke-opacity="0.22"/>
+              <path d="M72 68h216M72 98h216M72 128h216M72 158h144" stroke="currentColor" stroke-width="1.2" stroke-opacity="0.12" stroke-linecap="round"/>
+              <rect x="72" y="80" width="88" height="10" rx="3" fill="currentColor" fill-opacity="0.1"/>
+              <rect x="72" y="110" width="120" height="10" rx="3" fill="currentColor" fill-opacity="0.14"/>
+              <rect x="72" y="140" width="96" height="10" rx="3" fill="currentColor" fill-opacity="0.1"/>
+            </svg>
+          </div>
+          <div class="cases-card__body">
+            <h3 class="cases-card__title">Динамика маркетплейсов</h3>
+            <p class="cases-card__text">Рост рекламных инвестиций на маркетплейсах: сезонность, категории-лидеры и новые кампании конкурентов.</p>
+          </div>
+          <div class="cases-card__foot">
+            <button class="cases-card__link" type="button" aria-label="Читать исследование">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M3 7h8M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="cases__nav" role="tablist" aria-label="Навигация по кейсам">
+      <button class="cases-dot is-active" type="button" role="tab" aria-selected="true" aria-label="Слайд 1"></button>
+      <button class="cases-dot" type="button" role="tab" aria-selected="false" aria-label="Слайд 2"></button>
+      <button class="cases-dot" type="button" role="tab" aria-selected="false" aria-label="Слайд 3"></button>
+      <button class="cases-dot" type="button" role="tab" aria-selected="false" aria-label="Слайд 4"></button>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       Блок 6 — Получить доступ / Футер
+       ========================================================= -->
+  <footer class="site-footer" id="access">
+    <canvas class="site-footer__canvas" id="footer-bg" aria-hidden="true"></canvas>
+    <div class="site-footer__scrim" aria-hidden="true"></div>
+    <div class="site-footer__grain" aria-hidden="true"></div>
+
+    <div class="site-footer__inner">
+      <div class="site-footer__cta">
+        <h2 class="site-footer__title">
+          Раскрыть полную картину рекламного рынка за&nbsp;несколько минут
+        </h2>
+        <a href="#access" class="btn-primary site-footer__btn">
+          Получить доступ
+          <svg width="15" height="15" viewBox="0 0 13 13" fill="none">
+            <path d="M3 10L10 3M10 3H4M10 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="site-footer__bottom">
+        <div class="site-footer__contacts" id="contacts">
+          <h3 class="site-footer__label">Контакты</h3>
+          <address class="site-footer__address">
+            115035, Россия, Москва,<br />
+            Космодамианская наб., 52с1
+          </address>
+          <a class="site-footer__phone" href="tel:+74956692342">+7 495 669 23 42</a>
+        </div>
+
+        <div class="site-footer__brands">
+          <img class="site-footer__logo site-footer__logo--octo" src="assets/octopus-logo-white.png" alt="Октопус" />
+          <span class="site-footer__brand-sep" aria-hidden="true"></span>
+          <img class="site-footer__logo site-footer__logo--arena" src="assets/arena.png" alt="Arena" />
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/hero-bg.js"></script>
+  <script>
+    // Live clock (Moscow time)
+    (function () {
+      const el = document.getElementById("clock");
+      if (!el) return;
+      function tick() {
+        const t = new Date().toLocaleTimeString("ru-RU", {
+          timeZone: "Europe/Moscow",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+        });
+        el.textContent = t + " MSK";
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+
+    // Sticky header reveals once we leave the hero
+    (function () {
+      const hero = document.querySelector(".hero");
+      const header = document.getElementById("site-header");
+      if (!hero || !header || !("IntersectionObserver" in window)) return;
+      const io = new IntersectionObserver(
+        ([e]) => header.classList.toggle("is-visible", e.intersectionRatio < 0.55),
+        { threshold: [0, 0.55, 1] }
+      );
+      io.observe(hero);
+    })();
+
+    // Тёмный хедер только над «Преимущества»; на футере — снова светлый
+    (function () {
+      const adv = document.querySelector(".adv");
+      const footer = document.querySelector(".site-footer");
+      const header = document.getElementById("site-header");
+      if (!header || !("IntersectionObserver" in window)) return;
+
+      let advOn = false;
+      let footerOn = false;
+
+      function sync() {
+        header.classList.toggle("is-on-dark", advOn && !footerOn);
+      }
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.target === adv) advOn = e.isIntersecting && e.intersectionRatio > 0.2;
+            if (e.target === footer) footerOn = e.isIntersecting && e.intersectionRatio > 0.06;
+          });
+          sync();
+        },
+        { threshold: [0, 0.06, 0.2, 0.4] }
+      );
+
+      if (adv) io.observe(adv);
+      if (footer) io.observe(footer);
+    })();
+
+    // Footer animated background (same engine as hero)
+    (function () {
+      const footer = document.querySelector(".site-footer");
+      const canvas = document.getElementById("footer-bg");
+      if (!footer || !canvas || !window.OctopusBG) return;
+
+      let saved = "marble";
+      try { saved = localStorage.getItem("octo-bg-style") || "marble"; } catch (e) {}
+      const footerBG = OctopusBG.init(canvas, { mode: 0, style: saved });
+      window.footerBG = footerBG;
+
+      if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          ([e]) => footerBG.setActive(e.isIntersecting),
+          { threshold: 0.08 }
+        );
+        io.observe(footer);
+      } else {
+        footerBG.setActive(true);
+      }
+    })();
+
+    // Hero background style toggle (new water ⇄ old silk)
+    (function () {
+      const btn = document.getElementById("bg-toggle");
+      const label = document.getElementById("bg-toggle-label");
+      if (!btn || !window.heroBG) return;
+      const NAMES = { marble: "новая", silk: "старая" };
+      function paint() {
+        const s = window.heroBG.getStyle();
+        label.textContent = "Анимация: " + (NAMES[s] || s);
+      }
+      paint();
+      btn.addEventListener("click", () => {
+        const next = window.heroBG.getStyle() === "marble" ? "silk" : "marble";
+        window.heroBG.setStyle(next);
+        if (window.footerBG) window.footerBG.setStyle(next);
+        try { localStorage.setItem("octo-bg-style", next); } catch (e) {}
+        btn.classList.add("is-spin");
+        setTimeout(() => btn.classList.remove("is-spin"), 600);
+        paint();
+      });
+    })();
+
+    // Fullscreen menu window
+    (function () {
+      const menu = document.getElementById("menu");
+      if (!menu) return;
+      let menuBG = null;
+      function open() {
+        menu.classList.add("is-open");
+        menu.setAttribute("aria-hidden", "false");
+        document.body.classList.add("no-scroll");
+        if (!menuBG) menuBG = OctopusBG.init(document.getElementById("menu-bg"), { mode: 1 });
+        else menuBG.setActive(true);
+      }
+      function close() {
+        menu.classList.remove("is-open");
+        menu.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("no-scroll");
+        if (menuBG) menuBG.setActive(false);
+      }
+      document.querySelectorAll(".js-menu-open").forEach((b) => b.addEventListener("click", open));
+      document.querySelectorAll(".js-menu-close").forEach((b) => b.addEventListener("click", close));
+      menu.querySelectorAll(".menu__list a").forEach((a) => a.addEventListener("click", close));
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && menu.classList.contains("is-open")) close();
+      });
+    })();
+
+    // Блок 2 — pinned horizontal scroll
+    (function () {
+      const section = document.querySelector(".about");
+      const track = document.getElementById("about-track");
+      if (!section || !track) return;
+      const cards = section.querySelectorAll(".about-card");
+      const deskMQ = window.matchMedia("(min-width: 881px)");
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let extra = 0, pinned = false;
+
+      function layout() {
+        if (deskMQ.matches && !reduce) {
+          section.classList.add("is-pinned");
+          pinned = true;
+          extra = Math.max(0, track.scrollWidth - window.innerWidth);
+          section.style.height = window.innerHeight + extra + "px";
+          onScroll();
+        } else {
+          section.classList.remove("is-pinned");
+          pinned = false;
+          section.style.height = "";
+          track.style.transform = "";
+        }
+      }
+      function onScroll() {
+        if (!pinned || !extra) return;
+        const top = -section.getBoundingClientRect().top;
+        const p = Math.max(0, Math.min(1, top / extra));
+        track.style.transform = "translate3d(" + -p * extra + "px,0,0)";
+      }
+
+      // reveal cards as they enter view (works for both layouts)
+      if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("is-in"); }),
+          { threshold: 0.15 }
+        );
+        cards.forEach((c) => io.observe(c));
+      } else {
+        cards.forEach((c) => c.classList.add("is-in"));
+      }
+
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", layout);
+      // recompute once fonts/images settle
+      window.addEventListener("load", layout);
+      layout();
+    })();
+
+    // Блок 3 — демонстрация платформы (табы + автопрокрутка)
+    (function () {
+      const section = document.querySelector(".demo");
+      const stage = document.getElementById("demo-panel");
+      const tabs = section ? section.querySelectorAll(".demo-tab") : [];
+      const points = document.getElementById("demo-points");
+      if (!section || !stage || !tabs.length) return;
+
+      const shots = section.querySelectorAll(".demo__shot");
+      const urlEl = document.getElementById("demo-url");
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const URLS = ["октопус.app / dashboard", "октопус.app / summary"];
+      let current = 0;
+      let timer = null;
+
+      function go(n) {
+        current = n;
+        tabs.forEach((tab, i) => {
+          const on = i === n;
+          tab.classList.toggle("is-active", on);
+          tab.setAttribute("aria-selected", on ? "true" : "false");
+        });
+        shots.forEach((shot) => {
+          shot.classList.toggle("is-active", +shot.dataset.demo === n);
+        });
+        if (points) points.dataset.active = String(n);
+        if (urlEl && URLS[n]) urlEl.textContent = URLS[n];
+        stage.setAttribute("aria-labelledby", "demo-tab-" + n);
+      }
+
+      function resetAutoplay() {
+        clearInterval(timer);
+        if (reduce || tabs.length < 2) return;
+        timer = setInterval(() => go((current + 1) % tabs.length), 6200);
+      }
+
+      tabs.forEach((tab, i) => {
+        tab.addEventListener("click", () => {
+          go(i);
+          resetAutoplay();
+        });
+      });
+
+      section.addEventListener("mouseenter", () => clearInterval(timer));
+      section.addEventListener("mouseleave", resetAutoplay);
+
+      if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          ([e]) => {
+            if (e.isIntersecting) {
+              stage.classList.add("is-in");
+              resetAutoplay();
+            } else {
+              clearInterval(timer);
+            }
+          },
+          { threshold: 0.2 }
+        );
+        io.observe(section);
+      } else {
+        stage.classList.add("is-in");
+        resetAutoplay();
+      }
+    })();
+
+    // Блок 4 — cursor spotlight + reveal
+    (function () {
+      const grid = document.getElementById("adv-grid");
+      if (!grid) return;
+      const cards = grid.querySelectorAll(".adv-card");
+
+      grid.addEventListener("pointermove", (e) => {
+        const card = e.target.closest(".adv-card");
+        if (!card) return;
+        const r = card.getBoundingClientRect();
+        card.style.setProperty("--mx", e.clientX - r.left + "px");
+        card.style.setProperty("--my", e.clientY - r.top + "px");
+      });
+
+      if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("is-in"); io.unobserve(en.target); } }),
+          { threshold: 0.18 }
+        );
+        cards.forEach((c) => io.observe(c));
+      } else {
+        cards.forEach((c) => c.classList.add("is-in"));
+      }
+    })();
+
+    // Блок 5 — карусель кейсов
+    (function () {
+      const slider = document.getElementById("cases-slider");
+      const track = document.getElementById("cases-track");
+      const dots = document.querySelectorAll(".cases-dot");
+      const prevBtn = document.querySelector(".cases__arrow--prev");
+      const nextBtn = document.querySelector(".cases__arrow--next");
+      if (!slider || !track) return;
+
+      const cards = track.querySelectorAll(".cases-card");
+      let index = 0;
+      let startX = 0;
+      let deltaX = 0;
+      let dragging = false;
+      let suppressClick = false;
+      let paused = false;
+      let autoTimer = null;
+      const AUTO_MS = 5200;
+
+      function setCardStates() {
+        cards.forEach((c, i) => {
+          c.classList.remove("is-active", "is-prev", "is-next", "is-far-left", "is-far-right");
+          const dist = i - index;
+          if (dist === 0) c.classList.add("is-active");
+          else if (dist === -1) c.classList.add("is-prev");
+          else if (dist === 1) c.classList.add("is-next");
+          else if (dist < -1) c.classList.add("is-far-left");
+          else c.classList.add("is-far-right");
+        });
+        dots.forEach((d, i) => {
+          d.classList.toggle("is-active", i === index);
+          d.setAttribute("aria-selected", i === index ? "true" : "false");
+        });
+      }
+
+      function goTo(i, opts) {
+        const loop = !opts || opts.loop !== false;
+        const prev = index;
+        let next = i;
+        if (loop) {
+          if (next >= cards.length) next = 0;
+          if (next < 0) next = cards.length - 1;
+        } else {
+          next = Math.max(0, Math.min(cards.length - 1, next));
+        }
+        if (next === index) return;
+
+        track.classList.toggle("is-forward", next > prev || (prev === cards.length - 1 && next === 0));
+        track.classList.toggle("is-backward", next < prev || (prev === 0 && next === cards.length - 1));
+
+        index = next;
+        const active = cards[index];
+        active.classList.remove("is-pop");
+        void active.offsetWidth;
+        active.classList.add("is-pop");
+        layout(true);
+      }
+
+      function layout(animate) {
+        const card = cards[0];
+        if (!card) return;
+        const gap = parseFloat(getComputedStyle(track).gap) || 0;
+        const cardW = card.getBoundingClientRect().width;
+        const sliderW = slider.getBoundingClientRect().width;
+        const offset = (sliderW - cardW) / 2 - index * (cardW + gap);
+        if (animate !== false) track.classList.remove("is-dragging");
+        track.style.transform = "translate3d(" + offset + "px,0,0)";
+        setCardStates();
+      }
+
+      function startAuto() {
+        stopAuto();
+        autoTimer = setInterval(function () {
+          if (paused || dragging) return;
+          goTo(index + 1);
+        }, AUTO_MS);
+      }
+
+      function stopAuto() {
+        if (autoTimer) clearInterval(autoTimer);
+        autoTimer = null;
+      }
+
+      function pauseAuto() { paused = true; }
+      function resumeAuto() { paused = false; }
+
+      dots.forEach((d, i) => d.addEventListener("click", () => goTo(i, { loop: false })));
+      if (prevBtn) prevBtn.addEventListener("click", () => goTo(index - 1));
+      if (nextBtn) nextBtn.addEventListener("click", () => goTo(index + 1));
+
+      cards.forEach((c, i) => {
+        c.addEventListener("click", () => {
+          if (suppressClick || i === index) return;
+          goTo(i, { loop: false });
+        });
+        c.addEventListener("animationend", (e) => {
+          if (e.animationName === "cases-card-pop") c.classList.remove("is-pop");
+        });
+      });
+
+      track.querySelectorAll(".cases-card__link").forEach((btn) => {
+        btn.addEventListener("click", (e) => e.stopPropagation());
+      });
+
+      slider.addEventListener("pointerdown", (e) => {
+        if (e.target.closest(".cases__arrow")) return;
+        if (e.pointerType === "mouse" && e.button !== 0) return;
+        pauseAuto();
+        dragging = false;
+        startX = e.clientX;
+        deltaX = 0;
+        track.classList.add("is-dragging");
+        slider.setPointerCapture(e.pointerId);
+      });
+
+      slider.addEventListener("pointermove", (e) => {
+        if (!slider.hasPointerCapture(e.pointerId)) return;
+        deltaX = e.clientX - startX;
+        if (!dragging && Math.abs(deltaX) > 6) dragging = true;
+        if (!dragging) return;
+        const card = cards[0];
+        const gap = parseFloat(getComputedStyle(track).gap) || 0;
+        const cardW = card.getBoundingClientRect().width;
+        const sliderW = slider.getBoundingClientRect().width;
+        const base = (sliderW - cardW) / 2 - index * (cardW + gap);
+        track.style.transform = "translate3d(" + (base + deltaX) + "px,0,0)";
+      });
+
+      function endDrag(e) {
+        if (!slider.hasPointerCapture(e.pointerId)) return;
+        const wasDragging = dragging;
+        dragging = false;
+        track.classList.remove("is-dragging");
+        try { slider.releasePointerCapture(e.pointerId); } catch (err) {}
+        if (wasDragging) {
+          suppressClick = true;
+          setTimeout(() => { suppressClick = false; }, 0);
+        }
+        if (wasDragging && Math.abs(deltaX) > 40) goTo(index + (deltaX < 0 ? 1 : -1));
+        else layout(true);
+      }
+
+      slider.addEventListener("pointerup", endDrag);
+      slider.addEventListener("pointercancel", endDrag);
+
+      slider.addEventListener("mouseenter", pauseAuto);
+      slider.addEventListener("mouseleave", resumeAuto);
+      slider.addEventListener("focusin", pauseAuto);
+      slider.addEventListener("focusout", resumeAuto);
+
+      slider.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") goTo(index - 1);
+        if (e.key === "ArrowRight") goTo(index + 1);
+      });
+
+      slider.addEventListener("wheel", (e) => {
+        if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) return;
+        e.preventDefault();
+        pauseAuto();
+        if (e.deltaX > 20) goTo(index + 1);
+        else if (e.deltaX < -20) goTo(index - 1);
+      }, { passive: false });
+
+      const section = document.getElementById("cases");
+      if (section && "IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) startAuto();
+            else stopAuto();
+          },
+          { threshold: 0.35 }
+        );
+        io.observe(section);
+      } else {
+        startAuto();
+      }
+
+      window.addEventListener("resize", () => layout(false));
+      window.addEventListener("load", () => layout(false));
+      layout(false);
+    })();
+  </script>
+</body>
+</html>
