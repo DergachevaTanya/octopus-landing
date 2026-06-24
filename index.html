@@ -8,7 +8,8 @@
     name="description"
     content="Октопус — единая AI-система для мониторинга активности конкурентов и оперативной оценки медиастратегий. Уникальные данные о рекламном рынке уже через час после запуска кампаний."
   />
-  <link rel="preconnect" href="" />
+  <link rel="preload" href="fonts/Montserrat-Regular.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="fonts/Montserrat-Bold.ttf" as="font" type="font/ttf" crossorigin />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -43,6 +44,7 @@
       <ul class="menu__list">
         <li><a href="#platform">О платформе</a></li>
         <li><a href="#how">Как это работает</a></li>
+        <li><a href="#results">Результат</a></li>
         <li><a href="#benefits">Преимущества</a></li>
         <li><a href="#cases">Кейсы и аналитика</a></li>
         <li class="is-dim"><a href="#contacts">Контакты</a></li>
@@ -63,12 +65,132 @@
        ========================================================= -->
   <section class="hero" id="top">
     <canvas id="hero-bg" class="hero__bg"></canvas>
+    <div class="hero__weave" id="hero-weave" aria-hidden="true">
+      <svg class="eweave" viewBox="60 36 558 320" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <filter id="softHi" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="5"/>
+            </filter>
+            <radialGradient id="mote" cx="0.5" cy="0.5" r="0.5">
+              <stop offset="0" stop-color="#cfe2ff" stop-opacity="1"/>
+              <stop offset="0.45" stop-color="#9bc0ff" stop-opacity=".5"/>
+              <stop offset="1" stop-color="#9bc0ff" stop-opacity="0"/>
+            </radialGradient>
+            <!-- back · deep navy -->
+            <radialGradient id="gA" cx="339" cy="196" r="300" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#0e1640"/><stop offset=".55" stop-color="#080d28"/><stop offset="1" stop-color="#04060e"/>
+            </radialGradient>
+            <!-- back · dark blue -->
+            <radialGradient id="gB" cx="339" cy="196" r="300" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#101a4a"/><stop offset=".55" stop-color="#0a1130"/><stop offset="1" stop-color="#05070f"/>
+            </radialGradient>
+            <!-- mid · blue -->
+            <radialGradient id="gC" cx="339" cy="196" r="300" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#16235e"/><stop offset=".55" stop-color="#0a1138"/><stop offset="1" stop-color="#060a20"/>
+            </radialGradient>
+            <!-- mid · indigo -->
+            <radialGradient id="gI" cx="339" cy="196" r="300" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#20276e"/><stop offset=".5" stop-color="#0c1036"/><stop offset="1" stop-color="#060818"/>
+            </radialGradient>
+            <!-- front · blue -->
+            <radialGradient id="gD" cx="339" cy="196" r="300" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#1f2f86"/><stop offset=".5" stop-color="#0c1440"/><stop offset="1" stop-color="#070b22"/>
+            </radialGradient>
+            <!-- front · bright blue (D accent) -->
+            <radialGradient id="gE" cx="339" cy="196" r="300" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#283ca0"/><stop offset=".5" stop-color="#0e1742"/><stop offset="1" stop-color="#080d24"/>
+            </radialGradient>
+            <!-- Лёгкий градиент как у лого осьминога (бирюза→циан→фиолет), с плавным «течением» -->
+            <linearGradient id="gBrand" x1="60" y1="60" x2="560" y2="320" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#19e3c4"/>
+              <stop offset="0.45" stop-color="#34d6ff"/>
+              <stop offset="1" stop-color="#7c6bff"/>
+              <animateTransform attributeName="gradientTransform" type="translate"
+                values="-220 0; 220 0; -220 0" dur="16s" repeatCount="indefinite"/>
+            </linearGradient>
+            <g id="eL1Shapes">
+              <path d="M664.732 111.677C609.732 133.344 512.132 186.177 561.732 224.177C611.332 262.177 522.399 345.677 471.732 382.677"/>
+              <path d="M666.732 233.677C654.899 274.844 611.732 361.477 533.732 378.677"/>
+              <path d="M647.232 19.6773C604.899 49.6773 548.032 99.5773 659.232 59.1773"/>
+              <path d="M11.7319 40.1773C49.0653 68.6773 102.432 134.677 17.2319 170.677"/>
+            </g>
+            <g id="eL2Shapes">
+              <path d="M380.232 375.677C281.565 305.011 68.4319 153.977 5.23193 115.177"/>
+              <path d="M19.2319 249.177C68.2319 211.511 177.132 138.577 220.732 148.177C275.232 160.177 295.232 138.677 297.732 131.177C299.732 125.177 436.565 50.0107 504.732 13.1773"/>
+              <path d="M670.732 367.677C617.232 320.677 501.232 234.777 465.232 267.177C429.232 299.577 383.565 245.011 365.232 213.677C326.899 188.844 249.532 131.177 246.732 99.1773C243.932 67.1773 183.232 29.844 153.232 15.1773"/>
+            </g>
+            <g id="eL3Shapes">
+              <path d="M146.732 376.677C221.232 327.511 373.532 228.677 386.732 226.677C403.232 224.177 485.232 133.677 492.732 122.677C500.232 111.677 558.232 60.6773 565.732 63.6773C573.232 66.6773 582.732 18.6774 537.732 41.1774C492.732 63.6773 369.232 99.1773 403.232 48.6773C430.432 8.27735 474.232 7.51068 492.732 12.1773"/>
+              <path d="M562.732 372.177C523.232 348.677 439.032 291.377 418.232 250.177C392.232 198.677 304.232 172.177 259.232 122.677C223.232 83.0774 183.565 75.1774 168.232 76.1774C158.399 76.0107 124.532 62.5773 67.7319 10.1773"/>
+              <path d="M624.732 378.677C561.732 339.511 427.932 246.977 396.732 190.177C357.732 119.177 282.732 130.677 236.732 172.677C190.732 214.677 42.7319 281.677 20.2319 300.677"/>
+            </g>
+            <g id="eIShapes">
+              <path d="M62.2319 376.677C165.065 324.344 372.032 217.577 377.232 209.177C383.732 198.677 419.732 166.177 454.232 178.177C488.732 190.177 535.232 245.677 589.732 253.177C644.232 260.677 660.732 282.677 665.732 287.677"/>
+              <path d="M396.232 17.1773C350.732 28.1773 261.532 65.6773 268.732 127.677C277.732 205.177 193.732 175.177 178.732 177.177C163.732 179.177 95.2319 228.177 21.2319 260.677"/>
+            </g>
+            <g id="eL4Shapes">
+              <path d="M535.732 10.1773C474.899 41.844 369.232 110.777 433.232 133.177C513.232 161.177 577.732 129.677 607.732 112.677C631.732 99.0773 656.399 83.0107 665.732 76.6773"/>
+              <path d="M120.232 17.6773C170.232 52.844 270.232 137.877 270.232 196.677C270.232 255.477 399.565 291.844 464.232 302.677C487.732 313.511 540.732 342.977 564.732 374.177"/>
+            </g>
+            <g id="eL5Shapes">
+              <path d="M12.7319 338.177C130.732 265.177 135.732 214.677 334.232 381.677M12.7319 370.177C64.2319 331.177 179.632 255.977 229.232 267.177C291.232 281.177 345.732 272.677 359.232 267.177C372.732 261.677 414.232 256.677 439.232 376.677"/>
+              <path d="M20.2319 14.1773C183.232 130.177 234.732 133.177 241.232 212.677C243.554 241.083 411.732 345.677 468.232 382.677M14.7319 221.177C64.2319 181.011 171.032 103.377 202.232 114.177C233.432 124.977 244.899 87.0107 246.732 66.6773C251.732 57.6773 275.232 34.5773 329.232 14.1773"/>
+              <path d="M661.232 338.177C606.732 297.511 495.232 218.477 485.232 227.677C472.732 239.177 428.732 187.177 423.232 158.677C417.732 130.177 338.732 118.677 333.232 115.177C327.732 111.677 302.732 90.1773 357.732 59.1773C401.732 34.3773 439.732 15.844 453.232 9.67734"/>
+              <path d="M222.732 378.677C241.899 363.844 283.932 327.677 298.732 301.677C317.232 269.177 402.232 255.677 410.732 244.677C419.232 233.677 510.732 174.177 530.732 176.177C546.732 177.777 630.732 150.511 670.732 136.677"/>
+              <path d="M210.232 5.67734C233.565 39.5107 292.932 106.777 343.732 105.177C394.532 103.577 443.565 175.511 461.732 211.677C497.065 229.677 586.432 251.877 661.232 196.677"/>
+            </g>
+            <g id="eHiShapes">
+              <path d="M12.7319 338.177C130.732 265.177 135.732 214.677 334.232 381.677M12.7319 370.177C64.2319 331.177 179.632 255.977 229.232 267.177C291.232 281.177 345.732 272.677 359.232 267.177C372.732 261.677 414.232 256.677 439.232 376.677"/>
+              <path d="M20.2319 14.1773C183.232 130.177 234.732 133.177 241.232 212.677C243.554 241.083 411.732 345.677 468.232 382.677M14.7319 221.177C64.2319 181.011 171.032 103.377 202.232 114.177C233.432 124.977 244.899 87.0107 246.732 66.6773C251.732 57.6773 275.232 34.5773 329.232 14.1773"/>
+            </g>
+          </defs>
+          <g class="swB">
+            <use href="#eL1Shapes" class="lb-a"/>
+            <use href="#eL2Shapes" class="lb-b"/>
+          </g>
+          <g class="swM">
+            <use href="#eL3Shapes" class="lb-c"/>
+            <use href="#eIShapes" class="lb-i"/>
+          </g>
+          <g class="swF">
+            <use href="#eL4Shapes" class="lb-d"/>
+            <use href="#eL5Shapes" class="lb-e"/>
+            <use href="#eHiShapes" class="hi"/>
+          </g>
+          <g class="parts">
+            <circle class="mote" cx="150" cy="150" r="9"  style="animation-duration:13s;animation-delay:-2s"/>
+            <circle class="mote" cx="250" cy="250" r="6"  style="animation-duration:17s;animation-delay:-7s"/>
+            <circle class="mote" cx="330" cy="120" r="11" style="animation-duration:21s;animation-delay:-4s"/>
+            <circle class="mote" cx="410" cy="220" r="7"  style="animation-duration:15s;animation-delay:-11s"/>
+            <circle class="mote" cx="480" cy="150" r="5"  style="animation-duration:19s;animation-delay:-1s"/>
+            <circle class="mote" cx="210" cy="320" r="8"  style="animation-duration:23s;animation-delay:-9s"/>
+            <circle class="mote" cx="540" cy="280" r="10" style="animation-duration:16s;animation-delay:-13s"/>
+            <circle class="mote" cx="120" cy="240" r="6"  style="animation-duration:20s;animation-delay:-5s"/>
+            <circle class="mote" cx="370" cy="300" r="7"  style="animation-duration:14s;animation-delay:-3s"/>
+            <circle class="mote" cx="300" cy="190" r="5"  style="animation-duration:18s;animation-delay:-15s"/>
+            <circle class="mote" cx="450" cy="100" r="8"  style="animation-duration:22s;animation-delay:-8s"/>
+            <circle class="mote" cx="180" cy="90"  r="6"  style="animation-duration:24s;animation-delay:-6s"/>
+          </g>
+        </svg>
+    </div>
+    <div class="hero__matte" id="hero-matte" aria-hidden="true">
+      <canvas id="hero-matte-bg" class="hero__matte-canvas"></canvas>
+      <div class="hero__matte-frost"></div>
+      <div class="hero__matte-glow" id="hero-matte-glow"></div>
+    </div>
+    <div class="hero__reveal" id="hero-reveal" aria-hidden="true">
+      <canvas id="hero-reveal-sharp" class="hero__reveal-sharp"></canvas>
+      <div class="hero__reveal-lenses" id="hero-reveal-lenses" aria-hidden="true"></div>
+    </div>
     <div class="hero__scrim"></div>
     <div class="hero__grain"></div>
 
     <div class="hero__inner">
       <!-- Top bar -->
       <header class="nav reveal d1">
+        <a href="#top" class="nav__logo" id="hero-logo" aria-label="Octopus — наверх">
+          <img src="assets/octopus-logo-white.png" alt="Octopus" />
+        </a>
         <div class="nav__right">
           <a href="#access" class="nav__cta">
             <span>Получить доступ</span>
@@ -248,6 +370,136 @@
   </section>
 
   <!-- =========================================================
+       Что анализирует Октопус — отдельный блок (кольцо + вкладки)
+       ========================================================= -->
+  <section class="analyze-block" id="analyze" aria-labelledby="analyze-title">
+    <div class="analyze-block__bg" aria-hidden="true"></div>
+    <div class="analyze-block__inner">
+      <header class="analyze-block__head">
+        <div class="analyze-block__head-main">
+          <span class="analyze-block__eyebrow"><span class="section-dot"></span> Медиаканалы</span>
+          <h2 class="analyze-block__title" id="analyze-title">Что анализирует <span class="analyze-block__brand">Октопус</span></h2>
+        </div>
+        <button type="button" class="analyze-theme-toggle" id="analyzeThemeToggle" aria-pressed="false">
+          <svg class="analyze-theme-toggle__icon analyze-theme-toggle__icon--sun" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M12 2.5v2.2M12 19.3v2.2M4.5 12H2.3M21.7 12h-2.2M5.8 5.8 4.2 4.2M19.8 19.8l-1.6-1.6M18.2 5.8l1.6-1.6M4.2 19.8l1.6-1.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <svg class="analyze-theme-toggle__icon analyze-theme-toggle__icon--moon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M20 14.5A7.5 7.5 0 0 1 9.5 4 6.5 6.5 0 1 0 20 14.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+          <span class="analyze-theme-toggle__label">Светлая тема</span>
+        </button>
+      </header>
+
+      <div class="analyze-block__grid">
+        <div class="analyze-block__viz" id="analyzeViz">
+          <div class="analyze-block__viz-glow" aria-hidden="true"></div>
+            <svg class="analyze-block__ring" viewBox="-36 -36 472 472" overflow="visible" aria-hidden="true">
+              <defs>
+                <filter id="analyzeSegGlow" filterUnits="userSpaceOnUse" x="-60" y="-60" width="520" height="520">
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+                </filter>
+              </defs>
+              <g class="analyze-block__orbit" aria-hidden="true">
+                <circle class="analyze-block__orbit-ring" cx="200" cy="200" r="196" />
+                <g class="analyze-block__orbit-spin">
+                  <circle class="analyze-block__orbit-ring analyze-block__orbit-ring--dash" cx="200" cy="200" r="190" />
+                </g>
+                <g class="analyze-block__orbit-dots" id="analyzeOrbitDots"></g>
+              </g>
+              <circle class="analyze-block__ring-core" cx="200" cy="200" r="152" />
+              <g class="analyze-block__segments" id="analyzeSegments"></g>
+            </svg>
+          <div class="analyze-block__center">
+            <svg class="analyze-block__mascot" viewBox="-24 -20 509 443" overflow="visible" fill="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="octoLogoGrad" x1="72" y1="18" x2="392" y2="392" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#5ecfff"/>
+                  <stop offset="32%" stop-color="#5a4af0"/>
+                  <stop offset="68%" stop-color="#d07aff"/>
+                  <stop offset="100%" stop-color="#ff6b3a"/>
+                </linearGradient>
+                <linearGradient id="octoTentL" x1="104" y1="188" x2="104" y2="318" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#5a4af0"/>
+                  <stop offset="55%" stop-color="#c06ef5"/>
+                  <stop offset="100%" stop-color="#ff6b3a"/>
+                </linearGradient>
+                <linearGradient id="octoTentR" x1="356" y1="188" x2="356" y2="318" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#5a4af0"/>
+                  <stop offset="55%" stop-color="#c06ef5"/>
+                  <stop offset="100%" stop-color="#ff6b3a"/>
+                </linearGradient>
+                <linearGradient id="octoTentC" x1="232" y1="214" x2="232" y2="392" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#5ecfff"/>
+                  <stop offset="45%" stop-color="#7d68f5"/>
+                  <stop offset="100%" stop-color="#ff7f50"/>
+                </linearGradient>
+              </defs>
+              <g class="m-tent m-t1"><path d="M11.0029 244.719C26.1846 281.216 107.681 340.241 128.156 260.39C142.985 202.555 182.673 187.367 197.854 195.187" stroke="url(#octoTentL)" stroke-width="22" stroke-linecap="round"/></g>
+              <g class="m-tent m-t2"><path d="M449.956 244.719C434.774 281.216 353.277 340.241 332.803 260.39C317.973 202.555 278.286 187.367 263.104 195.187" stroke="url(#octoTentR)" stroke-width="22" stroke-linecap="round"/></g>
+              <g class="m-tent m-t3"><path d="M230.737 217.008C246.21 226.653 267.871 258.895 230.737 310.702C193.603 362.51 222.252 386.485 241.219 391.996" stroke="url(#octoTentC)" stroke-width="22" stroke-linecap="round"/></g>
+              <g class="m-head">
+                <path d="M15.4519 40.5373C39.1791 22.7419 86.93 7.91243 88.1164 90.9575C89.3027 174.003 133.593 174.497 159.298 160.656C173.068 153.241 193.091 140.754 184.508 110.236C171.161 62.7815 191.923 30.1567 233.445 31.6396C274.968 33.1226 291.28 61.2986 283.866 99.8552C273.599 153.241 319.456 164.427 352.081 153.241C393.604 139.005 381.246 83.0485 369.876 56.8497C368.394 30.1567 393.604 -2.46818 441.058 16.8101" stroke="url(#octoLogoGrad)" stroke-width="22" stroke-linecap="round"/>
+                <circle cx="214.167" cy="79.0939" r="10.3806" fill="#3fb8f5"/>
+                <circle cx="249.757" cy="79.0939" r="10.3806" fill="#3fb8f5"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <div class="analyze-block__detail">
+            <div class="analyze-block__tabs" role="tablist" aria-label="Медиаканалы">
+              <button class="analyze-tab is-active" type="button" role="tab" aria-selected="true" data-analyze="0" id="analyze-tab-0">
+                <span class="analyze-tab__num">01</span><span class="analyze-tab__sep" aria-hidden="true">—</span><span class="analyze-tab__name">OOH</span>
+              </button>
+              <button class="analyze-tab" type="button" role="tab" aria-selected="false" data-analyze="1" id="analyze-tab-1">
+                <span class="analyze-tab__num">02</span><span class="analyze-tab__sep" aria-hidden="true">—</span><span class="analyze-tab__name">Display</span>
+              </button>
+              <button class="analyze-tab" type="button" role="tab" aria-selected="false" data-analyze="2" id="analyze-tab-2">
+                <span class="analyze-tab__num">03</span><span class="analyze-tab__sep" aria-hidden="true">—</span><span class="analyze-tab__name">OLV</span>
+              </button>
+              <button class="analyze-tab" type="button" role="tab" aria-selected="false" data-analyze="3" id="analyze-tab-3">
+                <span class="analyze-tab__num">04</span><span class="analyze-tab__sep" aria-hidden="true">—</span><span class="analyze-tab__name">Marketplace</span>
+              </button>
+              <button class="analyze-tab" type="button" role="tab" aria-selected="false" data-analyze="4" id="analyze-tab-4">
+                <span class="analyze-tab__num">05</span><span class="analyze-tab__sep" aria-hidden="true">—</span><span class="analyze-tab__name">TV</span>
+              </button>
+            </div>
+
+            <div class="analyze-block__panels">
+              <article class="analyze-panel is-active" role="tabpanel" aria-labelledby="analyze-tab-0" data-analyze="0">
+                <span class="analyze-panel__tag">01 · OOH</span>
+                <h3 class="analyze-panel__title">Наружная реклама</h3>
+                <p class="analyze-panel__text">Билборды, ситиборды и digital OOH по городам России. Отслеживаем запуски, креативы и объёмы размещений конкурентов в наружной рекламе.</p>
+              </article>
+              <article class="analyze-panel" role="tabpanel" aria-labelledby="analyze-tab-1" data-analyze="1" hidden>
+                <span class="analyze-panel__tag">02 · Display</span>
+                <h3 class="analyze-panel__title">Баннерная реклама</h3>
+                <p class="analyze-panel__text">Медийные баннеры на сайтах и в приложениях: форматы, площадки, частота показов и динамика активности брендов в display-канале.</p>
+              </article>
+              <article class="analyze-panel" role="tabpanel" aria-labelledby="analyze-tab-2" data-analyze="2" hidden>
+                <span class="analyze-panel__tag">03 · OLV</span>
+                <h3 class="analyze-panel__title">Онлайн-видео</h3>
+                <p class="analyze-panel__text">Видеореклама в плеерах и стриминговых сервисах. Креативы, охваты и инвестиции в OLV — в одной аналитической витрине.</p>
+              </article>
+              <article class="analyze-panel" role="tabpanel" aria-labelledby="analyze-tab-3" data-analyze="3" hidden>
+                <span class="analyze-panel__tag">04 · Marketplace</span>
+                <h3 class="analyze-panel__title">Реклама на маркетплейсах</h3>
+                <p class="analyze-panel__text">Продвижение на Ozon, Wildberries и других площадках: карточки, баннеры внутри маркетплейсов и рекламные кампании продавцов.</p>
+              </article>
+              <article class="analyze-panel" role="tabpanel" aria-labelledby="analyze-tab-4" data-analyze="4" hidden>
+                <span class="analyze-panel__tag">05 · TV</span>
+                <h3 class="analyze-panel__title">Телевидение</h3>
+                <p class="analyze-panel__text">ТВ-ролики и спонсорские интеграции: мониторинг эфирных размещений, медиасплит и сравнение телевизионных стратегий конкурентов.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
        Блок 3 — Демонстрация платформы  (десктоп + мобайл)
        ========================================================= -->
   <section class="demo" id="how">
@@ -332,7 +584,132 @@
   </section>
 
   <!-- =========================================================
-       Блок 4 — Преимущества  (тёмная сетка + свет под курсором)
+       Блок 4 — Что вы получаете в результате (спуск в океан)
+       ========================================================= -->
+  <section class="results" id="results" aria-labelledby="results-title">
+    <div class="results__bg" aria-hidden="true"></div>
+    <div class="results__rays" aria-hidden="true"></div>
+
+    <div class="results__head">
+      <span class="results__eyebrow"><span class="section-dot"></span> Результат работы Октопус</span>
+      <h2 class="results__title" id="results-title">Что вы получаете <span class="results__accent">в&nbsp;результате?</span></h2>
+    </div>
+
+    <div class="results__grid">
+      <div class="results__track">
+        <div class="results__line" aria-hidden="true"></div>
+        <div class="results__line-fill" aria-hidden="true"></div>
+
+        <article class="results__step">
+          <span class="results__num">01</span><span class="results__dot" aria-hidden="true"></span>
+          <h3>Исчерпывающая аналитика</h3>
+          <p>Полная картина рекламной активности рынка и&nbsp;конкурентов в&nbsp;одном окне — без слепых зон.</p>
+        </article>
+
+        <article class="results__step">
+          <span class="results__num">02</span><span class="results__dot" aria-hidden="true"></span>
+          <h3>Свежие данные</h3>
+          <p>Обновления уже через час после запуска кампаний — вы узнаёте о&nbsp;движениях рынка раньше всех.</p>
+        </article>
+
+        <article class="results__step">
+          <span class="results__num">03</span><span class="results__dot" aria-hidden="true"></span>
+          <h3>Анализ динамики выходов</h3>
+          <p>Видно, как меняется активность брендов день за&nbsp;днём и&nbsp;сезон за&nbsp;сезоном.</p>
+        </article>
+
+        <article class="results__step">
+          <span class="results__num">04</span><span class="results__dot" aria-hidden="true"></span>
+          <h3>Статистика по&nbsp;типам медиа</h3>
+          <p>ТВ, наружная, онлайн-видео, баннеры и&nbsp;маркетплейсы — в&nbsp;едином сопоставимом отчёте.</p>
+        </article>
+
+        <article class="results__step">
+          <span class="results__num">05</span><span class="results__dot" aria-hidden="true"></span>
+          <h3>Распределение брендов по&nbsp;категориям</h3>
+          <p>Кто и&nbsp;сколько инвестирует в&nbsp;каждой нише и&nbsp;сегменте рынка.</p>
+        </article>
+
+        <article class="results__step">
+          <span class="results__num">06</span><span class="results__dot" aria-hidden="true"></span>
+          <h3>Сравнение с&nbsp;конкурентами</h3>
+          <p>Ваша доля голоса против ключевых игроков сегмента — без догадок и&nbsp;домыслов.</p>
+        </article>
+
+        <article class="results__step">
+          <span class="results__num">07</span><span class="results__dot" aria-hidden="true"></span>
+          <h3>Готовые отчёты и&nbsp;выгрузки</h3>
+          <p>Данные под рукой: дашборды, экспорт и&nbsp;уведомления в&nbsp;Telegram.</p>
+        </article>
+      </div>
+
+      <div class="results__rail" aria-hidden="true">
+        <div class="results__stage is-s0">
+          <div class="results__frame">
+            <div class="results__sonar" aria-hidden="true"></div>
+            <div class="results__hud" aria-hidden="true">
+              <span>6+ медиаканалов</span>
+              <span>данные за час</span>
+              <span>SOV / OTS / креативы</span>
+            </div>
+            <div class="results__env env--dots">
+              <span class="d" style="left:20%;top:28%"></span>
+              <span class="d" style="left:52%;top:18%;animation-delay:.4s"></span>
+              <span class="d" style="left:74%;top:30%;animation-delay:.9s"></span>
+              <span class="d" style="left:30%;top:58%;animation-delay:1.3s"></span>
+              <span class="d" style="left:66%;top:62%;animation-delay:.7s"></span>
+              <span class="d" style="left:80%;top:50%;animation-delay:1.6s"></span>
+              <span class="d" style="left:16%;top:46%;animation-delay:2s"></span>
+            </div>
+            <div class="results__env env--bubbles">
+              <i style="left:28%;width:7px;height:7px;animation-delay:0s"></i>
+              <i style="left:46%;width:10px;height:10px;animation-delay:.9s"></i>
+              <i style="left:60%;width:6px;height:6px;animation-delay:1.7s"></i>
+              <i style="left:38%;width:8px;height:8px;animation-delay:2.4s"></i>
+              <i style="left:70%;width:7px;height:7px;animation-delay:3.1s"></i>
+            </div>
+            <div class="results__env env--current">
+              <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M-4 60 Q 12 40 26 56 T 54 52 T 82 56 T 110 50"/>
+                <path d="M-4 44 Q 14 62 28 46 T 56 50 T 84 44 T 110 50" style="animation-delay:-.7s;opacity:.6"/>
+              </svg>
+            </div>
+            <div class="results__env env--tiles">
+              <span style="left:24%;top:26%"></span>
+              <span style="left:60%;top:22%;animation-delay:.8s"></span>
+              <span style="left:30%;top:60%;animation-delay:1.4s"></span>
+              <span style="left:64%;top:60%;animation-delay:2s"></span>
+            </div>
+            <div class="results__env env--bars">
+              <i style="height:38%"></i>
+              <i style="height:64%;animation-delay:.3s"></i>
+              <i style="height:48%;animation-delay:.6s"></i>
+              <i style="height:80%;animation-delay:.2s"></i>
+              <i style="height:54%;animation-delay:.5s"></i>
+            </div>
+            <div class="results__env env--compare">
+              <div class="c c1"></div>
+              <div class="vs"></div>
+              <div class="c c2"></div>
+            </div>
+            <div class="results__env env--dart">
+              <i style="left:18%;top:34%;width:34px;animation-delay:0s"></i>
+              <i style="left:24%;top:50%;width:46px;animation-delay:.25s"></i>
+              <i style="left:20%;top:66%;width:30px;animation-delay:.5s"></i>
+            </div>
+            <div class="results__octo">
+              <div class="results__octo-face">
+                <img class="results__octo-img" src="assets/octopus-swim.png" alt="" decoding="async" width="300" height="300" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       Блок 5 — Преимущества  (тёмная сетка + свет под курсором)
        ========================================================= -->
   <section class="adv" id="benefits">
     <div class="adv__head">
@@ -619,6 +996,8 @@
   </footer>
 
   <script src="js/hero-bg.js"></script>
+  <script src="js/hero-matte.js"></script>
+  <script src="js/hero-reveal.js"></script>
   <script>
     // Hero title — typewriter
     (function () {
@@ -727,31 +1106,48 @@
       io.observe(hero);
     })();
 
-    // Тёмный хедер только над «Преимущества»; на футере — снова светлый
+    // Тёмный хедер над «Медиаканалы», «Результат» (на глубине) и «Преимущества»; на футере — снова светлый
     (function () {
+      const analyze = document.getElementById("analyze");
+      const results = document.getElementById("results");
       const adv = document.querySelector(".adv");
       const footer = document.querySelector(".site-footer");
       const header = document.getElementById("site-header");
       if (!header || !("IntersectionObserver" in window)) return;
 
+      let analyzeOn = false;
+      let resultsOn = false;
+      let resultsDeep = false;
       let advOn = false;
       let footerOn = false;
 
       function sync() {
-        header.classList.toggle("is-on-dark", advOn && !footerOn);
+        const analyzeDark = analyzeOn && analyze && !analyze.classList.contains("is-light");
+        header.classList.toggle("is-on-dark", (analyzeDark || resultsDeep || advOn) && !footerOn);
       }
+
+      document.addEventListener("analyze-theme-change", sync);
+      document.addEventListener("results-depth-change", (e) => {
+        resultsDeep = !!(resultsOn && e.detail && e.detail.deep);
+        sync();
+      });
 
       const io = new IntersectionObserver(
         (entries) => {
           entries.forEach((e) => {
+            if (e.target === analyze) analyzeOn = e.isIntersecting && e.intersectionRatio > 0.22;
+            if (e.target === results) resultsOn = e.isIntersecting && e.intersectionRatio > 0.08;
             if (e.target === adv) advOn = e.isIntersecting && e.intersectionRatio > 0.2;
             if (e.target === footer) footerOn = e.isIntersecting && e.intersectionRatio > 0.06;
           });
+          if (!resultsOn) resultsDeep = false;
           sync();
         },
-        { threshold: [0, 0.06, 0.2, 0.4] }
+        { threshold: [0, 0.06, 0.08, 0.2, 0.22, 0.4] }
       );
 
+      if (analyze) io.observe(analyze);
+      if (results) io.observe(results);
       if (adv) io.observe(adv);
       if (footer) io.observe(footer);
     })();
@@ -778,25 +1174,53 @@
       }
     })();
 
-    // Hero background style toggle (new water ⇄ old silk)
+    // Hero background toggle: вода (canvas) ⇄ плетёная глубина (SVG) ⇄ шёлк (canvas)
     (function () {
       const btn = document.getElementById("bg-toggle");
       const label = document.getElementById("bg-toggle-label");
       if (!btn || !window.heroBG) return;
-      const NAMES = { marble: "новая", silk: "старая" };
-      function paint() {
-        const s = window.heroBG.getStyle();
-        label.textContent = "Анимация: " + (NAMES[s] || s);
+      const hero = document.querySelector(".hero");
+      const weave = document.getElementById("hero-weave");
+      const NAMES = { reveal: "стекло", matte: "матовый", marble: "новая", weave: "плетёная глубина", silk: "старая" };
+      const ORDER = ["reveal", "matte", "marble", "weave", "silk"];
+
+      function apply(style) {
+        const isWeave = style === "weave";
+        const isMatte = style === "matte";
+        const isReveal = style === "reveal";
+        if (hero) {
+          hero.classList.toggle("weave-active", isWeave);
+          hero.classList.toggle("matte-active", isMatte);
+          hero.classList.toggle("reveal-active", isReveal);
+        }
+        if (weave) weave.classList.toggle("is-active", isWeave);
+        const matte = document.getElementById("hero-matte");
+        if (matte) matte.classList.toggle("is-active", isMatte);
+        const reveal = document.getElementById("hero-reveal");
+        if (reveal) reveal.classList.toggle("is-active", isReveal);
+        const useMainCanvas = !isWeave && !isMatte && !isReveal;
+        window.heroBG.setActive(useMainCanvas);
+        if (useMainCanvas) {
+          window.heroBG.setStyle(style);
+          if (window.footerBG) window.footerBG.setStyle(style);
+        }
+        if (window.heroMatteBG) window.heroMatteBG.setActive(isMatte);
+        if (window.heroRevealBG) window.heroRevealBG.setActive(isReveal);
+        label.textContent = "Анимация: " + (NAMES[style] || style);
       }
-      paint();
+
+      let current = "marble";
+      try { current = localStorage.getItem("octo-bg-style") || "marble"; } catch (e) {}
+      try { const q = new URLSearchParams(location.search).get("bg"); if (q) current = q; } catch (e) {}
+      if (ORDER.indexOf(current) < 0) current = "marble";
+      apply(current);
+
       btn.addEventListener("click", () => {
-        const next = window.heroBG.getStyle() === "marble" ? "silk" : "marble";
-        window.heroBG.setStyle(next);
-        if (window.footerBG) window.footerBG.setStyle(next);
-        try { localStorage.setItem("octo-bg-style", next); } catch (e) {}
+        current = ORDER[(ORDER.indexOf(current) + 1) % ORDER.length] || "marble";
+        apply(current);
+        try { localStorage.setItem("octo-bg-style", current); } catch (e) {}
         btn.classList.add("is-spin");
         setTimeout(() => btn.classList.remove("is-spin"), 600);
-        paint();
       });
     })();
 
@@ -940,7 +1364,129 @@
       }
     })();
 
-    // Блок 4 — cursor spotlight + reveal
+    // Блок 4 — Что вы получаете: спуск в океан + сцена с осьминогом
+    (function () {
+      const section = document.getElementById("results");
+      if (!section) return;
+      const fill = section.querySelector(".results__line-fill");
+      const track = section.querySelector(".results__track");
+      const stage = section.querySelector(".results__stage");
+      const octo = section.querySelector(".results__octo");
+      const face = section.querySelector(".results__octo-face");
+      const steps = [...section.querySelectorAll(".results__step")];
+      if (!track || !octo || !steps.length) return;
+
+      const dots = steps.map((s) => s.querySelector(".results__dot"));
+      // Состояние «полоска уже прошла точку» — чтобы пускать волну
+      // ровно в момент пересечения линии и точки (в обе стороны).
+      let passed = null;
+      function ripple(dot) {
+        if (!dot) return;
+        dot.classList.remove("is-ripple");
+        void dot.offsetWidth; // перезапуск CSS-анимации
+        dot.classList.add("is-ripple");
+      }
+
+      const RAW_HEAD = 135;
+      const SCENES = [
+        { travel: 0, dart: false },
+        { travel: 285, dart: false },
+        { travel: 15, dart: false },
+        { travel: 175, dart: false },
+        { travel: 275, dart: false },
+        { travel: 0, dart: false },
+        { travel: 320, dart: true },
+      ];
+
+      const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+      let ticking = false;
+      let current = -1;
+
+      let lastDeep = null;
+      function setDepth(depth) {
+        // Непрерывная «глубина» по скроллу — мягкий переход цвета текста/лучей.
+        section.style.setProperty("--depth", depth.toFixed(3));
+        // Гистерезис: включаем «глубину» позже, выключаем раньше — чтобы
+        // палитра не мигала при дрожании скролла около порога.
+        const deep = lastDeep ? depth > 0.36 : depth > 0.44;
+        section.classList.toggle("is-deep", deep);
+        if (deep !== lastDeep) {
+          lastDeep = deep;
+          document.dispatchEvent(new CustomEvent("results-depth-change", { detail: { depth, deep } }));
+        }
+      }
+
+      function update() {
+        const mid = innerHeight * 0.5;
+        const rect = track.getBoundingClientRect();
+        const sectionRect = section.getBoundingClientRect();
+        const prog = clamp((mid - sectionRect.top) / sectionRect.height, 0, 1);
+        const lineProg = clamp((mid - rect.top) / rect.height, 0, 1);
+
+        if (fill) {
+          fill.style.height = lineProg * 100 + "%";
+        }
+
+        // Кончик заливки в пикселях от верха трека; пускаем волну,
+        // когда он пересекает центр точки очередного пункта.
+        const fillPx = lineProg * track.clientHeight;
+        const state = steps.map((s) => fillPx >= s.offsetTop + s.offsetHeight / 2);
+        if (passed) {
+          for (let i = 0; i < state.length; i++) {
+            if (state[i] !== passed[i]) ripple(dots[i]);
+          }
+        }
+        passed = state;
+
+        let active = 0;
+        let best = Infinity;
+        steps.forEach((s, i) => {
+          const r = s.getBoundingClientRect();
+          const d = Math.abs(r.top + r.height / 2 - mid);
+          if (d < best) {
+            best = d;
+            active = i;
+          }
+        });
+        steps.forEach((s, i) => s.classList.toggle("is-active", i === active));
+
+        if (active !== current) {
+          current = active;
+          if (stage) {
+            for (let i = 0; i < SCENES.length; i++) {
+              stage.classList.toggle("is-s" + i, i === active);
+            }
+          }
+          const scene = SCENES[active] || SCENES[0];
+          octo.classList.toggle("is-dart", scene.dart);
+          if (face) face.style.setProperty("--face", scene.travel - RAW_HEAD + "deg");
+        }
+
+        setDepth(prog);
+      }
+
+      function onScroll() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+          ticking = false;
+          update();
+        });
+      }
+
+      addEventListener("scroll", onScroll, { passive: true });
+      addEventListener("resize", onScroll, { passive: true });
+      update();
+
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(
+          ([e]) => section.classList.toggle("is-idle", !e.isIntersecting),
+          { threshold: 0 }
+        ).observe(section);
+      }
+    })();
+
+    // Блок 5 — cursor spotlight + reveal
     (function () {
       const grid = document.getElementById("adv-grid");
       if (!grid) return;
@@ -1148,6 +1694,413 @@
       }
       window.addEventListener("load", () => layout(false));
       layout(false);
+    })();
+
+    // Интерактивное лого: наклон к курсору (3D-tilt) + плавный возврат.
+    (function () {
+      const logo = document.getElementById("hero-logo");
+      const hero = document.querySelector(".hero");
+      if (!logo || !hero) return;
+      const img = logo.querySelector("img");
+      if (!img) return;
+      let raf = null, tx = 0, ty = 0, cx = 0, cy = 0;
+      function loop() {
+        cx += (tx - cx) * 0.12; cy += (ty - cy) * 0.12;
+        img.style.transform = "rotateY(" + cx.toFixed(2) + "deg) rotateX(" + cy.toFixed(2) + "deg)";
+        if (Math.abs(tx - cx) > 0.05 || Math.abs(ty - cy) > 0.05) raf = requestAnimationFrame(loop);
+        else raf = null;
+      }
+      function kick() { if (!raf) raf = requestAnimationFrame(loop); }
+      hero.addEventListener("pointermove", (e) => {
+        const r = hero.getBoundingClientRect();
+        const nx = (e.clientX - r.left) / r.width - 0.5;   // -0.5..0.5
+        const ny = (e.clientY - r.top) / r.height - 0.5;
+        tx = nx * 26; ty = -ny * 20;                        // углы наклона
+        kick();
+      }, { passive: true });
+      hero.addEventListener("pointerleave", () => { tx = 0; ty = 0; kick(); });
+    })();
+
+    // Интерактив «плетёной глубины»: параллакс-дрейф фона + свет за курсором.
+    (function () {
+      const hero = document.querySelector(".hero");
+      const weave = document.getElementById("hero-weave");
+      if (!hero || !weave) return;
+      const svg = weave.querySelector(".eweave");
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let glow = weave.querySelector(".weave-glow");
+      if (!glow) { glow = document.createElement("div"); glow.className = "weave-glow"; weave.appendChild(glow); }
+
+      let raf = null;
+      let tx = 0, ty = 0, cx = 0, cy = 0;        // параллакс (цель/текущее)
+      let tgx = 0.5, tgy = 0.42, gx = 0.5, gy = 0.42; // позиция света 0..1
+      function loop() {
+        cx += (tx - cx) * 0.08; cy += (ty - cy) * 0.08;
+        gx += (tgx - gx) * 0.10; gy += (tgy - gy) * 0.10;
+        if (svg && !reduce) svg.style.transform = "translate(" + cx.toFixed(2) + "px," + cy.toFixed(2) + "px) scale(1.05)";
+        glow.style.left = (gx * 100).toFixed(2) + "%";
+        glow.style.top = (gy * 100).toFixed(2) + "%";
+        if (Math.abs(tx - cx) > 0.1 || Math.abs(ty - cy) > 0.1 ||
+            Math.abs(tgx - gx) > 0.002 || Math.abs(tgy - gy) > 0.002) raf = requestAnimationFrame(loop);
+        else raf = null;
+      }
+      function kick() { if (!raf) raf = requestAnimationFrame(loop); }
+      hero.addEventListener("pointermove", (e) => {
+        const r = hero.getBoundingClientRect();
+        const nx = (e.clientX - r.left) / r.width - 0.5;
+        const ny = (e.clientY - r.top) / r.height - 0.5;
+        tx = -nx * 26; ty = -ny * 18;            // фон дрейфует навстречу (глубина)
+        tgx = (e.clientX - r.left) / r.width; tgy = (e.clientY - r.top) / r.height;
+        kick();
+      }, { passive: true });
+      hero.addEventListener("pointerleave", () => { tx = 0; ty = 0; tgx = 0.5; tgy = 0.42; kick(); });
+    })();
+
+    // Интерактив матового фона: мягкий свет за курсором + лёгкий параллакс слоя frost.
+    (function () {
+      const hero = document.querySelector(".hero");
+      const matte = document.getElementById("hero-matte");
+      const glow = document.getElementById("hero-matte-glow");
+      const frost = matte && matte.querySelector(".hero__matte-frost");
+      if (!hero || !matte || !glow) return;
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      let raf = null;
+      let tgx = 0.5, tgy = 0.42, gx = 0.5, gy = 0.42;
+      let tx = 0, ty = 0, cx = 0, cy = 0;
+      function loop() {
+        gx += (tgx - gx) * 0.09;
+        gy += (tgy - gy) * 0.09;
+        cx += (tx - cx) * 0.08;
+        cy += (ty - cy) * 0.08;
+        glow.style.left = (gx * 100).toFixed(2) + "%";
+        glow.style.top = (gy * 100).toFixed(2) + "%";
+        if (frost && !reduce) frost.style.transform = "translate(" + cx.toFixed(2) + "px," + cy.toFixed(2) + "px) scale(1.04)";
+        if (Math.abs(tgx - gx) > 0.002 || Math.abs(tgy - gy) > 0.002 ||
+            Math.abs(tx - cx) > 0.1 || Math.abs(ty - cy) > 0.1) raf = requestAnimationFrame(loop);
+        else raf = null;
+      }
+      function kick() { if (!raf) raf = requestAnimationFrame(loop); }
+      hero.addEventListener("pointermove", (e) => {
+        const r = hero.getBoundingClientRect();
+        const nx = (e.clientX - r.left) / r.width - 0.5;
+        const ny = (e.clientY - r.top) / r.height - 0.5;
+        tx = -nx * 18;
+        ty = -ny * 14;
+        tgx = (e.clientX - r.left) / r.width;
+        tgy = (e.clientY - r.top) / r.height;
+        kick();
+      }, { passive: true });
+      hero.addEventListener("pointerleave", () => { tx = 0; ty = 0; tgx = 0.5; tgy = 0.42; kick(); });
+    })();
+
+    // «Что анализирует Октопус»: кольцо сегментов + вкладки (как отдельный блок).
+    (function () {
+      const block = document.getElementById("analyze");
+      if (!block) return;
+
+      const segRoot = document.getElementById("analyzeSegments");
+      const tabs = Array.from(block.querySelectorAll(".analyze-tab"));
+      const panels = Array.from(block.querySelectorAll(".analyze-panel"));
+      const ACCENT_DARK = ["#6a9fb8", "#7b73b8", "#9a85b0", "#b8836e", "#b89560"];
+      const ACCENT_LIGHT = ["#28a8e8", "#4b3be4", "#a855f7", "#ff5b2e", "#f59e0b"];
+      const themeBtn = document.getElementById("analyzeThemeToggle");
+
+      function accentColors() {
+        return block.classList.contains("is-light") ? ACCENT_LIGHT : ACCENT_DARK;
+      }
+
+      function applyThemeColors() {
+        const colors = accentColors();
+        segNodes.forEach((g, i) => g.style.setProperty("--seg-accent", colors[i]));
+        tabs.forEach((t, i) => t.style.setProperty("--tab-accent", colors[i]));
+        if (currentIdx >= 0) block.style.setProperty("--analyze-accent", colors[currentIdx]);
+      }
+
+      function syncThemeUi() {
+        const light = block.classList.contains("is-light");
+        if (themeBtn) {
+          themeBtn.setAttribute("aria-pressed", light ? "true" : "false");
+          const label = themeBtn.querySelector(".analyze-theme-toggle__label");
+          if (label) label.textContent = light ? "Тёмная тема" : "Светлая тема";
+        }
+        document.dispatchEvent(new CustomEvent("analyze-theme-change"));
+      }
+
+      function setTheme(light) {
+        block.classList.toggle("is-light", light);
+        applyThemeColors();
+        syncThemeUi();
+        try { localStorage.setItem("analyze-block-theme", light ? "light" : "dark"); } catch (_) {}
+      }
+
+      try {
+        if (localStorage.getItem("analyze-block-theme") === "light") block.classList.add("is-light");
+      } catch (_) {}
+
+      if (themeBtn) {
+        themeBtn.addEventListener("click", () => setTheme(!block.classList.contains("is-light")));
+      }
+
+      const AUTO_MS = 3800;
+      const PANEL_MS = 520;
+      const COUNT = 5;
+      const GAP = 5;
+      const CX = 200;
+      const CY = 200;
+      const R_OUT = 180;
+      const R_IN = 154;
+      const R_ORBIT = 194;
+
+      let currentIdx = -1;
+      let autoTimer = null;
+      let panelTimer = null;
+      let switchTimer = null;
+      let userPaused = false;
+      let blockVisible = false;
+      function polar(r, deg) {
+        const rad = ((deg - 90) * Math.PI) / 180;
+        return [CX + r * Math.cos(rad), CY + r * Math.sin(rad)];
+      }
+
+      function donutSlice(i) {
+        const span = 360 / COUNT;
+        const a0 = i * span + GAP / 2;
+        const a1 = (i + 1) * span - GAP / 2;
+        const [x0o, y0o] = polar(R_OUT, a0);
+        const [x1o, y1o] = polar(R_OUT, a1);
+        const [x0i, y0i] = polar(R_IN, a0);
+        const [x1i, y1i] = polar(R_IN, a1);
+        const large = a1 - a0 > 180 ? 1 : 0;
+        return `M ${x0o} ${y0o} A ${R_OUT} ${R_OUT} 0 ${large} 1 ${x1o} ${y1o} L ${x1i} ${y1i} A ${R_IN} ${R_IN} 0 ${large} 0 ${x0i} ${y0i} Z`;
+      }
+
+      const segNodes = [];
+      const orbitDots = [];
+      const orbitDotsRoot = document.getElementById("analyzeOrbitDots");
+
+      if (orbitDotsRoot) {
+        for (let i = 0; i < COUNT; i++) {
+          const mid = i * (360 / COUNT) + 360 / COUNT / 2;
+          const [dx, dy] = polar(R_ORBIT, mid);
+          const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+          dot.setAttribute("cx", String(dx));
+          dot.setAttribute("cy", String(dy));
+          dot.setAttribute("r", "2.4");
+          dot.setAttribute("class", "analyze-orbit-dot");
+          dot.dataset.analyze = String(i);
+          orbitDotsRoot.append(dot);
+          orbitDots.push(dot);
+        }
+      }
+
+      if (segRoot) {
+        for (let i = 0; i < COUNT; i++) {
+          const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+          g.setAttribute("class", "analyze-seg-wrap");
+          g.dataset.analyze = String(i);
+          g.style.setProperty("--seg-accent", accentColors()[i]);
+          const glow = document.createElementNS("http://www.w3.org/2000/svg", "path");
+          glow.setAttribute("d", donutSlice(i));
+          glow.setAttribute("class", "analyze-seg-glow");
+          const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+          path.setAttribute("d", donutSlice(i));
+          path.setAttribute("class", "analyze-seg");
+          path.setAttribute("tabindex", "0");
+          path.setAttribute("role", "button");
+          path.setAttribute("aria-label", `Канал ${String(i + 1).padStart(2, "0")}`);
+          const mid = i * (360 / COUNT) + 360 / COUNT / 2;
+          const [lx, ly] = polar((R_OUT + R_IN) / 2, mid);
+          const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+          label.setAttribute("x", String(lx));
+          label.setAttribute("y", String(ly));
+          label.setAttribute("text-anchor", "middle");
+          label.setAttribute("dominant-baseline", "central");
+          label.setAttribute("class", "analyze-seg__num");
+          label.textContent = String(i + 1).padStart(2, "0");
+          g.append(glow, path, label);
+          segRoot.append(g);
+          segNodes.push(g);
+          g.addEventListener("click", () => {
+            setActive(i);
+            pauseAuto();
+            window.setTimeout(resumeAuto, AUTO_MS * 2);
+          });
+          path.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              setActive(i);
+              pauseAuto();
+              window.setTimeout(resumeAuto, AUTO_MS * 2);
+            }
+          });
+        }
+      }
+
+      function setActive(idx, instant) {
+        idx = ((idx % COUNT) + COUNT) % COUNT;
+        if (idx === currentIdx && !instant) return;
+
+        if (panelTimer) {
+          clearTimeout(panelTimer);
+          panelTimer = null;
+        }
+        if (switchTimer) {
+          clearTimeout(switchTimer);
+          switchTimer = null;
+        }
+        block.classList.remove("is-switching");
+        panels.forEach((p) => p.classList.remove("is-exiting"));
+
+        const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const prevIdx = currentIdx;
+        currentIdx = idx;
+        const accent = accentColors()[idx];
+        block.style.setProperty("--analyze-accent", accent);
+
+        tabs.forEach((t, i) => {
+          const on = i === idx;
+          t.classList.toggle("is-active", on);
+          t.setAttribute("aria-selected", on ? "true" : "false");
+          t.style.setProperty("--tab-accent", accentColors()[i]);
+        });
+        segNodes.forEach((g, i) => g.classList.toggle("is-active", i === idx));
+        orbitDots.forEach((d, i) => d.classList.toggle("is-active", i === idx));
+
+        const nextPanel = panels[idx];
+        const prevPanel = prevIdx >= 0 ? panels[prevIdx] : null;
+
+        const finishSwitch = () => {
+          block.classList.remove("is-switching");
+          panels.forEach((p, i) => {
+            p.classList.remove("is-exiting");
+            if (i !== idx) p.hidden = true;
+          });
+        };
+
+        const applyInstant = () => {
+          panels.forEach((p, i) => {
+            p.classList.remove("is-exiting", "is-entering");
+            const on = i === idx;
+            p.classList.toggle("is-active", on);
+            p.hidden = !on;
+          });
+        };
+
+        if (instant || reduced || prevIdx < 0 || prevIdx === idx) {
+          applyInstant();
+          return;
+        }
+
+        panels.forEach((p, i) => {
+          if (i !== idx && i !== prevIdx) {
+            p.classList.remove("is-active", "is-exiting");
+            p.hidden = true;
+          }
+        });
+
+        block.classList.add("is-switching");
+
+        prevPanel.classList.remove("is-active");
+        prevPanel.classList.add("is-exiting");
+        prevPanel.hidden = false;
+
+        nextPanel.hidden = false;
+        nextPanel.classList.remove("is-exiting");
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            nextPanel.classList.add("is-active");
+          });
+        });
+
+        panelTimer = window.setTimeout(() => {
+          prevPanel.classList.remove("is-exiting");
+          prevPanel.hidden = true;
+          panelTimer = null;
+        }, PANEL_MS);
+
+        switchTimer = window.setTimeout(() => {
+          finishSwitch();
+          switchTimer = null;
+        }, PANEL_MS + 80);
+      }
+
+      function stopAuto() {
+        if (autoTimer) {
+          clearTimeout(autoTimer);
+          autoTimer = null;
+        }
+      }
+
+      function scheduleAuto() {
+        stopAuto();
+        if (!blockVisible || userPaused || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        autoTimer = window.setTimeout(() => {
+          autoTimer = null;
+          if (!blockVisible || userPaused) return;
+          setActive((currentIdx + 1) % COUNT);
+          scheduleAuto();
+        }, AUTO_MS);
+      }
+
+      function startAuto() {
+        scheduleAuto();
+      }
+
+      function pauseAuto() {
+        userPaused = true;
+        stopAuto();
+      }
+
+      function resumeAuto() {
+        userPaused = false;
+        startAuto();
+      }
+
+      tabs.forEach((t) => {
+        t.addEventListener("click", () => {
+          setActive(Number(t.dataset.analyze));
+          pauseAuto();
+          window.setTimeout(resumeAuto, AUTO_MS * 2);
+        });
+      });
+
+      const detailPanel = block.querySelector(".analyze-block__detail");
+      if (detailPanel) {
+        detailPanel.addEventListener("mouseenter", pauseAuto);
+        detailPanel.addEventListener("mouseleave", resumeAuto);
+      }
+
+      block.addEventListener("focusin", (e) => {
+        if (e.target.closest(".analyze-tab, .analyze-seg")) pauseAuto();
+      });
+      block.addEventListener("focusout", (e) => {
+        if (!block.contains(e.relatedTarget)) resumeAuto();
+      });
+
+      function reveal() {
+        if (block.classList.contains("is-visible")) return;
+        block.classList.add("is-visible");
+      }
+
+      if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        reveal();
+      } else {
+        new IntersectionObserver((es) => {
+          if (es[0].isIntersecting) {
+            reveal();
+            blockVisible = true;
+            startAuto();
+          } else {
+            blockVisible = false;
+            stopAuto();
+          }
+        }, { threshold: 0.15 }).observe(block);
+        new IntersectionObserver((es) => { block.classList.toggle("is-idle", !es[0].isIntersecting); }, { threshold: 0 }).observe(block);
+      }
+
+      setActive(0, true);
+      syncThemeUi();
     })();
   </script>
 </body>
