@@ -1165,13 +1165,19 @@ body.no-scroll { overflow: hidden; }
   background: linear-gradient(135deg, var(--sky), var(--indigo));
 }
 .demo__points[data-active="0"] li[data-demo="0"],
-.demo__points[data-active="1"] li[data-demo="1"] {
+.demo__points[data-active="1"] li[data-demo="1"],
+.demo__points[data-active="2"] li[data-demo="2"],
+.demo__points[data-active="3"] li[data-demo="3"] {
   display: flex;
 }
 .demo__points[data-active="0"] li[data-demo="0"]:nth-child(2),
-.demo__points[data-active="1"] li[data-demo="1"]:nth-child(5) { animation-delay: 0.06s; }
+.demo__points[data-active="1"] li[data-demo="1"]:nth-child(5),
+.demo__points[data-active="2"] li[data-demo="2"]:nth-child(8),
+.demo__points[data-active="3"] li[data-demo="3"]:nth-child(11) { animation-delay: 0.06s; }
 .demo__points[data-active="0"] li[data-demo="0"]:nth-child(3),
-.demo__points[data-active="1"] li[data-demo="1"]:nth-child(6) { animation-delay: 0.12s; }
+.demo__points[data-active="1"] li[data-demo="1"]:nth-child(6),
+.demo__points[data-active="2"] li[data-demo="2"]:nth-child(9),
+.demo__points[data-active="3"] li[data-demo="3"]:nth-child(12) { animation-delay: 0.12s; }
 
 @keyframes demo-point-in {
   from { opacity: 0; transform: translateX(-8px); }
@@ -1184,7 +1190,7 @@ body.no-scroll { overflow: hidden; }
   grid-row: 1 / -1;
   align-self: center;
   position: relative;
-  min-height: clamp(300px, 48vh, 520px);
+  min-height: clamp(380px, 58vh, 620px);
   max-width: 100%;
   padding: 0 clamp(8px, 2%, 20px) clamp(28px, 7%, 52px) 0;
   overflow: visible;
@@ -1212,125 +1218,133 @@ body.no-scroll { overflow: hidden; }
   50% { opacity: 1; transform: scale(1.04); }
 }
 
-.demo__desk {
+/* phone-video carousel (stacked stories cards) */
+.demo__carousel {
   position: relative;
   z-index: 1;
-  width: 86%;
-  border-radius: clamp(12px, 1.2vw, 16px);
-  border: 1px solid rgba(7, 10, 24, 0.1);
-  background: #fff;
-  box-shadow:
-    0 24px 64px rgba(7, 10, 24, 0.12),
-    0 4px 16px rgba(7, 10, 24, 0.06);
-  overflow: hidden;
-  transform: perspective(1200px) rotateY(-2deg) rotateX(1.5deg);
-  transition: transform 0.7s var(--ease);
-}
-.demo__stage.is-in .demo__desk {
-  animation: demo-desk-in 1s var(--ease) 0.1s both;
-}
-@keyframes demo-desk-in {
-  from { opacity: 0; transform: perspective(1200px) rotateY(-4deg) rotateX(3deg) translateY(20px); }
-  to { opacity: 1; transform: perspective(1200px) rotateY(-2deg) rotateX(1.5deg); }
-}
-
-.demo__desk-bar {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 14px;
-  background: rgba(238, 241, 248, 0.95);
-  border-bottom: 1px solid rgba(7, 10, 24, 0.06);
-}
-.demo__desk-dots {
-  display: flex;
-  gap: 5px;
-}
-.demo__desk-dots i {
-  display: block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(7, 10, 24, 0.12);
-}
-.demo__desk-dots i:first-child { background: #ff5f57; }
-.demo__desk-dots i:nth-child(2) { background: #febc2e; }
-.demo__desk-dots i:nth-child(3) { background: #28c840; }
-.demo__desk-url {
-  flex: 1;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  color: rgba(7, 10, 24, 0.38);
-  text-align: center;
-  padding: 4px 12px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.7);
-}
-
-.demo__desk-screen,
-.demo__phone-screen {
-  position: relative;
-  overflow: hidden;
-  background: #f8f9fc;
-}
-.demo__desk-screen { aspect-ratio: 16 / 10; }
-
-.demo__shot {
-  position: absolute;
-  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: top center;
-  opacity: 0;
-  transform: scale(1.03);
-  transition: opacity 0.65s var(--ease), transform 0.75s var(--ease);
-  pointer-events: none;
-  z-index: 0;
+  min-height: clamp(380px, 58vh, 620px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.demo__shot.is-active {
-  opacity: 1;
-  transform: scale(1);
-  z-index: 1;
+.demo__cards {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: clamp(380px, 58vh, 620px);
 }
-
-.demo__phone {
+/* мок-макет телефона: светлая рамка + «чёлка» + экран с видео */
+.demo__card {
   position: absolute;
-  z-index: 2;
-  right: clamp(4px, 1.5%, 12px);
-  bottom: clamp(4px, 1.5%, 12px);
-  width: clamp(108px, 22%, 168px);
-  padding: 8px 6px 10px;
-  border-radius: clamp(22px, 3vw, 28px);
+  left: 50%;
+  top: 50%;
+  width: clamp(180px, 21vw, 286px);
+  padding: clamp(7px, 0.7vw, 11px) clamp(6px, 0.55vw, 9px) clamp(9px, 0.9vw, 14px);
+  border-radius: clamp(26px, 2.8vw, 40px);
   border: 1px solid rgba(7, 10, 24, 0.14);
   background: linear-gradient(165deg, #fff 0%, #eef1f8 100%);
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transform-origin: center;
   box-shadow:
-    0 20px 48px rgba(7, 10, 24, 0.18),
+    0 22px 54px rgba(7, 10, 24, 0.22),
+    0 4px 14px rgba(7, 10, 24, 0.1),
     0 0 0 1px rgba(255, 255, 255, 0.6) inset;
-  animation: demo-phone-float 6.5s ease-in-out infinite;
-}
-.demo__stage.is-in .demo__phone {
-  animation: demo-phone-in 0.9s var(--ease) 0.25s both, demo-phone-float 6.5s ease-in-out 1.2s infinite;
-}
-@keyframes demo-phone-in {
-  from { opacity: 0; transform: translateY(24px) rotate(6deg); }
-  to { opacity: 1; transform: translateY(0) rotate(3deg); }
-}
-@keyframes demo-phone-float {
-  0%, 100% { transform: translateY(0) rotate(3deg); }
-  50% { transform: translateY(-10px) rotate(1deg); }
+  transition: transform 0.6s var(--ease), box-shadow 0.6s var(--ease), opacity 0.5s var(--ease);
+  will-change: transform;
 }
 .demo__phone-notch {
-  width: 36%;
-  height: 4px;
-  margin: 0 auto 6px;
+  display: block;
+  width: 34%;
+  height: 5px;
+  margin: 0 auto clamp(6px, 0.7vw, 9px);
   border-radius: 99px;
-  background: rgba(7, 10, 24, 0.12);
+  background: rgba(7, 10, 24, 0.16);
 }
 .demo__phone-screen {
-  border-radius: clamp(16px, 2vw, 20px);
-  aspect-ratio: 9 / 19.5;
+  position: relative;
+  overflow: hidden;
+  border-radius: clamp(18px, 1.9vw, 28px);
+  aspect-ratio: 858 / 1578;
+  background: #0c0c16;
+}
+.demo__card video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* затемнение неактивных экранов — как на карусели landing_octopus */
+.demo__phone-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 8, 20, 0.55);
+  transition: opacity 0.6s var(--ease);
+  pointer-events: none;
+}
+.demo__card.is-active {
+  cursor: default;
+  box-shadow:
+    0 36px 90px rgba(75, 59, 228, 0.3),
+    0 8px 24px rgba(7, 10, 24, 0.16),
+    0 0 0 1px rgba(255, 255, 255, 0.7) inset;
+}
+.demo__card.is-active .demo__phone-screen::after { opacity: 0; }
+
+.demo__nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 6;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(7, 10, 24, 0.1);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(8px);
+  color: #2a2546;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  line-height: 1;
+  box-shadow: 0 8px 24px rgba(7, 10, 24, 0.12);
+  transition: background 0.25s var(--ease), color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.demo__nav-btn:hover {
+  background: var(--indigo);
+  color: #fff;
+  border-color: transparent;
+}
+.demo__nav-btn--prev { left: clamp(-8px, -1%, 4px); }
+.demo__nav-btn--next { right: clamp(-8px, -1%, 4px); }
+
+.demo__dots {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(0px, 1%, 8px);
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  gap: 9px;
+}
+.demo__dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  background: rgba(7, 10, 24, 0.18);
+  transition: background 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.demo__dot.is-on {
+  background: var(--indigo);
+  transform: scale(1.3);
 }
 
 @media (max-height: 900px) and (min-width: 1141px) {
@@ -1384,8 +1398,15 @@ body.no-scroll { overflow: hidden; }
     grid-column: 1;
     grid-row: 2;
     align-self: stretch;
-    min-height: clamp(200px, 52vw, 320px);
+    min-height: clamp(420px, 104vw, 620px);
     padding: 0 0 clamp(20px, 5vw, 32px);
+  }
+  .demo__carousel,
+  .demo__cards {
+    min-height: clamp(400px, 100vw, 600px);
+  }
+  .demo__card {
+    width: clamp(190px, 52vw, 280px);
   }
   .demo__points {
     grid-column: 1;
@@ -1401,20 +1422,6 @@ body.no-scroll { overflow: hidden; }
   .demo-tab.is-active {
     transform: none !important;
   }
-  .demo__desk {
-    width: 100%;
-    transform: none;
-  }
-  .demo__phone {
-    display: none;
-  }
-  .demo__stage.is-in .demo__desk {
-    animation: demo-desk-in-mobile 0.9s var(--ease) 0.1s both;
-  }
-  @keyframes demo-desk-in-mobile {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: none; }
-  }
 }
 
 @media (max-width: 600px) {
@@ -1422,15 +1429,6 @@ body.no-scroll { overflow: hidden; }
   .demo-tab__icon {
     width: 36px;
     height: 36px;
-  }
-  .demo__desk-bar {
-    padding: 8px 10px;
-    gap: 8px;
-  }
-  .demo__desk-dots { display: none; }
-  .demo__desk-url {
-    font-size: 10px;
-    padding: 3px 8px;
   }
   .demo__points li {
     font-size: 13px;
@@ -1444,11 +1442,8 @@ body.no-scroll { overflow: hidden; }
 
 @media (prefers-reduced-motion: reduce) {
   .demo__stage { opacity: 1; transform: none; }
-  .demo__stage.is-in .demo__desk,
-  .demo__stage.is-in .demo__phone { animation: none; }
-  .demo__phone { animation: none !important; transform: rotate(3deg); }
   .demo__glow { animation: none; }
-  .demo__shot { transition: opacity 0.3s ease; transform: none; }
+  .demo__card { transition: none; }
   .demo__points li { animation: none; }
 }
 
@@ -1857,97 +1852,6 @@ body.no-scroll { overflow: hidden; }
   }
   .results__step h3 { font-size: clamp(24px, 6.5vw, 34px); }
 }
-
-/* ---- переключатель темы (зафиксирован, пока экран в зоне видимости) ---- */
-.results__theme {
-  position: fixed;
-  /* ниже фиксированного хедера (68px), чтобы не перекрывать его */
-  top: clamp(78px, 8vh + 16px, 96px);
-  right: clamp(16px, 3vw, 32px);
-  z-index: 60;
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  padding: 5px;
-  border-radius: 999px;
-  background: rgba(10, 16, 34, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  backdrop-filter: blur(10px);
-  opacity: 0;
-  transform: translateY(-8px);
-  pointer-events: none;
-  transition: opacity 0.4s ease, transform 0.4s ease, background 0.4s ease, border-color 0.4s ease;
-}
-.results__theme.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-.results__theme button {
-  appearance: none;
-  border: none;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 7px 14px;
-  border-radius: 999px;
-  font: inherit;
-  font-size: 12.5px;
-  font-weight: 600;
-  color: #cdd8f0;
-  background: transparent;
-  transition: background 0.3s, color 0.3s;
-}
-.results__theme button svg { width: 15px; height: 15px; }
-.results__theme button.is-on {
-  background: linear-gradient(120deg, var(--accent3), var(--accent));
-  color: #04121b;
-}
-
-/* ================= СВЕТЛАЯ ТЕМА — воздушная лиловая, плоская, минималистичная ================= */
-.results.theme-light {
-  background: #f6f5fc;
-}
-.results.theme-light::before {
-  background:
-    radial-gradient(80% 56% at 84% 14%, rgba(124, 107, 255, 0.12), transparent 64%),
-    radial-gradient(60% 44% at 6% 92%, rgba(124, 107, 255, 0.07), transparent 62%);
-}
-.results.theme-light .results__eyebrow {
-  color: #6a5bd6;
-  background: rgba(124, 107, 255, 0.08);
-  border-color: rgba(124, 107, 255, 0.22);
-}
-.results.theme-light .results__eyebrow .dot {
-  background: #7c6bff;
-  box-shadow: 0 0 0 4px rgba(124, 107, 255, 0.16);
-}
-.results.theme-light .results__title { color: #1d1840; }
-.results.theme-light .results__line { background: rgba(124, 107, 255, 0.18); }
-.results.theme-light .results__line-fill { background: #7c6bff; box-shadow: none; }
-.results.theme-light .results__num { color: #a79fc6; }
-.results.theme-light .results__step.is-active .results__num { color: #6a5bd6; }
-.results.theme-light .results__dot { background: #7c6bff; box-shadow: none; }
-.results.theme-light .results__step h3 { color: #1d1840; }
-.results.theme-light .results__step p { color: #6b6788; }
-/* плоская сцена: без свечения, тёмный «чернильный» осьминог */
-.results.theme-light .results__frame { background: none; }
-.results.theme-light .results__octo-img { filter: brightness(0) opacity(0.82); }
-.results.theme-light .env--dots .d { background: rgba(124, 107, 255, 0.5); box-shadow: none; }
-.results.theme-light .env--bubbles i {
-  box-shadow: none;
-  background: radial-gradient(circle at 32% 30%, rgba(124, 107, 255, 0.42), rgba(124, 107, 255, 0.06));
-}
-.results.theme-light .env--current path { stroke: rgba(124, 107, 255, 0.5); }
-.results.theme-light .env--tiles span { border-color: rgba(124, 107, 255, 0.4); background: rgba(124, 107, 255, 0.07); }
-.results.theme-light .env--bars i { background: linear-gradient(180deg, #7c6bff, rgba(124, 107, 255, 0.24)); }
-.results.theme-light .env--compare .c { border-color: rgba(124, 107, 255, 0.4); }
-.results.theme-light .env--compare .vs { background: rgba(124, 107, 255, 0.3); }
-.results.theme-light .env--dart i { background: linear-gradient(90deg, transparent, rgba(124, 107, 255, 0.6)); }
-.results.theme-light .results__theme { background: rgba(255, 255, 255, 0.74); border-color: rgba(124, 107, 255, 0.2); }
-.results.theme-light .results__theme button { color: #6b6788; }
-.results.theme-light .results__theme button.is-on { background: linear-gradient(120deg, #8b79ff, #6a5bd6); color: #fff; }
 
 /* =========================================================
    БЛОК 4.5 — Интерфейс платформы (карусель видео, стиль landing_octopus)
