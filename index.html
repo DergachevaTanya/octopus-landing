@@ -320,7 +320,7 @@
         </article>
 
         <!-- 04 -->
-        <article class="about-card about-card--list">
+        <!-- <article class="about-card about-card--list">
           <span class="about-card__icon">
             <svg viewBox="0 0 64 64" fill="none">
               <path d="M32 10L54 22L32 34L10 22L32 10Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" pathLength="1"/>
@@ -340,10 +340,10 @@
               <li>Мобильная реклама</li>
             </ul>
           </div>
-        </article>
+        </article> -->
 
         <!-- 05 -->
-        <article class="about-card about-card--list">
+        <!-- <article class="about-card about-card--list">
           <span class="about-card__icon">
             <svg viewBox="0 0 64 64" fill="none">
               <circle cx="32" cy="32" r="22" stroke="currentColor" stroke-width="2" pathLength="1"/>
@@ -363,7 +363,7 @@
               <li>Динамику и сезонность рынка</li>
             </ul>
           </div>
-        </article>
+        </article> -->
 
       </div>
     </div>
@@ -584,16 +584,24 @@
   </section>
 
   <!-- =========================================================
-       Блок 4 — Что вы получаете в результате (спуск в океан)
+       Блок 4 — Что вы получаете (минималистичный, стиль landing_octopus)
        ========================================================= -->
   <section class="results" id="results" aria-labelledby="results-title">
-    <div class="results__bg" aria-hidden="true"></div>
-    <div class="results__rays" aria-hidden="true"></div>
-
-    <div class="results__head">
-      <span class="results__eyebrow"><span class="section-dot"></span> Результат работы Октопус</span>
-      <h2 class="results__title" id="results-title">Что вы получаете <span class="results__accent">в&nbsp;результате?</span></h2>
+    <div class="results__theme" role="group" aria-label="Тема оформления">
+      <button type="button" class="results__theme-dark is-on" aria-pressed="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        Тёмная
+      </button>
+      <button type="button" class="results__theme-light" aria-pressed="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
+        Светлая
+      </button>
     </div>
+
+    <!-- <div class="results__head">
+      <span class="results__eyebrow"><span class="dot"></span> Результат работы Октопус</span>
+      <h2 class="results__title" id="results-title">Что вы получаете <span class="grad">в&nbsp;результате?</span></h2>
+    </div> -->
 
     <div class="results__grid">
       <div class="results__track">
@@ -646,12 +654,6 @@
       <div class="results__rail" aria-hidden="true">
         <div class="results__stage is-s0">
           <div class="results__frame">
-            <div class="results__sonar" aria-hidden="true"></div>
-            <div class="results__hud" aria-hidden="true">
-              <span>6+ медиаканалов</span>
-              <span>данные за час</span>
-              <span>SOV / OTS / креативы</span>
-            </div>
             <div class="results__env env--dots">
               <span class="d" style="left:20%;top:28%"></span>
               <span class="d" style="left:52%;top:18%;animation-delay:.4s"></span>
@@ -705,6 +707,47 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       Блок 4.5 — Интерфейс платформы (карусель видео, стиль landing_octopus)
+       ========================================================= -->
+  <section class="handy" id="interface">
+    <header class="handy__head">
+      <h2 class="handy__title">Интерфейс платформы — <span class="hl">аналитика за несколько кликов</span></h2>
+      <p class="handy__lead">
+        От автоматического сбора данных до готовых отчётов: десктоп для глубокого анализа,
+        мобильная версия — для быстрых проверок на ходу.
+      </p>
+    </header>
+
+    <div class="handy__carousel" id="handyCarousel">
+      <button type="button" class="handy__nav handy__nav--prev" aria-label="Назад">‹</button>
+
+      <div class="handy__stage">
+        <div class="handy__card">
+          <video src="assets/rec-1.mp4" muted playsinline preload="auto"></video>
+        </div>
+        <div class="handy__card">
+          <video src="assets/rec-2.mp4" muted playsinline preload="auto"></video>
+        </div>
+        <div class="handy__card">
+          <video src="assets/rec-3.mp4" muted playsinline preload="auto"></video>
+        </div>
+        <div class="handy__card">
+          <video src="assets/rec-4.mp4" muted playsinline preload="auto"></video>
+        </div>
+      </div>
+
+      <button type="button" class="handy__nav handy__nav--next" aria-label="Вперёд">›</button>
+    </div>
+
+    <div class="handy__dots">
+      <button type="button" class="handy__dot" aria-label="Слайд 1"></button>
+      <button type="button" class="handy__dot" aria-label="Слайд 2"></button>
+      <button type="button" class="handy__dot" aria-label="Слайд 3"></button>
+      <button type="button" class="handy__dot" aria-label="Слайд 4"></button>
     </div>
   </section>
 
@@ -1117,20 +1160,18 @@
 
       let analyzeOn = false;
       let resultsOn = false;
-      let resultsDeep = false;
       let advOn = false;
       let footerOn = false;
 
       function sync() {
         const analyzeDark = analyzeOn && analyze && !analyze.classList.contains("is-light");
-        header.classList.toggle("is-on-dark", (analyzeDark || resultsDeep || advOn) && !footerOn);
+        // блок «Результат» тёмный, если он в зоне видимости и не включена светлая тема
+        const resultsDark = resultsOn && results && !results.classList.contains("theme-light");
+        header.classList.toggle("is-on-dark", (analyzeDark || resultsDark || advOn) && !footerOn);
       }
 
       document.addEventListener("analyze-theme-change", sync);
-      document.addEventListener("results-depth-change", (e) => {
-        resultsDeep = !!(resultsOn && e.detail && e.detail.deep);
-        sync();
-      });
+      document.addEventListener("results-depth-change", sync);
 
       const io = new IntersectionObserver(
         (entries) => {
@@ -1140,7 +1181,6 @@
             if (e.target === adv) advOn = e.isIntersecting && e.intersectionRatio > 0.2;
             if (e.target === footer) footerOn = e.isIntersecting && e.intersectionRatio > 0.06;
           });
-          if (!resultsOn) resultsDeep = false;
           sync();
         },
         { threshold: [0, 0.06, 0.08, 0.2, 0.22, 0.4] }
@@ -1364,7 +1404,7 @@
       }
     })();
 
-    // Блок 4 — Что вы получаете: спуск в океан + сцена с осьминогом
+    // Блок 4 — Что вы получаете: текст прокручивается, осьминог на месте, сцена меняется по шагам
     (function () {
       const section = document.getElementById("results");
       if (!section) return;
@@ -1376,68 +1416,33 @@
       const steps = [...section.querySelectorAll(".results__step")];
       if (!track || !octo || !steps.length) return;
 
-      const dots = steps.map((s) => s.querySelector(".results__dot"));
-      // Состояние «полоска уже прошла точку» — чтобы пускать волну
-      // ровно в момент пересечения линии и точки (в обе стороны).
-      let passed = null;
-      function ripple(dot) {
-        if (!dot) return;
-        dot.classList.remove("is-ripple");
-        void dot.offsetWidth; // перезапуск CSS-анимации
-        dot.classList.add("is-ripple");
-      }
+      // Угол (град, по часовой от +X: вправо=0, вниз=90, влево=180, вверх=270),
+      // в который смотрит ГОЛОВА осьминога на исходной картинке.
+      const RAW_HEAD = 135; // логотип «плывёт» влево-вниз
 
-      const RAW_HEAD = 135;
+      // сцена шага: travel = направление взгляда осьминога; dart = быстрое подёргивание
       const SCENES = [
-        { travel: 0, dart: false },
-        { travel: 285, dart: false },
-        { travel: 15, dart: false },
-        { travel: 175, dart: false },
-        { travel: 275, dart: false },
-        { travel: 0, dart: false },
-        { travel: 320, dart: true },
+        { travel: 0, dart: false },   // 01 аналитика — смотрит вправо
+        { travel: 285, dart: false }, // 02 свежесть — поднимается с пузырьками
+        { travel: 15, dart: false },  // 03 динамика — дрейфует по течению
+        { travel: 175, dart: false }, // 04 медиа — поворачивается к плиткам
+        { travel: 275, dart: false }, // 05 категории — смотрит вверх над столбцами
+        { travel: 0, dart: false },   // 06 сравнение — смотрит вправо
+        { travel: 320, dart: true },  // 07 отчёты — рывок вверх-вправо
       ];
 
       const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
       let ticking = false;
       let current = -1;
 
-      let lastDeep = null;
-      function setDepth(depth) {
-        // Непрерывная «глубина» по скроллу — мягкий переход цвета текста/лучей.
-        section.style.setProperty("--depth", depth.toFixed(3));
-        // Гистерезис: включаем «глубину» позже, выключаем раньше — чтобы
-        // палитра не мигала при дрожании скролла около порога.
-        const deep = lastDeep ? depth > 0.36 : depth > 0.44;
-        section.classList.toggle("is-deep", deep);
-        if (deep !== lastDeep) {
-          lastDeep = deep;
-          document.dispatchEvent(new CustomEvent("results-depth-change", { detail: { depth, deep } }));
-        }
-      }
-
       function update() {
         const mid = innerHeight * 0.5;
         const rect = track.getBoundingClientRect();
-        const sectionRect = section.getBoundingClientRect();
-        const prog = clamp((mid - sectionRect.top) / sectionRect.height, 0, 1);
-        const lineProg = clamp((mid - rect.top) / rect.height, 0, 1);
 
-        if (fill) {
-          fill.style.height = lineProg * 100 + "%";
-        }
+        // заполняем линию до центра вьюпорта
+        if (fill) fill.style.height = clamp((mid - rect.top) / rect.height, 0, 1) * 100 + "%";
 
-        // Кончик заливки в пикселях от верха трека; пускаем волну,
-        // когда он пересекает центр точки очередного пункта.
-        const fillPx = lineProg * track.clientHeight;
-        const state = steps.map((s) => fillPx >= s.offsetTop + s.offsetHeight / 2);
-        if (passed) {
-          for (let i = 0; i < state.length; i++) {
-            if (state[i] !== passed[i]) ripple(dots[i]);
-          }
-        }
-        passed = state;
-
+        // активный шаг — тот, чей центр ближе всего к центру вьюпорта
         let active = 0;
         let best = Infinity;
         steps.forEach((s, i) => {
@@ -1450,19 +1455,17 @@
         });
         steps.forEach((s, i) => s.classList.toggle("is-active", i === active));
 
-        if (active !== current) {
-          current = active;
-          if (stage) {
-            for (let i = 0; i < SCENES.length; i++) {
-              stage.classList.toggle("is-s" + i, i === active);
-            }
-          }
-          const scene = SCENES[active] || SCENES[0];
-          octo.classList.toggle("is-dart", scene.dart);
-          if (face) face.style.setProperty("--face", scene.travel - RAW_HEAD + "deg");
-        }
+        if (active === current) return;
+        current = active;
 
-        setDepth(prog);
+        if (stage) {
+          for (let i = 0; i < SCENES.length; i++) {
+            stage.classList.toggle("is-s" + i, i === active);
+          }
+        }
+        const scene = SCENES[active] || SCENES[0];
+        octo.classList.toggle("is-dart", scene.dart);
+        if (face) face.style.setProperty("--face", scene.travel - RAW_HEAD + "deg");
       }
 
       function onScroll() {
@@ -1484,6 +1487,105 @@
           { threshold: 0 }
         ).observe(section);
       }
+
+      // ---- переключатель темы: зафиксирован, пока экран в зоне видимости ----
+      const themeBar = section.querySelector(".results__theme");
+      if (themeBar) {
+        const btnDark = themeBar.querySelector(".results__theme-dark");
+        const btnLight = themeBar.querySelector(".results__theme-light");
+        function setTheme(light) {
+          section.classList.toggle("theme-light", light);
+          btnLight.classList.toggle("is-on", light);
+          btnDark.classList.toggle("is-on", !light);
+          btnLight.setAttribute("aria-pressed", String(light));
+          btnDark.setAttribute("aria-pressed", String(!light));
+          // тёмная тема блока = тёмный хедер над ним
+          document.dispatchEvent(new CustomEvent("results-depth-change", { detail: { deep: !light } }));
+        }
+        btnDark.addEventListener("click", () => setTheme(false));
+        btnLight.addEventListener("click", () => setTheme(true));
+        // стартовое состояние — тёмная тема
+        document.dispatchEvent(new CustomEvent("results-depth-change", { detail: { deep: true } }));
+        new IntersectionObserver(
+          (es) => themeBar.classList.toggle("is-visible", es[0].isIntersecting),
+          { threshold: 0.04 }
+        ).observe(section);
+      }
+    })();
+
+    // Блок 4.5 — Интерфейс платформы: stories-карусель видео
+    (function () {
+      const root = document.getElementById("handyCarousel");
+      if (!root) return;
+      const section = root.closest(".handy");
+      const cards = [...root.querySelectorAll(".handy__card")];
+      const dots = [...section.querySelectorAll(".handy__dot")];
+      const prev = root.querySelector(".handy__nav--prev");
+      const next = root.querySelector(".handy__nav--next");
+      if (!cards.length) return;
+
+      const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let active = Math.min(1, cards.length - 1); // стартуем с примерно центральной карточки
+      let inView = false;
+
+      function layout() {
+        const w = cards[0].getBoundingClientRect().width || 240;
+        const spacing = w * 0.62;
+        cards.forEach((card, i) => {
+          const off = i - active;
+          const abs = Math.abs(off);
+          const scale = off === 0 ? 1 : abs === 1 ? 0.82 : 0.66;
+          card.style.transform = `translate(calc(-50% + ${off * spacing}px),-50%) scale(${scale})`;
+          card.style.zIndex = String(100 - abs);
+          card.style.opacity = abs > 2 ? "0" : "1";
+          card.style.pointerEvents = abs > 2 ? "none" : "auto";
+          card.classList.toggle("is-active", off === 0);
+        });
+        dots.forEach((d, i) => d.classList.toggle("is-on", i === active));
+        syncVideos();
+      }
+
+      function syncVideos() {
+        cards.forEach((card, i) => {
+          const v = card.querySelector("video");
+          if (!v) return;
+          if (i === active && inView && !reduce) {
+            const p = v.play();
+            if (p && p.catch) p.catch(() => {});
+          } else {
+            v.pause();
+            if (i !== active) {
+              try { v.currentTime = 0; } catch (e) {}
+            }
+          }
+        });
+      }
+
+      function go(n) {
+        active = (n + cards.length) % cards.length;
+        layout();
+      }
+
+      if (prev) prev.addEventListener("click", () => go(active - 1));
+      if (next) next.addEventListener("click", () => go(active + 1));
+      cards.forEach((card, i) => card.addEventListener("click", () => { if (i !== active) go(i); }));
+      dots.forEach((d, i) => d.addEventListener("click", () => go(i)));
+      cards.forEach((card, i) => {
+        const v = card.querySelector("video");
+        if (v) v.addEventListener("ended", () => { if (i === active) go(active + 1); });
+      });
+
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(
+          (es) => { inView = es[0].isIntersecting; syncVideos(); },
+          { threshold: 0.4 }
+        ).observe(section);
+      } else {
+        inView = true;
+      }
+
+      addEventListener("resize", layout, { passive: true });
+      layout();
     })();
 
     // Блок 5 — cursor spotlight + reveal
