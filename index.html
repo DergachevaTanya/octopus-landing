@@ -8,11 +8,22 @@
     name="description"
     content="Октопус — единая AI-система для мониторинга активности конкурентов и оперативной оценки медиастратегий. Уникальные данные о рекламном рынке уже через час после запуска кампаний."
   />
-  <link rel="preload" href="fonts/Montserrat-Regular.ttf" as="font" type="font/ttf" crossorigin />
-  <link rel="preload" href="fonts/Montserrat-Bold.ttf" as="font" type="font/ttf" crossorigin />
+  <link rel="preload" href="fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/Montserrat-Bold.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <!-- Общий градиент-«перелив» (как у выделения ключевых фраз) для иконок карточек -->
+  <svg width="0" height="0" aria-hidden="true" style="position:absolute">
+    <defs>
+      <linearGradient id="about-icon-grad" x1="0" y1="0" x2="1" y2="0.15">
+        <stop offset="0" stop-color="#3fb8f5"/>
+        <stop offset="0.55" stop-color="#4b3be4"/>
+        <stop offset="1" stop-color="#ff5b2e"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
   <!-- Sticky header — appears after the hero -->
   <header class="site-header" id="site-header">
     <a href="#top" class="site-header__home" aria-label="Октопус — наверх">
@@ -65,6 +76,12 @@
        ========================================================= -->
   <section class="hero" id="top">
     <canvas id="hero-bg" class="hero__bg"></canvas>
+    <!-- Лёгкий вариант фона: видео-«бумеранг» (прямой + реверс клип) + свет за курсором -->
+    <div class="hero__video-wrap" aria-hidden="true">
+      <video class="hero__video" id="hero-video" src="assets/hero-loop.webm" muted playsinline preload="auto"></video>
+      <video class="hero__video" id="hero-video-rev" src="assets/hero-loop-rev.webm" muted playsinline preload="auto"></video>
+      <span class="hero__video-glow" id="hero-video-glow"></span>
+    </div>
     <div class="hero__weave" id="hero-weave" aria-hidden="true">
       <svg class="eweave" viewBox="60 36 558 320" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
           <defs>
@@ -384,9 +401,6 @@
               </defs>
               <g class="analyze-block__orbit" aria-hidden="true">
                 <circle class="analyze-block__orbit-ring" cx="200" cy="200" r="196" />
-                <g class="analyze-block__orbit-spin">
-                  <circle class="analyze-block__orbit-ring analyze-block__orbit-ring--dash" cx="200" cy="200" r="190" />
-                </g>
                 <g class="analyze-block__orbit-dots" id="analyzeOrbitDots"></g>
               </g>
               <circle class="analyze-block__ring-core" cx="200" cy="200" r="152" />
@@ -394,7 +408,7 @@
             </svg>
           <div class="analyze-block__center">
             <div class="analyze-block__mascot">
-              <img class="analyze-block__mascot-inner" id="analyzeMascot" src="assets/octopus-logo.gif" alt="" aria-hidden="true" />
+              <img class="analyze-block__mascot-inner" id="analyzeMascot" src="assets/octopus-logo.gif" alt="" aria-hidden="true" loading="lazy" decoding="async" />
             </div>
           </div>
         </div>
@@ -557,7 +571,7 @@
             </div>
             <div class="results__octo">
               <div class="results__octo-face">
-                <img class="results__octo-img" src="assets/octopus-swim.png" alt="" decoding="async" width="300" height="300" />
+                <img class="results__octo-img" src="assets/octopus-swim.png" alt="" decoding="async" loading="lazy" width="300" height="300" />
               </div>
             </div>
           </div>
@@ -665,25 +679,25 @@
               <div class="demo__card" data-demo="0">
                 <span class="demo__phone-notch" aria-hidden="true"></span>
                 <div class="demo__phone-screen">
-                  <video src="assets/rec-1.mp4" muted playsinline preload="auto" aria-label="Динамика рекламной активности"></video>
+                  <video src="assets/rec-1.mp4" muted playsinline preload="metadata" aria-label="Динамика рекламной активности"></video>
                 </div>
               </div>
               <div class="demo__card" data-demo="1">
                 <span class="demo__phone-notch" aria-hidden="true"></span>
                 <div class="demo__phone-screen">
-                  <video src="assets/rec-2.mp4" muted playsinline preload="auto" aria-label="Сводка и креативы"></video>
+                  <video src="assets/rec-2.mp4" muted playsinline preload="metadata" aria-label="Сводка и креативы"></video>
                 </div>
               </div>
               <div class="demo__card" data-demo="2">
                 <span class="demo__phone-notch" aria-hidden="true"></span>
                 <div class="demo__phone-screen">
-                  <video src="assets/rec-3.mp4" muted playsinline preload="auto" aria-label="Мониторинг выходов"></video>
+                  <video src="assets/rec-3.mp4" muted playsinline preload="metadata" aria-label="Мониторинг выходов"></video>
                 </div>
               </div>
               <div class="demo__card" data-demo="3">
                 <span class="demo__phone-notch" aria-hidden="true"></span>
                 <div class="demo__phone-screen">
-                  <video src="assets/rec-4.mp4" muted playsinline preload="auto" aria-label="Флоучарт размещений"></video>
+                  <video src="assets/rec-4.mp4" muted playsinline preload="metadata" aria-label="Флоучарт размещений"></video>
                 </div>
               </div>
             </div>
@@ -721,16 +735,16 @@
 
       <div class="handy__stage">
         <div class="handy__card">
-          <video src="assets/rec-1.mp4" muted playsinline preload="auto"></video>
+          <video src="assets/rec-1.mp4" muted playsinline preload="metadata"></video>
         </div>
         <div class="handy__card">
-          <video src="assets/rec-2.mp4" muted playsinline preload="auto"></video>
+          <video src="assets/rec-2.mp4" muted playsinline preload="metadata"></video>
         </div>
         <div class="handy__card">
-          <video src="assets/rec-3.mp4" muted playsinline preload="auto"></video>
+          <video src="assets/rec-3.mp4" muted playsinline preload="metadata"></video>
         </div>
         <div class="handy__card">
-          <video src="assets/rec-4.mp4" muted playsinline preload="auto"></video>
+          <video src="assets/rec-4.mp4" muted playsinline preload="metadata"></video>
         </div>
       </div>
 
@@ -826,7 +840,7 @@
       <article class="adv-card adv-card--octopus" hidden aria-hidden="true">
         <div class="adv-octo__mesh" aria-hidden="true"></div>
         <div class="adv-octo__watermark" aria-hidden="true">
-          <img src="assets/octopus-mark.png" alt="" class="adv-octo__mark" />
+          <img src="assets/octopus-mark.png" alt="" class="adv-octo__mark" loading="lazy" decoding="async" />
         </div>
 
         <span class="adv-card__icon">
@@ -1024,9 +1038,9 @@
         </div>
 
         <div class="site-footer__brands">
-          <img class="site-footer__logo site-footer__logo--octo" src="assets/octopus-logo-white.png" alt="Октопус" />
+          <img class="site-footer__logo site-footer__logo--octo" src="assets/octopus-logo-white.png" alt="Октопус" loading="lazy" decoding="async" />
           <span class="site-footer__brand-sep" aria-hidden="true"></span>
-          <img class="site-footer__logo site-footer__logo--arena" src="assets/arena.png" alt="Arena" />
+          <img class="site-footer__logo site-footer__logo--arena" src="assets/arena.png" alt="Arena" loading="lazy" decoding="async" />
         </div>
       </div>
     </div>
@@ -1205,35 +1219,152 @@
       }
     })();
 
-    // Hero background toggle: вода (canvas) ⇄ плетёная глубина (SVG) ⇄ шёлк (canvas)
+    // ПРОИЗВОДИТЕЛЬНОСТЬ: WebGL-шейдер героя крутится дорого — гасим его,
+    // как только герой ушёл с экрана, и включаем обратно при возврате.
+    // Только когда фон героя действительно canvas (не видео и не «плетёнка»).
+    (function () {
+      const hero = document.querySelector(".hero");
+      if (!hero || !window.heroBG || !("IntersectionObserver" in window)) return;
+      new IntersectionObserver(
+        ([e]) => {
+          const usesCanvas =
+            !hero.classList.contains("weave-active") &&
+            !hero.classList.contains("video-active");
+          window.heroBG.setActive(e.isIntersecting && usesCanvas);
+        },
+        { threshold: 0.01 }
+      ).observe(hero);
+    })();
+
+    // ПРОИЗВОДИТЕЛЬНОСТЬ: CSS-анимации каждого экрана работают только пока экран
+    // виден. Секции вне вьюпорта получают .is-anim-paused → animation-play-state:
+    // paused для всех вложенных элементов (см. style.css). Так фон/свечения/пульсы
+    // не тратят кадры, когда мы на другом экране.
+    (function () {
+      if (!("IntersectionObserver" in window)) return;
+      const blocks = document.querySelectorAll("section, .site-footer");
+      const io = new IntersectionObserver(
+        (entries) => entries.forEach((e) => {
+          e.target.classList.toggle("is-anim-paused", !e.isIntersecting);
+        }),
+        { rootMargin: "120px 0px" } // запускаем чуть раньше входа в экран
+      );
+      blocks.forEach((b) => io.observe(b));
+    })();
+
+    // Видео-вариант фона героя: «бумеранг» из двух клипов (прямой + реверс) + свет за
+    // курсором. Никаких перемоток — оба клипа проигрываются нативно вперёд по очереди,
+    // поэтому ход туда-обратно идеально плавный. Легче WebGL (аппаратное декодирование).
+    (function () {
+      const hero = document.querySelector(".hero");
+      const fwd = document.getElementById("hero-video");
+      const rev = document.getElementById("hero-video-rev");
+      const glow = document.getElementById("hero-video-glow");
+      if (!hero || !fwd || !rev) { window.heroVideo = { start() {}, stop() {} }; return; }
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      let on = false;      // выбран ли видеорежим
+      let visible = true;  // герой в зоне видимости
+      let cur = fwd;       // какой клип проигрывается сейчас
+
+      const SPEED = 0.65;  // помедленнее, чтобы фон был спокойнее
+      fwd.playbackRate = rev.playbackRate = SPEED;
+
+      function show(el) {
+        cur = el;
+        (el === fwd ? rev : fwd).classList.remove("is-active");
+        el.classList.add("is-active");
+      }
+      // Начать сегмент с нуля. Стык кадров между клипами совпадает (конец прямого =
+      // начало реверса), поэтому показываем новый клип только после перемотки в 0 —
+      // до этого виден последний кадр предыдущего клипа (тот же самый) → без мигания.
+      function playSeg(el) {
+        const reveal = () => {
+          show(el);
+          const p = el.play();
+          if (p && p.catch) p.catch(() => {});
+        };
+        if (el.currentTime < 0.02) { reveal(); return; }
+        const onSeeked = () => { el.removeEventListener("seeked", onSeeked); reveal(); };
+        el.addEventListener("seeked", onSeeked);
+        try { el.currentTime = 0; } catch (e) { reveal(); }
+      }
+      // конец прямого клипа → реверс, конец реверса → снова прямой
+      fwd.addEventListener("ended", () => { if (on && visible && !reduce) playSeg(rev); });
+      rev.addEventListener("ended", () => { if (on && visible && !reduce) playSeg(fwd); });
+
+      function resume() {
+        if (!on) return;
+        if (reduce) { fwd.pause(); rev.pause(); show(fwd); try { fwd.currentTime = 0; } catch (e) {} return; }
+        const p = cur.play(); // продолжаем текущий сегмент с места паузы
+        if (p && p.catch) p.catch(() => {});
+      }
+      function suspend() { fwd.pause(); rev.pause(); }
+
+      // герой ушёл с экрана → пауза (не тратим ресурсы)
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(([e]) => {
+          visible = e.isIntersecting;
+          if (on) { visible ? resume() : suspend(); }
+        }, { threshold: 0.01 }).observe(hero);
+      }
+
+      // свет за курсором — плавно, как на «плетёной глубине»
+      let gx = 0.5, gy = 0.42, tgx = 0.5, tgy = 0.42, raf = null;
+      function loop() {
+        gx += (tgx - gx) * 0.1; gy += (tgy - gy) * 0.1;
+        if (glow) { glow.style.left = (gx * 100).toFixed(2) + "%"; glow.style.top = (gy * 100).toFixed(2) + "%"; }
+        if (Math.abs(tgx - gx) > 0.002 || Math.abs(tgy - gy) > 0.002) raf = requestAnimationFrame(loop);
+        else raf = null;
+      }
+      function kick() { if (!raf) raf = requestAnimationFrame(loop); }
+      hero.addEventListener("pointermove", (e) => {
+        if (!on) return;
+        const r = hero.getBoundingClientRect();
+        tgx = (e.clientX - r.left) / r.width;
+        tgy = (e.clientY - r.top) / r.height;
+        kick();
+      }, { passive: true });
+      hero.addEventListener("pointerleave", () => { tgx = 0.5; tgy = 0.42; kick(); });
+
+      window.heroVideo = {
+        start() { on = true; show(cur); resume(); },
+        stop() { on = false; suspend(); },
+      };
+    })();
+
+    // Hero background toggle: видео ⇄ вода (canvas) ⇄ плетёная глубина (SVG) ⇄ шёлк (canvas)
     (function () {
       const btn = document.getElementById("bg-toggle");
       const label = document.getElementById("bg-toggle-label");
       if (!btn || !window.heroBG) return;
       const hero = document.querySelector(".hero");
       const weave = document.getElementById("hero-weave");
-      const NAMES = { marble: "новая", weave: "плетёная глубина", silk: "старая" };
-      const ORDER = ["marble", "weave", "silk"];
+      const NAMES = { video: "видео", marble: "новая" };
+      const ORDER = ["video", "marble"];
 
       function apply(style) {
         const isWeave = style === "weave";
+        const isVideo = style === "video";
         if (hero) {
           hero.classList.toggle("weave-active", isWeave);
+          hero.classList.toggle("video-active", isVideo);
         }
         if (weave) weave.classList.toggle("is-active", isWeave);
-        const useMainCanvas = !isWeave;
+        const useMainCanvas = !isWeave && !isVideo;
         window.heroBG.setActive(useMainCanvas);
         if (useMainCanvas) {
           window.heroBG.setStyle(style);
           if (window.footerBG) window.footerBG.setStyle(style);
         }
+        if (window.heroVideo) { isVideo ? window.heroVideo.start() : window.heroVideo.stop(); }
         label.textContent = "Анимация: " + (NAMES[style] || style);
       }
 
-      let current = "marble";
-      try { current = localStorage.getItem("octo-bg-style") || "marble"; } catch (e) {}
+      let current = "video";
+      try { current = localStorage.getItem("octo-bg-style") || "video"; } catch (e) {}
       try { const q = new URLSearchParams(location.search).get("bg"); if (q) current = q; } catch (e) {}
-      if (ORDER.indexOf(current) < 0) current = "marble";
+      if (ORDER.indexOf(current) < 0) current = "video";
       apply(current);
 
       btn.addEventListener("click", () => {

@@ -11,37 +11,43 @@
 /* ---------- Fonts ---------- */
 @font-face {
   font-family: "Montserrat";
-  src: url("../fonts/Montserrat-ExtraLight.ttf") format("truetype");
+  src: url("../fonts/Montserrat-ExtraLight.woff2") format("woff2"),
+       url("../fonts/Montserrat-ExtraLight.ttf") format("truetype");
   font-weight: 200;
   font-display: swap;
 }
 @font-face {
   font-family: "Montserrat";
-  src: url("../fonts/Montserrat-Light.ttf") format("truetype");
+  src: url("../fonts/Montserrat-Light.woff2") format("woff2"),
+       url("../fonts/Montserrat-Light.ttf") format("truetype");
   font-weight: 300;
   font-display: swap;
 }
 @font-face {
   font-family: "Montserrat";
-  src: url("../fonts/Montserrat-Regular.ttf") format("truetype");
+  src: url("../fonts/Montserrat-Regular.woff2") format("woff2"),
+       url("../fonts/Montserrat-Regular.ttf") format("truetype");
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
   font-family: "Montserrat";
-  src: url("../fonts/Montserrat-Medium.ttf") format("truetype");
+  src: url("../fonts/Montserrat-Medium.woff2") format("woff2"),
+       url("../fonts/Montserrat-Medium.ttf") format("truetype");
   font-weight: 500;
   font-display: swap;
 }
 @font-face {
   font-family: "Montserrat";
-  src: url("../fonts/Montserrat-SemiBold.ttf") format("truetype");
+  src: url("../fonts/Montserrat-SemiBold.woff2") format("woff2"),
+       url("../fonts/Montserrat-SemiBold.ttf") format("truetype");
   font-weight: 600;
   font-display: swap;
 }
 @font-face {
   font-family: "Montserrat";
-  src: url("../fonts/Montserrat-Bold.ttf") format("truetype");
+  src: url("../fonts/Montserrat-Bold.woff2") format("woff2"),
+       url("../fonts/Montserrat-Bold.ttf") format("truetype");
   font-weight: 700;
   font-display: swap;
 }
@@ -109,6 +115,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* ПРОИЗВОДИТЕЛЬНОСТЬ: пока секция вне вьюпорта (класс ставит JS), все её
+   CSS-анимации заморожены — браузер не считает кадры для невидимых экранов. */
+.is-anim-paused,
+.is-anim-paused * {
+  animation-play-state: paused !important;
 }
 html {
   scroll-behavior: smooth;
@@ -417,6 +430,60 @@ body.no-scroll { overflow: hidden; }
   width: 100%;
   height: 100%;
   z-index: 0;
+}
+
+/* ----- Видео-вариант фона (легче, чем WebGL) ----- */
+.hero__video-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.6s var(--ease);
+}
+/* активируется тумблером фона */
+.hero.video-active .hero__video-wrap {
+  opacity: 1;
+  visibility: visible;
+}
+.hero.video-active .hero__bg {
+  opacity: 0; /* прячем canvas, когда показываем видео */
+}
+.hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0; /* активным становится только проигрываемый сейчас клип */
+}
+.hero__video.is-active {
+  opacity: 1;
+}
+/* Свет за курсором поверх видео — даёт ту же интерактивность, что и на canvas */
+.hero__video-glow {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  width: 46vmax;
+  height: 46vmax;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background: radial-gradient(
+    circle,
+    rgba(63, 184, 245, 0.34) 0%,
+    rgba(75, 59, 228, 0.18) 34%,
+    rgba(63, 184, 245, 0) 62%
+  );
+  will-change: left, top;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__video-glow { display: none; }
 }
 /* Soft dark scrim for text legibility */
 .hero__scrim {
@@ -948,6 +1015,17 @@ body.no-scroll { overflow: hidden; }
   height: 7px;
   border-radius: 50%;
   background: var(--coral);
+}
+
+/* перелив того же градиента, что и выделение ключевых фраз в заголовках */
+.about-card__icon path,
+.about-card__icon circle,
+.about-card__icon line,
+.about-card__icon polyline {
+  stroke: url(#about-icon-grad);
+}
+.about-card__icon [fill="currentColor"] {
+  fill: url(#about-icon-grad);
 }
 
 /* icon line-draw on reveal (pathLength normalized to 1) */
@@ -2064,7 +2142,7 @@ body.no-scroll { overflow: hidden; }
     linear-gradient(165deg, rgba(63, 184, 245, 0.035) 0%, transparent 38%, rgba(75, 59, 228, 0.025) 100%),
     radial-gradient(130% 85% at 50% -5%, #0e1634 0%, #070a18 48%, #050610 100%);
   color: var(--white);
-  padding: clamp(56px, 7vh, 88px) var(--pad-x) clamp(48px, 6vh, 72px);
+  padding: calc(var(--header-h) + clamp(28px, 4vh, 56px)) var(--pad-x) clamp(80px, 12vh, 140px);
   overflow: hidden;
 }
 /* faint bioluminescent haze */
@@ -2776,6 +2854,9 @@ body.no-scroll { overflow: hidden; }
   max-width: 100%;
   color: var(--white);
   padding: calc(68px + clamp(32px, 5vh, 48px)) var(--pad-x) 0;
+  /* зазор перед футером — сквозь него виден общий светлый фон, отделяя футер
+     от предыдущего экрана */
+  margin-top: clamp(28px, 5vh, 64px);
   overflow: hidden;
   background: var(--ink); /* непрозрачная тёмная подложка под canvas футера */
 }
@@ -3230,23 +3311,6 @@ body.no-scroll { overflow: hidden; }
   stroke: rgba(244, 246, 255, 0.1);
   stroke-width: 1;
 }
-.analyze-block__orbit-ring--dash {
-  stroke: rgba(244, 246, 255, 0.16);
-  stroke-width: 0.75;
-  stroke-dasharray: 3 11;
-  stroke-linecap: round;
-  opacity: 0.85;
-}
-.analyze-block__orbit-spin {
-  transform-origin: 200px 200px;
-  animation: analyzeOrbitSpin 80s linear infinite;
-}
-.analyze-block.is-idle .analyze-block__orbit-spin {
-  animation-play-state: paused;
-}
-@keyframes analyzeOrbitSpin {
-  to { transform: rotate(360deg); }
-}
 .analyze-orbit-dot {
   fill: rgba(244, 246, 255, 0.22);
   transform-box: fill-box;
@@ -3554,7 +3618,7 @@ body.no-scroll { overflow: hidden; }
 }
 .analyze-block.is-light .analyze-block__viz,
 .analyze-block.is-light .analyze-block__detail {
-  border-color: rgba(11, 16, 36, 0.12);
+  /* border-color: rgba(11, 16, 36, 0.12); */
   box-shadow: none;
 }
 .analyze-block.is-light .analyze-block__ring-core {
@@ -3563,9 +3627,6 @@ body.no-scroll { overflow: hidden; }
 }
 .analyze-block.is-light .analyze-block__orbit-ring {
   stroke: rgba(11, 16, 36, 0.09);
-}
-.analyze-block.is-light .analyze-block__orbit-ring--dash {
-  stroke: rgba(11, 16, 36, 0.14);
 }
 .analyze-block.is-light .analyze-orbit-dot {
   fill: rgba(11, 16, 36, 0.16);
@@ -3664,8 +3725,7 @@ body.no-scroll { overflow: hidden; }
   .analyze-panel,
   .analyze-seg,
   .analyze-seg-glow,
-  .analyze-tab,
-  .analyze-block__orbit-spin { transition: none; animation: none !important; }
+  .analyze-tab { transition: none; animation: none !important; }
   .analyze-block__mascot-inner { transition: none; }
   .analyze-panel { filter: none; }
 }
