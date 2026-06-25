@@ -363,7 +363,7 @@
   <!-- =========================================================
        Что анализирует Октопус — отдельный блок (кольцо + вкладки)
        ========================================================= -->
-  <section class="analyze-block" id="analyze" aria-labelledby="analyze-title">
+  <section class="analyze-block is-light" id="analyze" aria-labelledby="analyze-title">
     <div class="analyze-block__bg" aria-hidden="true"></div>
     <div class="analyze-block__inner">
       <header class="analyze-block__head">
@@ -371,16 +371,6 @@
           <span class="analyze-block__eyebrow"><span class="section-dot"></span> Медиаканалы</span>
           <h2 class="analyze-block__title" id="analyze-title">Что анализирует <span class="analyze-block__brand">Октопус</span></h2>
         </div>
-        <button type="button" class="analyze-theme-toggle" id="analyzeThemeToggle" aria-pressed="false">
-          <svg class="analyze-theme-toggle__icon analyze-theme-toggle__icon--sun" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.6"/>
-            <path d="M12 2.5v2.2M12 19.3v2.2M4.5 12H2.3M21.7 12h-2.2M5.8 5.8 4.2 4.2M19.8 19.8l-1.6-1.6M18.2 5.8l1.6-1.6M4.2 19.8l1.6-1.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-          </svg>
-          <svg class="analyze-theme-toggle__icon analyze-theme-toggle__icon--moon" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M20 14.5A7.5 7.5 0 0 1 9.5 4 6.5 6.5 0 1 0 20 14.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-          </svg>
-          <span class="analyze-theme-toggle__label">Светлая тема</span>
-        </button>
       </header>
 
       <div class="analyze-block__grid">
@@ -403,39 +393,9 @@
               <g class="analyze-block__segments" id="analyzeSegments"></g>
             </svg>
           <div class="analyze-block__center">
-            <svg class="analyze-block__mascot" viewBox="-24 -20 509 443" overflow="visible" fill="none" aria-hidden="true">
-              <defs>
-                <linearGradient id="octoLogoGrad" x1="72" y1="18" x2="392" y2="392" gradientUnits="userSpaceOnUse">
-                  <stop offset="0%" stop-color="#5ecfff"/>
-                  <stop offset="32%" stop-color="#5a4af0"/>
-                  <stop offset="68%" stop-color="#d07aff"/>
-                  <stop offset="100%" stop-color="#ff6b3a"/>
-                </linearGradient>
-                <linearGradient id="octoTentL" x1="104" y1="188" x2="104" y2="318" gradientUnits="userSpaceOnUse">
-                  <stop offset="0%" stop-color="#5a4af0"/>
-                  <stop offset="55%" stop-color="#c06ef5"/>
-                  <stop offset="100%" stop-color="#ff6b3a"/>
-                </linearGradient>
-                <linearGradient id="octoTentR" x1="356" y1="188" x2="356" y2="318" gradientUnits="userSpaceOnUse">
-                  <stop offset="0%" stop-color="#5a4af0"/>
-                  <stop offset="55%" stop-color="#c06ef5"/>
-                  <stop offset="100%" stop-color="#ff6b3a"/>
-                </linearGradient>
-                <linearGradient id="octoTentC" x1="232" y1="214" x2="232" y2="392" gradientUnits="userSpaceOnUse">
-                  <stop offset="0%" stop-color="#5ecfff"/>
-                  <stop offset="45%" stop-color="#7d68f5"/>
-                  <stop offset="100%" stop-color="#ff7f50"/>
-                </linearGradient>
-              </defs>
-              <g class="m-tent m-t1"><path d="M11.0029 244.719C26.1846 281.216 107.681 340.241 128.156 260.39C142.985 202.555 182.673 187.367 197.854 195.187" stroke="url(#octoTentL)" stroke-width="22" stroke-linecap="round"/></g>
-              <g class="m-tent m-t2"><path d="M449.956 244.719C434.774 281.216 353.277 340.241 332.803 260.39C317.973 202.555 278.286 187.367 263.104 195.187" stroke="url(#octoTentR)" stroke-width="22" stroke-linecap="round"/></g>
-              <g class="m-tent m-t3"><path d="M230.737 217.008C246.21 226.653 267.871 258.895 230.737 310.702C193.603 362.51 222.252 386.485 241.219 391.996" stroke="url(#octoTentC)" stroke-width="22" stroke-linecap="round"/></g>
-              <g class="m-head">
-                <path d="M15.4519 40.5373C39.1791 22.7419 86.93 7.91243 88.1164 90.9575C89.3027 174.003 133.593 174.497 159.298 160.656C173.068 153.241 193.091 140.754 184.508 110.236C171.161 62.7815 191.923 30.1567 233.445 31.6396C274.968 33.1226 291.28 61.2986 283.866 99.8552C273.599 153.241 319.456 164.427 352.081 153.241C393.604 139.005 381.246 83.0485 369.876 56.8497C368.394 30.1567 393.604 -2.46818 441.058 16.8101" stroke="url(#octoLogoGrad)" stroke-width="22" stroke-linecap="round"/>
-                <circle cx="214.167" cy="79.0939" r="10.3806" fill="#3fb8f5"/>
-                <circle cx="249.757" cy="79.0939" r="10.3806" fill="#3fb8f5"/>
-              </g>
-            </svg>
+            <div class="analyze-block__mascot">
+              <img class="analyze-block__mascot-inner" id="analyzeMascot" src="assets/octopus-logo.gif" alt="" aria-hidden="true" />
+            </div>
           </div>
         </div>
 
@@ -1202,7 +1162,6 @@
         header.classList.toggle("is-on-dark", (analyzeDark || resultsDark || advOn) && !footerOn);
       }
 
-      document.addEventListener("analyze-theme-change", sync);
       document.addEventListener("results-depth-change", sync);
 
       const io = new IntersectionObserver(
@@ -1483,6 +1442,9 @@
       const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
       let ticking = false;
       let current = -1;
+      // Непрерывный угол поворота головы: накапливаем его кратчайшими дугами,
+      // чтобы CSS-переход всегда крутил осьминога по короткой стороне.
+      let faceAngle = SCENES[0].travel - RAW_HEAD;
 
       function update() {
         const mid = innerHeight * 0.5;
@@ -1514,7 +1476,15 @@
         }
         const scene = SCENES[active] || SCENES[0];
         octo.classList.toggle("is-dart", scene.dart);
-        if (face) face.style.setProperty("--face", scene.travel - RAW_HEAD + "deg");
+        if (face) {
+          const target = scene.travel - RAW_HEAD;
+          // приводим разницу к диапазону (-180, 180] — кратчайшая дуга
+          let diff = (target - faceAngle) % 360;
+          if (diff > 180) diff -= 360;
+          if (diff <= -180) diff += 360;
+          faceAngle += diff;
+          face.style.setProperty("--face", faceAngle + "deg");
+        }
       }
 
       function onScroll() {
@@ -1894,45 +1864,8 @@
       const segRoot = document.getElementById("analyzeSegments");
       const tabs = Array.from(block.querySelectorAll(".analyze-tab"));
       const panels = Array.from(block.querySelectorAll(".analyze-panel"));
-      const ACCENT_DARK = ["#6a9fb8", "#7b73b8", "#9a85b0", "#b8836e", "#b89560"];
-      const ACCENT_LIGHT = ["#28a8e8", "#4b3be4", "#a855f7", "#ff5b2e", "#f59e0b"];
-      const themeBtn = document.getElementById("analyzeThemeToggle");
-
-      function accentColors() {
-        return block.classList.contains("is-light") ? ACCENT_LIGHT : ACCENT_DARK;
-      }
-
-      function applyThemeColors() {
-        const colors = accentColors();
-        segNodes.forEach((g, i) => g.style.setProperty("--seg-accent", colors[i]));
-        tabs.forEach((t, i) => t.style.setProperty("--tab-accent", colors[i]));
-        if (currentIdx >= 0) block.style.setProperty("--analyze-accent", colors[currentIdx]);
-      }
-
-      function syncThemeUi() {
-        const light = block.classList.contains("is-light");
-        if (themeBtn) {
-          themeBtn.setAttribute("aria-pressed", light ? "true" : "false");
-          const label = themeBtn.querySelector(".analyze-theme-toggle__label");
-          if (label) label.textContent = light ? "Тёмная тема" : "Светлая тема";
-        }
-        document.dispatchEvent(new CustomEvent("analyze-theme-change"));
-      }
-
-      function setTheme(light) {
-        block.classList.toggle("is-light", light);
-        applyThemeColors();
-        syncThemeUi();
-        try { localStorage.setItem("analyze-block-theme", light ? "light" : "dark"); } catch (_) {}
-      }
-
-      try {
-        if (localStorage.getItem("analyze-block-theme") === "light") block.classList.add("is-light");
-      } catch (_) {}
-
-      if (themeBtn) {
-        themeBtn.addEventListener("click", () => setTheme(!block.classList.contains("is-light")));
-      }
+      // Блок всегда в светлой теме (единый фон лендинга).
+      const ACCENT = ["#28a8e8", "#4b3be4", "#a855f7", "#ff5b2e", "#f59e0b"];
 
       const AUTO_MS = 3800;
       const PANEL_MS = 520;
@@ -1991,7 +1924,7 @@
           const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
           g.setAttribute("class", "analyze-seg-wrap");
           g.dataset.analyze = String(i);
-          g.style.setProperty("--seg-accent", accentColors()[i]);
+          g.style.setProperty("--seg-accent", ACCENT[i]);
           const glow = document.createElementNS("http://www.w3.org/2000/svg", "path");
           glow.setAttribute("d", donutSlice(i));
           glow.setAttribute("class", "analyze-seg-glow");
@@ -2047,14 +1980,14 @@
         const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
         const prevIdx = currentIdx;
         currentIdx = idx;
-        const accent = accentColors()[idx];
+        const accent = ACCENT[idx];
         block.style.setProperty("--analyze-accent", accent);
 
         tabs.forEach((t, i) => {
           const on = i === idx;
           t.classList.toggle("is-active", on);
           t.setAttribute("aria-selected", on ? "true" : "false");
-          t.style.setProperty("--tab-accent", accentColors()[i]);
+          t.style.setProperty("--tab-accent", ACCENT[i]);
         });
         segNodes.forEach((g, i) => g.classList.toggle("is-active", i === idx));
         orbitDots.forEach((d, i) => d.classList.toggle("is-active", i === idx));
@@ -2192,7 +2125,6 @@
       }
 
       setActive(0, true);
-      syncThemeUi();
     })();
   </script>
 </body>

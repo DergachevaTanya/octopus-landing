@@ -58,6 +58,21 @@
   --muted: rgba(244, 246, 255, 0.62);
   --line: rgba(244, 246, 255, 0.14);
 
+  /* Единый фон всех светлых экранов. Базовый плоский цвет + лёгкие цветные
+     пятна (как на экране «Интерфейс/демо»), одинаковые на всех светлых секциях,
+     чтобы между ними не было резкого перехода. */
+  --bg-light: #f1f3fb;
+  --bg-light-glow:
+    radial-gradient(48% 42% at 88% 12%, rgba(63, 184, 245, 0.16), transparent 62%),
+    radial-gradient(44% 48% at 8% 88%, rgba(75, 59, 228, 0.13), transparent 58%),
+    var(--bg-light);
+
+  /* Внутренние отступы полноэкранных секций: сверху — с запасом под фиксированную
+     шапку (68px), снизу — воздух, чтобы контент не упирался в край экрана. */
+  --header-h: 68px;
+  --screen-pad-top: clamp(28px, 4.5vh, 52px);
+  --screen-pad-bottom: clamp(44px, 6.5vh, 80px);
+
   --pad-x: clamp(20px, 4.4vw, 64px);
   --logo-grad: linear-gradient(135deg, #5ecfff 0%, #4b3be4 38%, #b06cff 72%, #ff5b2e 100%);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -104,7 +119,12 @@ html {
 }
 body {
   font-family: var(--font-family);
-  background: var(--ink);
+  /* Единый светлый фон всего сайта. Светлые секции прозрачные — сквозь них
+     виден этот фон (без швов между соседними светлыми экранами). Тёмные секции
+     перекрывают его собственной непрозрачной заливкой. fixed — чтобы пятна были
+     одинаковы на каждом светлом экране и не «перезапускались» на стыках. */
+  background: var(--bg-light-glow);
+  background-attachment: fixed;
   color: var(--white);
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
@@ -387,6 +407,7 @@ body.no-scroll { overflow: hidden; }
   display: flex;
   flex-direction: column;
   scroll-snap-align: start;
+  background: var(--ink); /* непрозрачная тёмная подложка под анимированный canvas */
 }
 
 /* Animated background canvas */
@@ -510,6 +531,7 @@ body.no-scroll { overflow: hidden; }
 /* ---------- Hero content ---------- */
 .hero__content {
   flex: 1;
+  min-height: 0; /* позволяет колонке сжиматься, чтобы нижняя панель не выдавливалась */
   display: grid;
   grid-template-columns: 1.45fr 1fr;
   align-items: end;
@@ -521,10 +543,10 @@ body.no-scroll { overflow: hidden; }
 }
 
 .hero__title {
-  max-width: 16ch;
+  max-width: 18ch;
   font-weight: 700;
-  font-size: clamp(40px, 5.6vw, 88px);
-  line-height: 1.02;
+  font-size: clamp(34px, 4.2vw, 62px);
+  line-height: 1.06;
   letter-spacing: -0.02em;
   text-shadow: 0 2px 40px rgba(7, 10, 24, 0.5);
 }
@@ -718,10 +740,7 @@ body.no-scroll { overflow: hidden; }
   scroll-snap-align: start;
 }
 .block--light {
-  background:
-    radial-gradient(120% 120% at 80% 0%, rgba(63, 184, 245, 0.08), transparent 55%),
-    radial-gradient(110% 100% at 0% 100%, rgba(75, 59, 228, 0.08), transparent 55%),
-    linear-gradient(180deg, #f5f6fc 0%, #eceefb 100%);
+  background: transparent; /* сквозь видно единый светлый фон body */
   color: var(--ink);
 }
 .block__inner {
@@ -788,13 +807,20 @@ body.no-scroll { overflow: hidden; }
 /* =========================================================
    БЛОК 2 — О платформе  (horizontal scroll storytelling)
    ========================================================= */
-.accent-c { color: var(--coral); font-weight: 500; }
+/* Единый стиль выделения ключевых фраз в заголовках светлых экранов —
+   как на экране «Интерфейс платформы» (.demo__accent). */
+.accent-c {
+  background: linear-gradient(92deg, var(--sky) 0%, var(--indigo) 55%, var(--coral) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 
 .about {
   position: relative;
   overflow-x: clip;
   max-width: 100%;
-  background: linear-gradient(180deg, #f6f7fc 0%, #eef0f9 100%);
+  background: transparent; /* сквозь видно единый светлый фон body */
   color: var(--ink);
 }
 .about__sticky {
@@ -829,9 +855,9 @@ body.no-scroll { overflow: hidden; }
 .about__title {
   font-weight: 600;
   font-size: clamp(28px, 3.4vw, 48px);
-  line-height: 1.08;
+  line-height: 1.12;
   letter-spacing: -0.02em;
-  max-width: 17ch;
+  max-width: 22ch;
 }
 .about__hint {
   margin-top: clamp(24px, 4vh, 44px);
@@ -991,9 +1017,9 @@ body.no-scroll { overflow: hidden; }
   flex-direction: column;
   justify-content: flex-start;
   box-sizing: border-box;
-  background: #eef1f8;
+  background: transparent; /* сквозь видно единый светлый фон body */
   color: var(--ink);
-  padding: calc(68px + clamp(20px, 3.5vh, 36px)) var(--pad-x) clamp(40px, 7vh, 72px);
+  padding: calc(var(--header-h) + var(--screen-pad-top)) var(--pad-x) var(--screen-pad-bottom);
   overflow: visible;
   max-width: 100%;
 }
@@ -1001,10 +1027,8 @@ body.no-scroll { overflow: hidden; }
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background:
-    radial-gradient(48% 42% at 88% 12%, rgba(63, 184, 245, 0.16), transparent 62%),
-    radial-gradient(44% 48% at 8% 88%, rgba(75, 59, 228, 0.13), transparent 58%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, transparent 38%);
+  /* пятна вынесены в общий --bg-light-glow на самой секции */
+  background: none;
 }
 
 .demo__inner {
@@ -1459,7 +1483,7 @@ body.no-scroll { overflow: hidden; }
 
   position: relative;
   width: 100%;
-  padding: clamp(48px, 8vh, 96px) 0 clamp(56px, 9vh, 120px);
+  padding: calc(var(--header-h) + clamp(56px, 9vh, 104px)) 0 clamp(80px, 12vh, 150px);
   /* только базовая заливка; свечение вынесено в ::before и плавно гаснет у краёв */
   background: linear-gradient(180deg, #0a0a22 0%, #04060f 62%, #01040c 100%), #01030c;
 }
@@ -1888,11 +1912,11 @@ body.no-scroll { overflow: hidden; }
   min-height: 100svh;
   overflow: hidden;
   scroll-snap-align: start;
-  background: #e7e4f1;
+  background: transparent; /* сквозь видно единый светлый фон body */
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: clamp(26px, 4vh, 56px) 0 clamp(28px, 5vh, 64px);
+  padding: calc(var(--header-h) + var(--screen-pad-top)) 0 var(--screen-pad-bottom);
 }
 .handy__head {
   position: relative;
@@ -2342,9 +2366,9 @@ body.no-scroll { overflow: hidden; }
   justify-content: center;
   gap: clamp(8px, 1.5vh, 16px);
   box-sizing: border-box;
-  background: #eef1f8;
+  background: transparent; /* сквозь видно единый светлый фон body */
   color: var(--ink);
-  padding: calc(68px + clamp(16px, 3vh, 28px)) 0 clamp(28px, 4vh, 40px);
+  padding: calc(var(--header-h) + var(--screen-pad-top)) 0 var(--screen-pad-bottom);
   overflow-x: clip;
   overflow-y: visible;
   max-width: 100%;
@@ -2753,6 +2777,7 @@ body.no-scroll { overflow: hidden; }
   color: var(--white);
   padding: calc(68px + clamp(32px, 5vh, 48px)) var(--pad-x) 0;
   overflow: hidden;
+  background: var(--ink); /* непрозрачная тёмная подложка под canvas футера */
 }
 .site-footer__canvas {
   position: absolute;
@@ -3077,7 +3102,7 @@ body.no-scroll { overflow: hidden; }
   flex-direction: column;
   justify-content: center;
   box-sizing: border-box;
-  padding: calc(68px + clamp(12px, 2vh, 24px)) var(--pad-x) clamp(24px, 3vh, 40px);
+  padding: calc(var(--header-h) + var(--screen-pad-top)) var(--pad-x) var(--screen-pad-bottom);
   background: var(--ink);
   color: var(--white);
   overflow: visible;
@@ -3107,7 +3132,7 @@ body.no-scroll { overflow: hidden; }
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: calc(100svh - 68px - clamp(24px, 4vh, 48px));
+  min-height: calc(100svh - var(--header-h) - var(--screen-pad-top) - var(--screen-pad-bottom));
 }
 .analyze-block__head {
   margin-bottom: clamp(16px, 2.5vh, 28px);
@@ -3119,45 +3144,6 @@ body.no-scroll { overflow: hidden; }
 }
 .analyze-block__head-main {
   min-width: 0;
-}
-.analyze-theme-toggle {
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  border-radius: 999px;
-  border: 1px solid rgba(244, 246, 255, 0.14);
-  background: rgba(244, 246, 255, 0.08);
-  color: rgba(244, 246, 255, 0.78);
-  font-family: var(--font-family);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  cursor: pointer;
-  transition:
-    background 0.45s var(--ease),
-    border-color 0.45s var(--ease),
-    color 0.45s var(--ease),
-    box-shadow 0.45s var(--ease);
-}
-.analyze-theme-toggle:hover {
-  background: rgba(244, 246, 255, 0.14);
-  border-color: rgba(244, 246, 255, 0.22);
-  color: var(--white);
-}
-.analyze-theme-toggle__icon {
-  display: block;
-  flex-shrink: 0;
-}
-.analyze-theme-toggle__icon--moon {
-  display: none;
-}
-.analyze-block.is-light .analyze-theme-toggle__icon--sun {
-  display: none;
-}
-.analyze-block.is-light .analyze-theme-toggle__icon--moon {
-  display: block;
 }
 .analyze-block__eyebrow {
   display: inline-flex;
@@ -3176,13 +3162,12 @@ body.no-scroll { overflow: hidden; }
   font-weight: 600;
   line-height: 1.12;
   letter-spacing: -0.02em;
-  color: rgba(244, 246, 255, 0.82);
+  max-width: 22ch;
+  color: var(--ink);
   white-space: nowrap;
 }
 .analyze-block__brand {
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  background: var(--logo-grad);
+  background: linear-gradient(92deg, var(--sky) 0%, var(--indigo) 55%, var(--coral) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -3213,7 +3198,7 @@ body.no-scroll { overflow: hidden; }
 }
 .analyze-block__viz {
   --analyze-ring: min(100%, 600px);
-  --analyze-mascot-fit: 0.54;
+  --analyze-mascot-fit: 0.45;
   position: relative;
   z-index: 1;
   min-height: 0;
@@ -3360,7 +3345,7 @@ body.no-scroll { overflow: hidden; }
   position: relative;
   z-index: 1;
   width: calc(var(--analyze-ring) * var(--analyze-mascot-fit));
-  max-width: 300px;
+  max-width: 250px;
   height: auto;
   overflow: visible;
   opacity: 0;
@@ -3371,14 +3356,12 @@ body.no-scroll { overflow: hidden; }
   opacity: 1;
   transform: translateY(0);
 }
-.analyze-block__mascot .m-tent { transform-box: fill-box; }
-.analyze-block__mascot .m-t1 { transform-origin: 198px 195px; animation: analyzeSwayL 5.4s ease-in-out infinite; }
-.analyze-block__mascot .m-t2 { transform-origin: 263px 195px; animation: analyzeSwayR 5.9s ease-in-out infinite -0.8s; }
-.analyze-block__mascot .m-t3 { transform-origin: 231px 217px; animation: analyzeSwayC 6.2s ease-in-out infinite -1.4s; }
-.analyze-block.is-idle .analyze-block__mascot .m-tent { animation-play-state: paused; }
-@keyframes analyzeSwayL { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-3deg); } }
-@keyframes analyzeSwayR { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(3deg); } }
-@keyframes analyzeSwayC { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(2deg); } }
+/* Гиф-логотип: статичный, всегда в одной ориентации. */
+.analyze-block__mascot-inner {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 .analyze-block__detail {
   display: flex;
   flex-direction: column;
@@ -3557,33 +3540,16 @@ body.no-scroll { overflow: hidden; }
 
 /* Светлая тема блока «Что анализирует Октопус» */
 .analyze-block.is-light {
-  background:
-    radial-gradient(120% 120% at 80% 0%, rgba(63, 184, 245, 0.12), transparent 55%),
-    radial-gradient(110% 100% at 0% 100%, rgba(75, 59, 228, 0.1), transparent 55%),
-    linear-gradient(180deg, #f6f7fd 0%, #eceff8 100%);
+  background: transparent; /* сквозь видно единый светлый фон body */
   color: var(--ink);
 }
 .analyze-block.is-light .analyze-block__bg {
-  background:
-    radial-gradient(52% 48% at 14% 22%, rgba(75, 59, 228, 0.1), transparent 62%),
-    radial-gradient(44% 40% at 86% 78%, rgba(255, 91, 46, 0.08), transparent 58%),
-    radial-gradient(38% 34% at 72% 18%, rgba(63, 184, 245, 0.12), transparent 55%);
+  background: none;
 }
 .analyze-block.is-light .analyze-block__eyebrow {
   color: rgba(11, 16, 36, 0.48);
 }
 .analyze-block.is-light .analyze-block__title {
-  color: rgba(11, 16, 36, 0.72);
-}
-.analyze-block.is-light .analyze-theme-toggle {
-  border-color: rgba(11, 16, 36, 0.1);
-  background: rgba(255, 255, 255, 0.72);
-  color: rgba(11, 16, 36, 0.68);
-  box-shadow: 0 8px 24px rgba(11, 16, 36, 0.06);
-}
-.analyze-block.is-light .analyze-theme-toggle:hover {
-  background: #fff;
-  border-color: rgba(11, 16, 36, 0.16);
   color: var(--ink);
 }
 .analyze-block.is-light .analyze-block__viz,
@@ -3700,6 +3666,6 @@ body.no-scroll { overflow: hidden; }
   .analyze-seg-glow,
   .analyze-tab,
   .analyze-block__orbit-spin { transition: none; animation: none !important; }
-  .analyze-block__mascot .m-tent { animation: none; }
+  .analyze-block__mascot-inner { transition: none; }
   .analyze-panel { filter: none; }
 }
