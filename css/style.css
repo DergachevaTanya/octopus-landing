@@ -1180,6 +1180,10 @@ body.no-scroll { overflow: hidden; }
   display: flex;
   flex-direction: column;
   gap: 10px;
+  /* над каруселью (z-index:1), чтобы выезжающие карточки уходили ЗА вкладки,
+     а не наезжали на них */
+  position: relative;
+  z-index: 2;
 }
 .demo-tab {
   display: flex;
@@ -1336,6 +1340,7 @@ body.no-scroll { overflow: hidden; }
   width: 100%;
   height: 100%;
   min-height: clamp(380px, 58vh, 620px);
+  touch-action: pan-y;
 }
 /* мок-макет телефона: светлая рамка + «чёлка» + экран с видео */
 .demo__card {
@@ -1400,7 +1405,7 @@ body.no-scroll { overflow: hidden; }
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 6;
+  z-index: 110; /* выше карточек (внутри стэка карусели), чтобы не перекрывались */
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -1447,6 +1452,20 @@ body.no-scroll { overflow: hidden; }
 .demo__dot.is-on {
   background: var(--indigo);
   transform: scale(1.3);
+}
+
+@media (min-width: 1141px) {
+  .demo__stage {
+    /* больше воздуха перед пагинацией без обрезки свечений */
+    padding-bottom: clamp(58px, 9%, 84px);
+  }
+  .demo__card {
+    /* делаем карусель чуть уже, чтобы не наезжала на левый блок */
+    width: clamp(170px, 19vw, 260px);
+  }
+  .demo__dots {
+    bottom: clamp(4px, 1.2%, 12px);
+  }
 }
 
 @media (max-height: 900px) and (min-width: 1141px) {
@@ -1972,12 +1991,39 @@ body.no-scroll { overflow: hidden; }
 @media (max-width: 900px) {
   .results__grid { grid-template-columns: 1fr; }
   .results__rail { display: none; }
+  .results {
+    padding: calc(var(--header-h) + 40px) 0 56px;
+  }
+  .results__head {
+    margin-bottom: clamp(2px, 1vh, 12px);
+  }
+  .results__title {
+    font-size: clamp(22px, 6.2vw, 30px);
+    line-height: 1.06;
+    max-width: 16ch;
+  }
+  .results__track {
+    --line: clamp(34px, 8vw, 46px);
+  }
   .results__step {
     min-height: 0;
-    padding: 26px 0 26px calc(var(--line) + 22px);
+    padding: 18px 0 18px calc(var(--line) + 16px);
     opacity: 1;
   }
-  .results__step h3 { font-size: clamp(24px, 6.5vw, 34px); }
+  .results__num { font-size: 13px; }
+  .results__dot {
+    width: 9px;
+    height: 9px;
+  }
+  .results__step h3 {
+    font-size: clamp(20px, 5.8vw, 28px);
+    line-height: 1.06;
+    margin-bottom: 10px;
+  }
+  .results__step p {
+    font-size: clamp(13px, 3.7vw, 15px);
+    line-height: 1.45;
+  }
 }
 
 /* =========================================================
@@ -2039,6 +2085,7 @@ body.no-scroll { overflow: hidden; }
   width: 100%;
   height: 100%;
   min-height: clamp(520px, 84vh, 900px);
+  touch-action: pan-y;
 }
 .handy__card {
   position: absolute;
@@ -2125,6 +2172,15 @@ body.no-scroll { overflow: hidden; }
   .handy__nav { width: 40px; height: 40px; font-size: 20px; }
   .handy__nav--prev { left: 6px; }
   .handy__nav--next { right: 6px; }
+  .handy__title {
+    font-size: clamp(24px, 6vw, 32px);
+    line-height: 1.08;
+  }
+  .handy__lead {
+    font-size: 14px;
+    line-height: 1.45;
+    max-width: 40ch;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .handy__card { transition: none; }
@@ -2142,7 +2198,7 @@ body.no-scroll { overflow: hidden; }
     linear-gradient(165deg, rgba(63, 184, 245, 0.035) 0%, transparent 38%, rgba(75, 59, 228, 0.025) 100%),
     radial-gradient(130% 85% at 50% -5%, #0e1634 0%, #070a18 48%, #050610 100%);
   color: var(--white);
-  padding: calc(var(--header-h) + clamp(28px, 4vh, 56px)) var(--pad-x) clamp(80px, 12vh, 140px);
+  padding: calc(var(--header-h) + clamp(28px, 4vh, 56px)) var(--pad-x) clamp(112px, 16vh, 190px);
   overflow: hidden;
 }
 /* faint bioluminescent haze */
@@ -2168,7 +2224,7 @@ body.no-scroll { overflow: hidden; }
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(244, 246, 255, 0.6);
+  color: rgba(244, 246, 255, 0.74);
   margin-bottom: clamp(16px, 2.5vh, 26px);
 }
 .adv__title {
@@ -2190,7 +2246,7 @@ body.no-scroll { overflow: hidden; }
 @media (min-width: 981px) {
   .adv__grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    grid-template-rows: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto auto;
   }
   .adv-card--pos-tall { grid-column: 1; grid-row: 1 / span 2; }
   .adv-card--pos-wide-t { grid-column: 2 / span 2; grid-row: 1; }
@@ -2276,17 +2332,17 @@ body.no-scroll { overflow: hidden; }
   margin-top: 0;
 }
 .adv-card h3 {
-  font-size: clamp(18px, 1.45vw, 22px);
-  font-weight: 500;
-  line-height: 1.28;
+  font-size: clamp(19px, 1.6vw, 24px);
+  font-weight: 600;
+  line-height: 1.26;
   letter-spacing: -0.01em;
 }
 .adv-card p {
   margin-top: 10px;
-  font-size: clamp(14px, 1vw, 16px);
-  line-height: 1.6;
+  font-size: clamp(15px, 1.1vw, 17px);
+  line-height: 1.58;
   font-weight: 400;
-  color: rgba(244, 246, 255, 0.62);
+  color: rgba(244, 246, 255, 0.82);
 }
 
 /* октопус accent tile */
@@ -2392,13 +2448,14 @@ body.no-scroll { overflow: hidden; }
 }
 @media (min-width: 881px) {
   .adv {
-    height: 100svh;
-    max-height: 100svh;
+    min-height: 100svh;
+    height: auto;
+    max-height: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding-top: calc(68px + 12px);
-    padding-bottom: clamp(20px, 3vh, 36px);
+    padding-bottom: 60px;
     box-sizing: border-box;
   }
   .adv__head {
@@ -2408,13 +2465,9 @@ body.no-scroll { overflow: hidden; }
   .adv__title {
     font-size: clamp(24px, 3.2vw, 40px);
   }
-  .adv__grid {
-    flex: 1 1 auto;
-    min-height: 0;
-    grid-auto-rows: 1fr;
-  }
+  .adv__grid { flex: 0 0 auto; }
   .adv-card {
-    min-height: 0;
+    min-height: clamp(148px, 16vh, 200px);
   }
 }
 @media (max-width: 600px) {
@@ -3010,13 +3063,104 @@ body.no-scroll { overflow: hidden; }
   .about__sticky {
     padding: calc(68px + 24px) 0 clamp(48px, 8vh, 72px);
   }
-  .about-card {
-    padding: clamp(20px, 5vw, 28px);
+  .about__title {
+    font-size: clamp(24px, 6.6vw, 32px);
+    line-height: 1.1;
   }
+  .about-card {
+    padding: clamp(16px, 4.6vw, 22px);
+    border-radius: 18px;
+  }
+  .about-card__icon {
+    width: 38px;
+    height: 38px;
+    margin-bottom: clamp(10px, 2.6vh, 18px);
+  }
+  .about-card h3 {
+    margin-top: 8px;
+    font-size: clamp(17px, 4.5vw, 21px);
+    line-height: 1.14;
+  }
+  .about-card p {
+    margin-top: 9px;
+    font-size: 13px;
+    line-height: 1.48;
+  }
+  .about-card__num { font-size: 11.5px; display: none; }
   .about-card h3 { min-height: 0; }
+
+  .demo__title {
+    font-size: clamp(22px, 6.1vw, 30px);
+    line-height: 1.1;
+  }
+  .demo__lead {
+    font-size: 13.5px;
+    line-height: 1.45;
+  }
+  .demo__body {
+    gap: 12px;
+  }
+  .demo__nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .demo-tab {
+    align-items: center;
+    gap: 10px;
+    min-height: 0;
+    padding: 10px 11px;
+  }
+  .demo-tab__label {
+    font-size: 13px;
+    line-height: 1.2;
+  }
+  .demo-tab__icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 9px;
+  }
+  .demo-tab__icon svg {
+    width: 16px;
+    height: 16px;
+  }
+  .demo__points li {
+    font-size: 12.5px;
+    line-height: 1.42;
+  }
 
   .adv {
     padding: calc(68px + 20px) var(--pad-x) clamp(40px, 7vh, 56px);
+  }
+  .adv__head {
+    margin-bottom: 14px;
+  }
+  .adv__title {
+    font-size: clamp(23px, 6.1vw, 31px);
+    line-height: 1.08;
+  }
+  .adv-card {
+    gap: 10px;
+    padding: 14px;
+    min-height: 0;
+  }
+  .adv-card__icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+  .adv-card__icon svg {
+    width: 18px;
+    height: 18px;
+  }
+  .adv-card h3 {
+    font-size: 16px;
+    line-height: 1.2;
+  }
+  .adv-card p {
+    margin-top: 7px;
+    font-size: 13px;
+    line-height: 1.42;
   }
   .adv__title { max-width: none; }
   .adv-octo__channels li {
@@ -3070,7 +3214,7 @@ body.no-scroll { overflow: hidden; }
   }
 
   .about__title {
-    font-size: clamp(26px, 7vw, 36px);
+    font-size: clamp(22px, 6.2vw, 30px);
   }
   .about-card__list li {
     font-size: 14px;
@@ -3694,14 +3838,67 @@ body.no-scroll { overflow: hidden; }
   .analyze-block__grid {
     grid-template-columns: 1fr;
     min-height: auto;
+    gap: 6px;
+  }
+  .analyze-block {
+    padding: calc(64px + 10px) var(--pad-x) 34px;
+    min-height: auto;
   }
   .analyze-block__inner { min-height: auto; }
-  .analyze-block__viz {
-    min-height: clamp(360px, 52vw, 440px);
-    height: auto;
-    --analyze-ring: min(100%, 520px);
+  .analyze-block__head {
+    margin-bottom: clamp(6px, 1.2vh, 12px);
   }
-  .analyze-block__detail { min-height: clamp(300px, 40vh, 380px); height: auto; }
+  .analyze-block__viz {
+    min-height: clamp(250px, 58vw, 320px);
+    height: auto;
+    --analyze-ring: min(100%, 420px);
+    padding: 0;
+  }
+  .analyze-block__detail {
+    min-height: 0;
+    height: auto;
+    padding: 8px 10px 8px;
+  }
+  .analyze-block__tabs {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .analyze-tab {
+    flex: 1 1 0;
+    width: 0;
+    min-width: 0;
+    min-height: 36px;
+    justify-content: center;
+    padding: 8px 6px;
+    border-radius: 12px;
+    font-size: 11px;
+    gap: 2px;
+  }
+  .analyze-tab__num { display: none; }
+  .analyze-tab__sep { display: none; }
+  .analyze-tab__name {
+    text-align: center;
+    letter-spacing: 0.01em;
+  }
+  .analyze-tab[data-analyze="3"] .analyze-tab__name {
+    font-size: 0;
+  }
+  .analyze-tab[data-analyze="3"] .analyze-tab__name::before {
+    content: "MP";
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+  .analyze-panel__title {
+    margin-bottom: 10px;
+    font-size: clamp(19px, 5vw, 24px);
+  }
+  .analyze-panel__text {
+    font-size: 14px;
+    line-height: 1.45;
+  }
   .analyze-block__head {
     text-align: center;
     margin-inline: auto;
@@ -3715,8 +3912,11 @@ body.no-scroll { overflow: hidden; }
   }
 }
 @media (max-width: 640px) {
-  .analyze-block { padding: calc(64px + 16px) var(--pad-x) 32px; min-height: auto; }
-  .analyze-tab { min-height: 42px; padding: 10px 14px; font-size: 12px; }
+  .analyze-block { padding: calc(64px + 8px) var(--pad-x) 26px; min-height: auto; }
+  .analyze-tab { min-height: 34px; padding: 7px 5px; font-size: 10.5px; }
+  .analyze-tab[data-analyze="3"] .analyze-tab__name::before {
+    font-size: 10.5px;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .analyze-block__ring,

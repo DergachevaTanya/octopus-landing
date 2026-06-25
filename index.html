@@ -58,7 +58,7 @@
         <li><a href="#how">Как это работает</a></li>
         <li><a href="#benefits">Преимущества</a></li>
         <li><a href="#cases">Кейсы и аналитика</a></li>
-        <li class="is-dim"><a href="#contacts">Контакты</a></li>
+        <li><a href="#contacts">Контакты</a></li>
         <li class="menu__cta-item">
           <a href="#access" class="menu__cta">
             Получить доступ
@@ -1396,7 +1396,22 @@
       }
       document.querySelectorAll(".js-menu-open").forEach((b) => b.addEventListener("click", open));
       document.querySelectorAll(".js-menu-close").forEach((b) => b.addEventListener("click", close));
-      menu.querySelectorAll(".menu__list a").forEach((a) => a.addEventListener("click", close));
+      menu.querySelectorAll(".menu__list a").forEach((a) =>
+        a.addEventListener("click", (e) => {
+          const href = a.getAttribute("href") || "";
+          const target = href.startsWith("#") && href.length > 1
+            ? document.getElementById(href.slice(1)) : null;
+          close(); // сначала снимаем no-scroll и закрываем меню
+          if (target) {
+            // не даём якорю прыгнуть, пока body ещё overflow:hidden — иначе дёргает
+            // и часть экрана обрезается. Плавно прокручиваем после восстановления скролла.
+            e.preventDefault();
+            requestAnimationFrame(() =>
+              requestAnimationFrame(() => target.scrollIntoView({ behavior: "smooth", block: "start" }))
+            );
+          }
+        })
+      );
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && menu.classList.contains("is-open")) close();
       });
@@ -1467,6 +1482,7 @@
       const n = tabs.length;
       let current = 0;
       let inView = false;
+      let suppressCardClick = false;
 
       function layout() {
         if (!cards.length) return;
@@ -1514,9 +1530,63 @@
 
       tabs.forEach((tab, i) => tab.addEventListener("click", () => go(i)));
       dots.forEach((d, i) => d.addEventListener("click", () => go(i)));
-      cards.forEach((card, i) => card.addEventListener("click", () => { if (i !== current) go(i); }));
+      cards.forEach((card, i) => card.addEventListener("click", () => {
+        if (suppressCardClick) return;
+        if (i !== current) go(i);
+      }));
       if (prevBtn) prevBtn.addEventListener("click", () => go(current - 1));
       if (nextBtn) nextBtn.addEventListener("click", () => go(current + 1));
+
+      const swipeSurface = section.querySelector(".demo__cards") || stage;
+      if (swipeSurface) {
+        let pointerId = null;
+        let startX = 0;
+        let startY = 0;
+        let deltaX = 0;
+        let deltaY = 0;
+        let dragging = false;
+
+        function resetSwipe() {
+          pointerId = null;
+          startX = 0;
+          startY = 0;
+          deltaX = 0;
+          deltaY = 0;
+          dragging = false;
+        }
+
+        swipeSurface.addEventListener("pointerdown", (e) => {
+          if (!e.isPrimary || e.button !== 0) return;
+          pointerId = e.pointerId;
+          startX = e.clientX;
+          startY = e.clientY;
+          deltaX = 0;
+          deltaY = 0;
+          dragging = false;
+        });
+
+        addEventListener("pointermove", (e) => {
+          if (e.pointerId !== pointerId) return;
+          deltaX = e.clientX - startX;
+          deltaY = e.clientY - startY;
+          if (!dragging && Math.abs(deltaX) > 10 && Math.abs(deltaX) > Math.abs(deltaY) * 1.12) {
+            dragging = true;
+          }
+        }, { passive: true });
+
+        function finishSwipe(e) {
+          if (e.pointerId !== pointerId) return;
+          if (dragging && Math.abs(deltaX) > 42) {
+            go(current + (deltaX < 0 ? 1 : -1));
+            suppressCardClick = true;
+            setTimeout(() => { suppressCardClick = false; }, 90);
+          }
+          resetSwipe();
+        }
+
+        addEventListener("pointerup", finishSwipe, { passive: true });
+        addEventListener("pointercancel", finishSwipe, { passive: true });
+      }
 
       // авто-переход к следующему экрану по окончании видео
       cards.forEach((card, i) => {
@@ -1656,6 +1726,7 @@
       const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
       let active = Math.min(1, cards.length - 1); // стартуем с примерно центральной карточки
       let inView = false;
+      let suppressCardClick = false;
 
       function layout() {
         const w = cards[0].getBoundingClientRect().width || 240;
@@ -1697,7 +1768,10 @@
 
       if (prev) prev.addEventListener("click", () => go(active - 1));
       if (next) next.addEventListener("click", () => go(active + 1));
-      cards.forEach((card, i) => card.addEventListener("click", () => { if (i !== active) go(i); }));
+      cards.forEach((card, i) => card.addEventListener("click", () => {
+        if (suppressCardClick) return;
+        if (i !== active) go(i);
+      }));
       dots.forEach((d, i) => d.addEventListener("click", () => go(i)));
       cards.forEach((card, i) => {
         const v = card.querySelector("video");
@@ -1714,6 +1788,58 @@
       }
 
       addEventListener("resize", layout, { passive: true });
+
+      const swipeSurface = root.querySelector(".handy__stage") || root;
+      if (swipeSurface) {
+        let pointerId = null;
+        let startX = 0;
+        let startY = 0;
+        let deltaX = 0;
+        let deltaY = 0;
+        let dragging = false;
+
+        function resetSwipe() {
+          pointerId = null;
+          startX = 0;
+          startY = 0;
+          deltaX = 0;
+          deltaY = 0;
+          dragging = false;
+        }
+
+        swipeSurface.addEventListener("pointerdown", (e) => {
+          if (!e.isPrimary || e.button !== 0) return;
+          pointerId = e.pointerId;
+          startX = e.clientX;
+          startY = e.clientY;
+          deltaX = 0;
+          deltaY = 0;
+          dragging = false;
+        });
+
+        addEventListener("pointermove", (e) => {
+          if (e.pointerId !== pointerId) return;
+          deltaX = e.clientX - startX;
+          deltaY = e.clientY - startY;
+          if (!dragging && Math.abs(deltaX) > 10 && Math.abs(deltaX) > Math.abs(deltaY) * 1.12) {
+            dragging = true;
+          }
+        }, { passive: true });
+
+        function finishSwipe(e) {
+          if (e.pointerId !== pointerId) return;
+          if (dragging && Math.abs(deltaX) > 42) {
+            go(active + (deltaX < 0 ? 1 : -1));
+            suppressCardClick = true;
+            setTimeout(() => { suppressCardClick = false; }, 90);
+          }
+          resetSwipe();
+        }
+
+        addEventListener("pointerup", finishSwipe, { passive: true });
+        addEventListener("pointercancel", finishSwipe, { passive: true });
+      }
+
       layout();
     })();
 
