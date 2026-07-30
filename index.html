@@ -3,37 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Октопус — AI-система мониторинга рекламной активности рынка</title>
+  <title>ОктоСпай — AI-система мониторинга рекламной активности рынка</title>
   <meta
     name="description"
-    content="Октопус — единая AI-система для мониторинга активности конкурентов и оперативной оценки медиастратегий. Уникальные данные о рекламном рынке уже через час после запуска кампаний."
+    content="ОктоСпай — единая AI-система для мониторинга активности конкурентов и оперативной оценки медиастратегий. Уникальные данные о рекламном рынке уже через час после запуска кампаний."
   />
 
   <!-- Open Graph / соцсети (Telegram, VK, Max, Facebook и др.) -->
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ru_RU" />
-  <meta property="og:site_name" content="Октопус" />
-  <meta property="og:title" content="Октопус — AI-система мониторинга рекламной активности рынка" />
+  <meta property="og:site_name" content="ОктоСпай" />
+  <meta property="og:title" content="ОктоСпай — AI-система мониторинга рекламной активности рынка" />
   <meta
     property="og:description"
-    content="Октопус — единая AI-система для мониторинга активности конкурентов и оперативной оценки медиастратегий. Уникальные данные о рекламном рынке уже через час после запуска кампаний."
+    content="ОктоСпай — единая AI-система для мониторинга активности конкурентов и оперативной оценки медиастратегий. Уникальные данные о рекламном рынке уже через час после запуска кампаний."
   />
   <meta property="og:image" content="/assets/og-image.png" />
   <meta property="og:image:secure_url" content="/assets/og-image.png" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1024" />
   <meta property="og:image:height" content="561" />
-  <meta property="og:image:alt" content="Октопус — AI-система мониторинга рекламной активности рынка" />
+  <meta property="og:image:alt" content="ОктоСпай — AI-система мониторинга рекламной активности рынка" />
 
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Октопус — AI-система мониторинга рекламной активности рынка" />
+  <meta name="twitter:title" content="ОктоСпай — AI-система мониторинга рекламной активности рынка" />
   <meta
     name="twitter:description"
-    content="Октопус — единая AI-система для мониторинга активности конкурентов и оперативной оценки медиастратегий. Уникальные данные о рекламном рынке уже через час после запуска кампаний."
+    content="ОктоСпай — единая AI-система для мониторинга активности конкурентов и оперативной оценки медиастратегий. Уникальные данные о рекламном рынке уже через час после запуска кампаний."
   />
   <meta name="twitter:image" content="/assets/og-image.png" />
-  <meta name="twitter:image:alt" content="Октопус — AI-система мониторинга рекламной активности рынка" />
+  <meta name="twitter:image:alt" content="ОктоСпай — AI-система мониторинга рекламной активности рынка" />
 
   <!-- VK и старые парсеры -->
   <link rel="image_src" href="/assets/og-image.png" />
@@ -48,7 +48,7 @@
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "Октопус",
+    "name": "ОктоСпай",
     "description": "AI-система мониторинга рекламной активности рынка",
     "inLanguage": "ru-RU",
     "image": "/assets/og-image.png"
@@ -73,9 +73,9 @@
 
   <!-- Sticky header — appears after the hero -->
   <header class="site-header" id="site-header">
-    <a href="#top" class="site-header__home" aria-label="Октопус — наверх">
-      <img class="site-header__logo site-header__logo--color" src="assets/octopus-logo-color.png" alt="Октопус" />
-      <img class="site-header__logo site-header__logo--white" src="assets/octopus-logo-white.png" alt="" aria-hidden="true" />
+    <a href="#top" class="site-header__home" aria-label="ОктоСпай — наверх">
+      <img class="site-header__logo site-header__logo--color" src="assets/octospy-logo-color.png" alt="ОктоСпай" />
+      <img class="site-header__logo site-header__logo--white" src="assets/octospy-logo-white.png" alt="" aria-hidden="true" />
     </a>
     <button class="site-header__menu js-menu-open" aria-label="Открыть меню" aria-controls="menu">
       <span class="site-header__burger"><span></span><span></span></span>
@@ -89,6 +89,7 @@
     <canvas class="menu__bg" id="menu-bg"></canvas>
     <div class="menu__fade"></div>
 
+    <!-- «Закрыть» — в правом верхнем углу, на месте кнопки открытия меню -->
     <div class="menu__top">
       <button class="menu__close js-menu-close" aria-label="Закрыть меню">
         <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
@@ -104,12 +105,19 @@
         <li><a href="#results">Результат</a></li>
         <li><a href="#how">Как это работает</a></li>
         <li><a href="#benefits">Преимущества</a></li>
-        <li><a href="#cases">Кейсы и аналитика</a></li>
         <li><a href="#contacts">Контакты</a></li>
         <li class="menu__cta-item">
-          <a href="#access" class="menu__cta">
+          <a href="#access" class="menu__cta js-access-open">
             Получить доступ
             <svg width="22" height="22" viewBox="0 0 13 13" fill="none">
+              <path d="M3 10L10 3M10 3H4M10 3V9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </li>
+        <li class="menu__login-item">
+          <a href="https://digital-spy.ru/digital" class="menu__login" target="_blank" rel="noopener">
+            Войти
+            <svg width="18" height="18" viewBox="0 0 13 13" fill="none">
               <path d="M3 10L10 3M10 3H4M10 3V9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </a>
@@ -119,123 +127,115 @@
   </nav>
 
   <!-- =========================================================
+       Модальное окно «Получить доступ» — заготовка формы.
+       Отправка пока никуда не уходит: подставьте эндпоинт в data-endpoint у формы
+       (ожидается POST с JSON), тогда сработает реальный запрос вместо заглушки.
+       ========================================================= -->
+  <div class="access" id="access-modal" hidden>
+    <div class="access__backdrop js-access-close" aria-hidden="true"></div>
+
+    <div class="access__dialog" role="dialog" aria-modal="true" aria-labelledby="access-title">
+      <div class="access__glow" aria-hidden="true"></div>
+
+      <button class="access__close js-access-close" type="button" aria-label="Закрыть">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+          <path d="M2 2L11 11M11 2L2 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <div class="access__body">
+        <span class="access__eyebrow"><span class="section-dot"></span> Доступ к платформе</span>
+        <h2 class="access__title" id="access-title">
+          Оставьте контакты — <span class="access__accent">покажем ОктоСпай на ваших данных</span>
+        </h2>
+        <p class="access__lead">
+          Свяжемся в течение рабочего дня, ответим на вопросы и откроем демодоступ
+          к&nbsp;платформе.
+        </p>
+
+        <form class="access__form" id="access-form" novalidate data-endpoint="">
+          <div class="access__row">
+            <label class="access__field">
+              <span class="access__label">Имя<i aria-hidden="true">*</i></span>
+              <input type="text" name="name" autocomplete="name" required placeholder="Как к вам обращаться" />
+              <span class="access__error" data-error-for="name"></span>
+            </label>
+            <label class="access__field">
+              <span class="access__label">Компания</span>
+              <input type="text" name="company" autocomplete="organization" placeholder="Название компании" />
+            </label>
+          </div>
+
+          <div class="access__row">
+            <label class="access__field">
+              <span class="access__label">Рабочая почта<i aria-hidden="true">*</i></span>
+              <input type="email" name="email" autocomplete="email" required placeholder="you@company.ru" />
+              <span class="access__error" data-error-for="email"></span>
+            </label>
+            <label class="access__field">
+              <span class="access__label">Телефон</span>
+              <input type="tel" name="phone" autocomplete="tel" placeholder="+7 900 000-00-00" />
+              <span class="access__error" data-error-for="phone"></span>
+            </label>
+          </div>
+
+          <label class="access__field">
+            <span class="access__label">Задача</span>
+            <textarea name="task" rows="3" placeholder="Какие бренды и медиаканалы интересуют"></textarea>
+          </label>
+
+          <label class="access__consent">
+            <input type="checkbox" name="consent" required />
+            <span class="access__checkbox" aria-hidden="true">
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
+                <path d="M2 6.4L4.6 9L10 3.2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="access__consent-text">
+              Согласен с
+              <a href="https://digital-spy.ru/digital/privacy-policy" target="_blank" rel="noopener">политикой обработки персональных данных</a>
+              и <a href="https://digital-spy.ru/digital/consent" target="_blank" rel="noopener">условиями использования</a>
+            </span>
+          </label>
+          <span class="access__error access__error--consent" data-error-for="consent"></span>
+
+          <button type="submit" class="btn-primary access__submit">
+            <span>Отправить заявку</span>
+            <svg width="15" height="15" viewBox="0 0 13 13" fill="none">
+              <path d="M3 10L10 3M10 3H4M10 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- Экран после успешной отправки -->
+      <div class="access__done" hidden>
+        <span class="access__done-mark" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+            <path d="M4 12.5L9.5 18L20 6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <h2 class="access__title">Заявка отправлена</h2>
+        <p class="access__lead">Свяжемся с вами в течение рабочего дня.</p>
+        <button type="button" class="btn-primary js-access-close">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
        Блок 1 — Шапка / Hero
        ========================================================= -->
   <section class="hero" id="top">
-    <canvas id="hero-bg" class="hero__bg"></canvas>
-    <!-- Лёгкий вариант фона: видео-«бумеранг» (прямой + реверс клип) + свет за курсором -->
+    <!-- Фон героя: видео-«бумеранг» (прямой + реверс клип) + свет за курсором.
+         Реверс-клип начинается тем же кадром, которым заканчивается прямой, поэтому
+         цикл получается бесшовным — без рывка на склейке. -->
     <div class="hero__video-wrap" aria-hidden="true">
-      <video class="hero__video" id="hero-video" src="assets/hero-loop.webm" muted playsinline preload="auto"></video>
-      <video class="hero__video" id="hero-video-rev" src="assets/hero-loop-rev.webm" muted playsinline preload="auto"></video>
+      <!-- Прямой клип грузим сразу, реверс — только метаданные: он нужен лишь когда
+           первый доиграет, и успевает подгрузиться за это время. Так первый экран
+           не тянет 6 МБ вместо 3 МБ. -->
+      <video class="hero__video" id="hero-video" src="assets/hero-bg.webm" poster="assets/hero-bg-poster.jpg" muted playsinline preload="auto"></video>
+      <video class="hero__video" id="hero-video-rev" src="assets/hero-bg-rev.webm" muted playsinline preload="metadata"></video>
       <span class="hero__video-glow" id="hero-video-glow"></span>
-    </div>
-    <div class="hero__weave" id="hero-weave" aria-hidden="true">
-      <svg class="eweave" viewBox="60 36 558 320" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <defs>
-            <filter id="softHi" x="-40%" y="-40%" width="180%" height="180%">
-              <feGaussianBlur stdDeviation="5"/>
-            </filter>
-            <radialGradient id="mote" cx="0.5" cy="0.5" r="0.5">
-              <stop offset="0" stop-color="#cfe2ff" stop-opacity="1"/>
-              <stop offset="0.45" stop-color="#9bc0ff" stop-opacity=".5"/>
-              <stop offset="1" stop-color="#9bc0ff" stop-opacity="0"/>
-            </radialGradient>
-            <!-- back · deep navy -->
-            <radialGradient id="gA" cx="339" cy="196" r="300" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#0e1640"/><stop offset=".55" stop-color="#080d28"/><stop offset="1" stop-color="#04060e"/>
-            </radialGradient>
-            <!-- back · dark blue -->
-            <radialGradient id="gB" cx="339" cy="196" r="300" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#101a4a"/><stop offset=".55" stop-color="#0a1130"/><stop offset="1" stop-color="#05070f"/>
-            </radialGradient>
-            <!-- mid · blue -->
-            <radialGradient id="gC" cx="339" cy="196" r="300" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#16235e"/><stop offset=".55" stop-color="#0a1138"/><stop offset="1" stop-color="#060a20"/>
-            </radialGradient>
-            <!-- mid · indigo -->
-            <radialGradient id="gI" cx="339" cy="196" r="300" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#20276e"/><stop offset=".5" stop-color="#0c1036"/><stop offset="1" stop-color="#060818"/>
-            </radialGradient>
-            <!-- front · blue -->
-            <radialGradient id="gD" cx="339" cy="196" r="300" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#1f2f86"/><stop offset=".5" stop-color="#0c1440"/><stop offset="1" stop-color="#070b22"/>
-            </radialGradient>
-            <!-- front · bright blue (D accent) -->
-            <radialGradient id="gE" cx="339" cy="196" r="300" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#283ca0"/><stop offset=".5" stop-color="#0e1742"/><stop offset="1" stop-color="#080d24"/>
-            </radialGradient>
-            <!-- Лёгкий градиент как у лого осьминога (бирюза→циан→фиолет), с плавным «течением» -->
-            <linearGradient id="gBrand" x1="60" y1="60" x2="560" y2="320" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#19e3c4"/>
-              <stop offset="0.45" stop-color="#34d6ff"/>
-              <stop offset="1" stop-color="#7c6bff"/>
-              <animateTransform attributeName="gradientTransform" type="translate"
-                values="-220 0; 220 0; -220 0" dur="16s" repeatCount="indefinite"/>
-            </linearGradient>
-            <g id="eL1Shapes">
-              <path d="M664.732 111.677C609.732 133.344 512.132 186.177 561.732 224.177C611.332 262.177 522.399 345.677 471.732 382.677"/>
-              <path d="M666.732 233.677C654.899 274.844 611.732 361.477 533.732 378.677"/>
-              <path d="M647.232 19.6773C604.899 49.6773 548.032 99.5773 659.232 59.1773"/>
-              <path d="M11.7319 40.1773C49.0653 68.6773 102.432 134.677 17.2319 170.677"/>
-            </g>
-            <g id="eL2Shapes">
-              <path d="M380.232 375.677C281.565 305.011 68.4319 153.977 5.23193 115.177"/>
-              <path d="M19.2319 249.177C68.2319 211.511 177.132 138.577 220.732 148.177C275.232 160.177 295.232 138.677 297.732 131.177C299.732 125.177 436.565 50.0107 504.732 13.1773"/>
-              <path d="M670.732 367.677C617.232 320.677 501.232 234.777 465.232 267.177C429.232 299.577 383.565 245.011 365.232 213.677C326.899 188.844 249.532 131.177 246.732 99.1773C243.932 67.1773 183.232 29.844 153.232 15.1773"/>
-            </g>
-            <g id="eL3Shapes">
-              <path d="M146.732 376.677C221.232 327.511 373.532 228.677 386.732 226.677C403.232 224.177 485.232 133.677 492.732 122.677C500.232 111.677 558.232 60.6773 565.732 63.6773C573.232 66.6773 582.732 18.6774 537.732 41.1774C492.732 63.6773 369.232 99.1773 403.232 48.6773C430.432 8.27735 474.232 7.51068 492.732 12.1773"/>
-              <path d="M562.732 372.177C523.232 348.677 439.032 291.377 418.232 250.177C392.232 198.677 304.232 172.177 259.232 122.677C223.232 83.0774 183.565 75.1774 168.232 76.1774C158.399 76.0107 124.532 62.5773 67.7319 10.1773"/>
-              <path d="M624.732 378.677C561.732 339.511 427.932 246.977 396.732 190.177C357.732 119.177 282.732 130.677 236.732 172.677C190.732 214.677 42.7319 281.677 20.2319 300.677"/>
-            </g>
-            <g id="eIShapes">
-              <path d="M62.2319 376.677C165.065 324.344 372.032 217.577 377.232 209.177C383.732 198.677 419.732 166.177 454.232 178.177C488.732 190.177 535.232 245.677 589.732 253.177C644.232 260.677 660.732 282.677 665.732 287.677"/>
-              <path d="M396.232 17.1773C350.732 28.1773 261.532 65.6773 268.732 127.677C277.732 205.177 193.732 175.177 178.732 177.177C163.732 179.177 95.2319 228.177 21.2319 260.677"/>
-            </g>
-            <g id="eL4Shapes">
-              <path d="M535.732 10.1773C474.899 41.844 369.232 110.777 433.232 133.177C513.232 161.177 577.732 129.677 607.732 112.677C631.732 99.0773 656.399 83.0107 665.732 76.6773"/>
-              <path d="M120.232 17.6773C170.232 52.844 270.232 137.877 270.232 196.677C270.232 255.477 399.565 291.844 464.232 302.677C487.732 313.511 540.732 342.977 564.732 374.177"/>
-            </g>
-            <g id="eL5Shapes">
-              <path d="M12.7319 338.177C130.732 265.177 135.732 214.677 334.232 381.677M12.7319 370.177C64.2319 331.177 179.632 255.977 229.232 267.177C291.232 281.177 345.732 272.677 359.232 267.177C372.732 261.677 414.232 256.677 439.232 376.677"/>
-              <path d="M20.2319 14.1773C183.232 130.177 234.732 133.177 241.232 212.677C243.554 241.083 411.732 345.677 468.232 382.677M14.7319 221.177C64.2319 181.011 171.032 103.377 202.232 114.177C233.432 124.977 244.899 87.0107 246.732 66.6773C251.732 57.6773 275.232 34.5773 329.232 14.1773"/>
-              <path d="M661.232 338.177C606.732 297.511 495.232 218.477 485.232 227.677C472.732 239.177 428.732 187.177 423.232 158.677C417.732 130.177 338.732 118.677 333.232 115.177C327.732 111.677 302.732 90.1773 357.732 59.1773C401.732 34.3773 439.732 15.844 453.232 9.67734"/>
-              <path d="M222.732 378.677C241.899 363.844 283.932 327.677 298.732 301.677C317.232 269.177 402.232 255.677 410.732 244.677C419.232 233.677 510.732 174.177 530.732 176.177C546.732 177.777 630.732 150.511 670.732 136.677"/>
-              <path d="M210.232 5.67734C233.565 39.5107 292.932 106.777 343.732 105.177C394.532 103.577 443.565 175.511 461.732 211.677C497.065 229.677 586.432 251.877 661.232 196.677"/>
-            </g>
-            <g id="eHiShapes">
-              <path d="M12.7319 338.177C130.732 265.177 135.732 214.677 334.232 381.677M12.7319 370.177C64.2319 331.177 179.632 255.977 229.232 267.177C291.232 281.177 345.732 272.677 359.232 267.177C372.732 261.677 414.232 256.677 439.232 376.677"/>
-              <path d="M20.2319 14.1773C183.232 130.177 234.732 133.177 241.232 212.677C243.554 241.083 411.732 345.677 468.232 382.677M14.7319 221.177C64.2319 181.011 171.032 103.377 202.232 114.177C233.432 124.977 244.899 87.0107 246.732 66.6773C251.732 57.6773 275.232 34.5773 329.232 14.1773"/>
-            </g>
-          </defs>
-          <g class="swB">
-            <use href="#eL1Shapes" class="lb-a"/>
-            <use href="#eL2Shapes" class="lb-b"/>
-          </g>
-          <g class="swM">
-            <use href="#eL3Shapes" class="lb-c"/>
-            <use href="#eIShapes" class="lb-i"/>
-          </g>
-          <g class="swF">
-            <use href="#eL4Shapes" class="lb-d"/>
-            <use href="#eL5Shapes" class="lb-e"/>
-            <use href="#eHiShapes" class="hi"/>
-          </g>
-          <g class="parts">
-            <circle class="mote" cx="150" cy="150" r="9"  style="animation-duration:13s;animation-delay:-2s"/>
-            <circle class="mote" cx="250" cy="250" r="6"  style="animation-duration:17s;animation-delay:-7s"/>
-            <circle class="mote" cx="330" cy="120" r="11" style="animation-duration:21s;animation-delay:-4s"/>
-            <circle class="mote" cx="410" cy="220" r="7"  style="animation-duration:15s;animation-delay:-11s"/>
-            <circle class="mote" cx="480" cy="150" r="5"  style="animation-duration:19s;animation-delay:-1s"/>
-            <circle class="mote" cx="210" cy="320" r="8"  style="animation-duration:23s;animation-delay:-9s"/>
-            <circle class="mote" cx="540" cy="280" r="10" style="animation-duration:16s;animation-delay:-13s"/>
-            <circle class="mote" cx="120" cy="240" r="6"  style="animation-duration:20s;animation-delay:-5s"/>
-            <circle class="mote" cx="370" cy="300" r="7"  style="animation-duration:14s;animation-delay:-3s"/>
-            <circle class="mote" cx="300" cy="190" r="5"  style="animation-duration:18s;animation-delay:-15s"/>
-            <circle class="mote" cx="450" cy="100" r="8"  style="animation-duration:22s;animation-delay:-8s"/>
-            <circle class="mote" cx="180" cy="90"  r="6"  style="animation-duration:24s;animation-delay:-6s"/>
-          </g>
-        </svg>
     </div>
     <div class="hero__scrim"></div>
     <div class="hero__grain"></div>
@@ -243,12 +243,14 @@
     <div class="hero__inner">
       <!-- Top bar -->
       <header class="nav reveal d1">
-        <a href="#top" class="nav__logo" id="hero-logo" aria-label="Octopus — наверх">
-          <img src="assets/octopus-logo-white.png" alt="Octopus" />
+        <a href="#top" class="nav__logo" id="hero-logo" aria-label="ОктоСпай — наверх">
+          <img src="assets/octospy-logo-white.png" alt="ОктоСпай" />
         </a>
         <div class="nav__right">
-          <a href="#access" class="nav__cta">
-            <span>Получить доступ</span>
+          <!-- Верхняя кнопка — вход в платформу (единственная «Получить доступ» осталась
+               ниже, в hero__aside) -->
+          <a href="https://digital-spy.ru/digital" class="nav__cta" target="_blank" rel="noopener">
+            <span>Войти</span>
             <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
               <path d="M3 10L10 3M10 3H4M10 3V9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -268,10 +270,11 @@
 
         <aside class="hero__aside reveal d4">
           <p class="hero__lead">
-            <b>Октопус</b> — единая AI-система для мониторинга активности
-            конкурентов и&nbsp;оперативной оценки медиастратегий.
+            <b>Все медиаканалы в&nbsp;одном окне</b></br> AI-система автоматически собирает
+            рекламные активности в&nbsp;ключевых медиа и&nbsp;объединяет их
+            в&nbsp;готовую аналитическую витрину
           </p>
-          <a href="#access" class="btn-primary">
+          <a href="#access" class="btn-primary js-access-open">
             Получить доступ
             <svg width="15" height="15" viewBox="0 0 13 13" fill="none">
               <path d="M3 10L10 3M10 3H4M10 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -282,17 +285,19 @@
 
       <!-- Bottom bar -->
       <footer class="hero__foot reveal d5">
-        <span class="hero__clock">
-          <span class="dot"></span>
-          <span id="clock">--:--:-- MSK</span>
+        <span class="hero__live">
+          <span class="hero__clock">
+            <span class="dot"></span>
+            <span id="clock">--:--:-- MSK</span>
+          </span>
+          <span class="hero__foot-sep" aria-hidden="true"></span>
+          <!-- Уникальные креативы в базе. TODO: подставить актуальное значение
+               в data-creatives (или заполнять его с бэкенда) -->
+          <span class="hero__creatives">
+            <b id="creatives-count" data-creatives="2400000">0</b>
+            уникальных креативов в&nbsp;базе
+          </span>
         </span>
-        <button class="hero__toggle" id="bg-toggle" type="button" aria-label="Сменить анимацию фона">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M2 7a5 5 0 0 1 8.5-3.5M12 7a5 5 0 0 1-8.5 3.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-            <path d="M10.5 1.5v2h-2M3.5 12.5v-2h2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span id="bg-toggle-label">Анимация: новая</span>
-        </button>
         <span class="hero__scroll">
           <span>Листайте вниз</span>
           <span class="track"></span>
@@ -312,7 +317,7 @@
         <div class="about__intro">
           <span class="about__eyebrow"><span class="about__dot"></span> О платформе</span>
           <h2 class="about__title">
-            Октопус — AI-платформа с&nbsp;<span class="accent-c">собственными технологиями мониторинга</span> рекламы для&nbsp;<span class="accent-c">полной картины</span> активности рынка и&nbsp;конкурентов
+            ОктоСпай — AI-платформа с&nbsp;<span class="accent-c">собственными технологиями мониторинга</span> рекламы для&nbsp;<span class="accent-c">полной картины</span> активности рынка и&nbsp;конкурентов
           </h2>
           <span class="about__hint">
             <svg width="34" height="14" viewBox="0 0 34 14" fill="none">
@@ -353,7 +358,7 @@
           <div class="about-card__body">
             <span class="about-card__num">02</span>
             <h3>Решение есть</h3>
-            <p>Октопус автоматизирует сбор и анализ рекламной активности. Собственная технология парсинга собирает размещения по ключевым медиаканалам — ТВ, OOH, OLV, баннеры и маркетплейсы — каждый час, а AI объединяет и анализирует данные в единой системе.</p>
+            <p>ОктоСпай автоматизирует сбор и анализ рекламной активности. Собственная технология парсинга собирает размещения по ключевым медиаканалам — ТВ, OOH, OLV, баннеры и маркетплейсы — каждый час, а AI объединяет и анализирует данные в единой системе.</p>
           </div>
         </article>
 
@@ -375,6 +380,63 @@
         </article>
 
         <!-- 04 -->
+        <article class="about-card">
+          <span class="about-card__icon">
+            <svg viewBox="0 0 64 64" fill="none">
+              <ellipse cx="32" cy="17" rx="19" ry="7" stroke="currentColor" stroke-width="2" pathLength="1"/>
+              <path d="M13 17v15c0 3.9 8.5 7 19 7s19-3.1 19-7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" pathLength="1"/>
+              <path d="M13 32v15c0 3.9 8.5 7 19 7s19-3.1 19-7V32" stroke="currentColor" stroke-width="2" stroke-linecap="round" pathLength="1"/>
+              <circle cx="46" cy="46" r="3" fill="currentColor"/>
+            </svg>
+          </span>
+          <div class="about-card__body">
+            <span class="about-card__num">04</span>
+            <h3>База, которая растёт каждый час</h3>
+            <p>Миллионы рекламных креативов, десятки тысяч площадок и вся история размещений с первого дня работы системы. Парсинг идёт непрерывно, поэтому вы смотрите не на срез прошлого месяца, а на рынок прямо сейчас.</p>
+          </div>
+        </article>
+
+        <!-- 05 — что анализирует ОктоСпай (переехало из отдельной секции «Медиаканалы») -->
+        <article class="about-card about-card--channels">
+          <span class="about-card__icon">
+            <svg viewBox="0 0 64 64" fill="none">
+              <path d="M32 8L56 21L32 34L8 21L32 8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" pathLength="1"/>
+              <path d="M8 32L32 45L56 32" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/>
+              <path d="M8 43L32 56L56 43" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/>
+            </svg>
+          </span>
+          <div class="about-card__body">
+            <span class="about-card__num">05</span>
+            <h3>Что анализирует ОктоСпай</h3>
+            <p>Пять медиаканалов в одной сопоставимой витрине.</p>
+            <ul class="about-card__list">
+              <li>Наружная реклама — OOH</li>
+              <li>Баннерная реклама — Display</li>
+              <li>Онлайн-видео — OLV</li>
+              <li>Реклама на маркетплейсах</li>
+              <li>Телевидение — TV</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 06 -->
+        <article class="about-card">
+          <span class="about-card__icon">
+            <svg viewBox="0 0 64 64" fill="none">
+              <circle cx="32" cy="32" r="21" stroke="currentColor" stroke-width="2" pathLength="1"/>
+              <circle cx="32" cy="32" r="11" stroke="currentColor" stroke-width="2" pathLength="1"/>
+              <path d="M32 11v8M32 45v8M11 32h8M45 32h8" stroke="currentColor" stroke-width="2" stroke-linecap="round" pathLength="1"/>
+              <circle cx="32" cy="32" r="3.4" fill="currentColor"/>
+            </svg>
+          </span>
+          <div class="about-card__body">
+            <span class="about-card__num">06</span>
+            <h3>Решения вместо догадок</h3>
+            <p>Медиаплан на фактах, а не на оценках: контроль доли голоса, быстрая реакция на запуски конкурентов и понятная защита бюджета перед бизнесом — всё на одних и тех же данных.</p>
+          </div>
+        </article>
+
+        <!-- 04 -->
         <!-- <article class="about-card about-card--list">
           <span class="about-card__icon">
             <svg viewBox="0 0 64 64" fill="none">
@@ -385,7 +447,7 @@
           </span>
           <div class="about-card__body">
             <span class="about-card__num">04</span>
-            <h3>Что анализирует Октопус</h3>
+            <h3>Что анализирует ОктоСпай</h3>
             <ul class="about-card__list">
               <li>ТВ</li>
               <li>OOH</li>
@@ -425,15 +487,65 @@
   </section>
 
   <!-- =========================================================
-       Что анализирует Октопус — отдельный блок (кольцо + вкладки)
+       ИИ-ассистент — светлый экран с «живой» поисковой строкой
        ========================================================= -->
-  <section class="analyze-block is-light" id="analyze" aria-labelledby="analyze-title">
+  <section class="ai" id="assistant" aria-labelledby="ai-title">
+    <div class="ai__inner">
+      <span class="ai__eyebrow"><span class="section-dot"></span> ИИ-ассистент</span>
+
+      <h2 class="ai__title" id="ai-title">
+        Спросите о рынке словами — <span class="ai__accent">ответ соберётся сам</span>
+      </h2>
+      <p class="ai__lead">
+        Ассистент понимает запрос на обычном языке: сам подберёт бренды, каналы
+        и&nbsp;период, посчитает и&nbsp;покажет готовый ответ.
+      </p>
+
+      <div class="ai__mascot" aria-hidden="true">
+        <img src="assets/octospy-mark.png" alt="" width="600" height="600" loading="lazy" decoding="async" />
+      </div>
+
+      <!-- Демонстрационная строка: текст печатает и стирает скрипт (см. ai-typewriter).
+           Это не поле ввода — клик уводит в форму заявки. -->
+      <div class="ai__search">
+        <span class="ai__search-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.7"/>
+            <path d="M16 16L21 21" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="ai__query">
+          <span id="ai-query" class="ai__query-text"></span><span class="ai__caret" aria-hidden="true"></span>
+        </span>
+        <button type="button" class="ai__send js-access-open" aria-label="Спросить ассистента">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M5 12h13M12 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <ul class="ai__chips">
+        <li>Доля голоса</li>
+        <li>Медиасплит конкурентов</li>
+        <li>Топ креативов</li>
+        <li>Сезонность категории</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       Что анализирует ОктоСпай — отдельный блок (кольцо + вкладки)
+       ========================================================= -->
+  <!-- СКРЫТО: содержимое переехало карточкой «Что анализирует ОктоСпай» в блок
+       «О платформе». Секция оставлена в разметке, чтобы при необходимости вернуть:
+       скрывается правилом .analyze-block { display: none } в style.css. -->
+  <section class="analyze-block is-light" id="analyze" aria-labelledby="analyze-title" hidden>
     <div class="analyze-block__bg" aria-hidden="true"></div>
     <div class="analyze-block__inner">
       <header class="analyze-block__head">
         <div class="analyze-block__head-main">
           <span class="analyze-block__eyebrow"><span class="section-dot"></span> Медиаканалы</span>
-          <h2 class="analyze-block__title" id="analyze-title">Что анализирует <span class="analyze-block__brand">Октопус</span></h2>
+          <h2 class="analyze-block__title" id="analyze-title">Что анализирует <span class="analyze-block__brand">ОктоСпай</span></h2>
         </div>
       </header>
 
@@ -455,7 +567,9 @@
             </svg>
           <div class="analyze-block__center">
             <div class="analyze-block__mascot">
-              <img class="analyze-block__mascot-inner" id="analyzeMascot" src="assets/octopus-logo.gif" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+              <!-- GIF-маскот убран: 16 МБ на скрытую секцию. Если секцию вернёте —
+                   подставьте здесь облегчённый ролик (webm) вместо гифки. -->
+              <span class="analyze-block__mascot-inner" id="analyzeMascot" aria-hidden="true"></span>
             </div>
           </div>
         </div>
@@ -516,7 +630,7 @@
        ========================================================= -->
   <section class="results" id="results" aria-labelledby="results-title">
     <div class="results__head">
-      <!-- <span class="results__eyebrow"><span class="dot"></span> Результат работы Октопус</span> -->
+      <!-- <span class="results__eyebrow"><span class="dot"></span> Результат работы ОктоСпай</span> -->
       <h2 class="results__title" id="results-title">Что вы получаете <span class="grad">в&nbsp;результате?</span></h2>
     </div>
 
@@ -641,8 +755,8 @@
           <span class="demo__accent">аналитика за несколько кликов</span>
         </h2>
         <p class="demo__lead">
-          От автоматического сбора данных до готовых отчётов: десктоп для глубокого анализа,
-          мобильная версия — для быстрых проверок на ходу.
+          Платформа подстраивается под ваши задачи: от глубокого кросс-медийного анализа
+          на десктопе до быстрого сводного отчёта на телефоне по пути на встречу.
         </p>
       </header>
 
@@ -651,13 +765,13 @@
             <button class="demo-tab is-active" type="button" role="tab" aria-selected="true" data-demo="0" id="demo-tab-0" aria-controls="demo-panel">
               <span class="demo-tab__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none">
-                  <polyline points="3 16 9 10 13 14 21 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                  <polyline points="15 6 21 6 21 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M20 12.5a7.5 7.5 0 0 1-7.5 7.5H8l-4 3v-4.6A7.5 7.5 0 0 1 11.5 5h1A7.5 7.5 0 0 1 20 12.5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12 9.2l.9 2.4 2.4.9-2.4.9-.9 2.4-.9-2.4-2.4-.9 2.4-.9.9-2.4z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
                 </svg>
               </span>
               <span class="demo-tab__text">
-                <span class="demo-tab__label">Динамика</span>
-                <span class="demo-tab__desc">Активность рынка во времени</span>
+                <span class="demo-tab__label">ИИ-ассистент</span>
+                <span class="demo-tab__desc">Ответы о рынке в свободной форме</span>
               </span>
             </button>
             <button class="demo-tab" type="button" role="tab" aria-selected="false" data-demo="1" id="demo-tab-1" aria-controls="demo-panel">
@@ -670,8 +784,8 @@
                 </svg>
               </span>
               <span class="demo-tab__text">
-                <span class="demo-tab__label">Сводка и креативы</span>
-                <span class="demo-tab__desc">Медиасплит, SOV, топ материалов</span>
+                <span class="demo-tab__label">Быстрая сводка</span>
+                <span class="demo-tab__desc">Обзор по бренду и категории в 2 клика</span>
               </span>
             </button>
             <button class="demo-tab" type="button" role="tab" aria-selected="false" data-demo="2" id="demo-tab-2" aria-controls="demo-panel">
@@ -689,31 +803,31 @@
             <button class="demo-tab" type="button" role="tab" aria-selected="false" data-demo="3" id="demo-tab-3" aria-controls="demo-panel">
               <span class="demo-tab__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none">
-                  <rect x="3" y="4" width="18" height="17" rx="2" stroke="currentColor" stroke-width="1.5"/>
-                  <path d="M3 9h18M8 2v4M16 2v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  <path d="M7 13h6M7 17h9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <polyline points="3 16 9 10 13 14 21 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  <polyline points="15 6 21 6 21 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </span>
               <span class="demo-tab__text">
-                <span class="demo-tab__label">Флоучарт</span>
-                <span class="demo-tab__desc">Календарь размещений по каналам</span>
+                <span class="demo-tab__label">Глубокая аналитика</span>
+                <span class="demo-tab__desc">Детализация медиастратегий</span>
               </span>
             </button>
         </div>
 
         <ul class="demo__points" id="demo-points" data-active="0" aria-live="polite">
-            <li data-demo="0">Динамика рекламной активности рынка по дням, неделям и сезонам</li>
-            <li data-demo="0">Сравнение трендов вашего бренда и конкурентов на одном графике</li>
-            <li data-demo="0">Всплески и спады выходов — сразу видно, кто наращивает давление</li>
-            <li data-demo="1">Медиасплит брендов и категорий в одном окне</li>
-            <li data-demo="1">SOV, OTS и инвестиции — с первого экрана</li>
-            <li data-demo="1">Топ креативов по каждому медиаканалу</li>
+            <!-- Раздел 1 · ИИ-ассистент — буллиты в документе не заполнены, это черновик -->
+            <li data-demo="0">Вопрос о рынке в свободной форме — без настройки отчётов и фильтров</li>
+            <li data-demo="0">Готовый ответ по бренду, категории и конкурентам за секунды</li>
+            <li data-demo="0">Из ответа — сразу в мониторинг с уже подобранными параметрами</li>
+            <li data-demo="1">Доля голоса и инвестиции: быстрая оценка без сложных отчётов</li>
+            <li data-demo="1">Оперативный контроль: новые рекламные активности появляются в отчёте в реальном времени</li>
+            <li data-demo="1">Всегда под рукой: удобный доступ с телефона и компьютера</li>
             <li data-demo="2">Новые рекламные выходы появляются уже через час после запуска кампаний</li>
             <li data-demo="2">Уведомления о движениях конкурентов прямо в Telegram</li>
             <li data-demo="2">Контроль категории и ключевых игроков в реальном времени</li>
-            <li data-demo="3">Флоучарт выходов: какие каналы и когда работали у каждого бренда</li>
-            <li data-demo="3">Пересечения ТВ, OOH, OLV, баннеров и маркетплейсов на единой шкале</li>
-            <li data-demo="3">Планирование и сверка своих кампаний с активностью рынка</li>
+            <li data-demo="3">Медиасплит как на ладони: детальное распределение бюджетов конкурентов по каналам</li>
+            <li data-demo="3">Единая шкала измерений: анализируйте онлайн и офлайн каналы вместе</li>
+            <li data-demo="3">Сравнение трендов: сопоставляйте активность вашего бренда с ключевыми игроками и категорией</li>
         </ul>
 
         <div class="demo__stage" id="demo-panel" role="tabpanel" aria-labelledby="demo-tab-0">
@@ -723,16 +837,22 @@
             <button type="button" class="demo__nav-btn demo__nav-btn--prev" aria-label="Предыдущий экран">‹</button>
 
             <div class="demo__cards">
+              <!-- TODO (перезапись роликов под ноунейм-бренды):
+                   0 · ИИ-ассистент — нужен новый ролик в мобильной версии по схеме
+                       «запрос → ответ → переход на Мониторинг». Пока стоит rec-1.mp4.
+                   3 · Глубокая аналитика — нужен ролик «Флоучарт + Динамика» (старт с
+                       загруженного флоу: графики, затем таблица → переход на динамику).
+                       Пока стоит rec-4.mp4 (только флоучарт). -->
               <div class="demo__card" data-demo="0">
                 <span class="demo__phone-notch" aria-hidden="true"></span>
                 <div class="demo__phone-screen">
-                  <video src="assets/rec-1.mp4" muted playsinline preload="metadata" aria-label="Динамика рекламной активности"></video>
+                  <video src="assets/rec-1.mp4" muted playsinline preload="metadata" aria-label="ИИ-ассистент"></video>
                 </div>
               </div>
               <div class="demo__card" data-demo="1">
                 <span class="demo__phone-notch" aria-hidden="true"></span>
                 <div class="demo__phone-screen">
-                  <video src="assets/rec-2.mp4" muted playsinline preload="metadata" aria-label="Сводка и креативы"></video>
+                  <video src="assets/rec-2.mp4" muted playsinline preload="metadata" aria-label="Быстрая сводка"></video>
                 </div>
               </div>
               <div class="demo__card" data-demo="2">
@@ -744,7 +864,7 @@
               <div class="demo__card" data-demo="3">
                 <span class="demo__phone-notch" aria-hidden="true"></span>
                 <div class="demo__phone-screen">
-                  <video src="assets/rec-4.mp4" muted playsinline preload="metadata" aria-label="Флоучарт размещений"></video>
+                  <video src="assets/rec-4.mp4" muted playsinline preload="metadata" aria-label="Глубокая аналитика"></video>
                 </div>
               </div>
             </div>
@@ -753,10 +873,10 @@
           </div>
 
           <div class="demo__dots">
-            <button type="button" class="demo__dot is-on" aria-label="Динамика"></button>
-            <button type="button" class="demo__dot" aria-label="Сводка и креативы"></button>
+            <button type="button" class="demo__dot is-on" aria-label="ИИ-ассистент"></button>
+            <button type="button" class="demo__dot" aria-label="Быстрая сводка"></button>
             <button type="button" class="demo__dot" aria-label="Мониторинг"></button>
-            <button type="button" class="demo__dot" aria-label="Флоучарт"></button>
+            <button type="button" class="demo__dot" aria-label="Глубокая аналитика"></button>
           </div>
         </div>
       </div>
@@ -812,7 +932,7 @@
   <section class="adv" id="benefits">
     <div class="adv__head">
       <span class="adv__eyebrow"><span class="adv__dot"></span> Преимущества</span>
-      <h2 class="adv__title">Почему команды выбирают <span class="accent">Октопус</span></h2>
+      <h2 class="adv__title">Почему команды выбирают <span class="accent">ОктоСпай</span></h2>
     </div>
 
     <div class="adv__grid" id="adv-grid">
@@ -883,11 +1003,11 @@
         </div>
       </article>
 
-      <!-- октопус accent tile — скрыт -->
+      <!-- ОктоСпай accent tile — скрыт -->
       <article class="adv-card adv-card--octopus" hidden aria-hidden="true">
         <div class="adv-octo__mesh" aria-hidden="true"></div>
         <div class="adv-octo__watermark" aria-hidden="true">
-          <img src="assets/octopus-mark.png" alt="" class="adv-octo__mark" loading="lazy" decoding="async" />
+          <img src="assets/octospy-mark.png" alt="" class="adv-octo__mark" loading="lazy" decoding="async" />
         </div>
 
         <span class="adv-card__icon">
@@ -906,7 +1026,7 @@
         <div class="adv-card__body">
           <h3>6+ медиаканалов в&nbsp;одной системе</h3>
           <p>
-            <span class="adv-octo__brand">Октопус</span> охватывает весь рынок — от digital и&nbsp;маркетплейсов
+            <span class="adv-octo__brand">ОктоСпай</span> охватывает весь рынок — от digital и&nbsp;маркетплейсов
             до&nbsp;ТВ и&nbsp;наружной рекламы.
           </p>
           <ul class="adv-octo__channels">
@@ -934,7 +1054,7 @@
       <h2 class="cases__title">
         <span class="cases__title-accent">Кейсы</span> и&nbsp;аналитика рынка
       </h2>
-      <p class="cases__lead">Исследования, тренды и аналитика на основе данных Октопус</p>
+      <p class="cases__lead">Исследования, тренды и аналитика на основе данных ОктоСпай</p>
     </div>
 
     <div class="cases__slider" id="cases-slider" tabindex="0">
@@ -985,7 +1105,7 @@
           </div>
           <div class="cases-card__body">
             <h3 class="cases-card__title">Медиасплит FMCG-брендов</h3>
-            <p class="cases-card__text">Сравнение медиастратегий категории: ТВ, OLV, баннеры и наружная реклама — на основе данных Октопус.</p>
+            <p class="cases-card__text">Сравнение медиастратегий категории: ТВ, OLV, баннеры и наружная реклама — на основе данных ОктоСпай.</p>
           </div>
           <div class="cases-card__foot">
             <button class="cases-card__link" type="button" aria-label="Читать исследование">
@@ -1066,7 +1186,7 @@
         <h2 class="site-footer__title">
           Раскрыть полную картину рекламного рынка за&nbsp;несколько минут
         </h2>
-        <a href="#access" class="btn-primary site-footer__btn">
+        <a href="#access" class="btn-primary site-footer__btn js-access-open">
           Получить доступ
           <svg width="15" height="15" viewBox="0 0 13 13" fill="none">
             <path d="M3 10L10 3M10 3H4M10 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1085,10 +1205,24 @@
         </div>
 
         <div class="site-footer__brands">
-          <img class="site-footer__logo site-footer__logo--octo" src="assets/octopus-logo-white.png" alt="Октопус" loading="lazy" decoding="async" />
+          <img class="site-footer__logo site-footer__logo--octo" src="assets/octospy-logo-white.png" alt="ОктоСпай" loading="lazy" decoding="async" />
           <span class="site-footer__brand-sep" aria-hidden="true"></span>
           <img class="site-footer__logo site-footer__logo--arena" src="assets/arena.png" alt="Arena" loading="lazy" decoding="async" />
         </div>
+      </div>
+
+      <!-- ТРЕБУЕТ СОГЛАСОВАНИЯ С ЮРИСТАМИ: точные формулировки, юр. наименование,
+           ИНН/ОГРН и ссылки ниже нужно заполнить по их требованиям. -->
+      <div class="site-footer__legal">
+        <p class="site-footer__legal-entity">
+          <!-- TODO (юристы): юр. наименование, ИНН, ОГРН -->
+          ООО «—», ИНН —, ОГРН —
+        </p>
+        <ul class="site-footer__legal-links">
+          <li><a href="https://digital-spy.ru/digital/privacy-policy" target="_blank" rel="noopener">Политика обработки персональных данных</a></li>
+          <li><a href="https://digital-spy.ru/digital/consent" target="_blank" rel="noopener">Условия использования</a></li>
+        </ul>
+        <p class="site-footer__copy">© <span id="footer-year">2026</span> ОктоСпай. Все права защищены.</p>
       </div>
     </div>
   </footer>
@@ -1173,6 +1307,12 @@
       timer = setTimeout(tick, 500);
     })();
 
+    // Год в копирайте — чтобы не устаревал
+    (function () {
+      const el = document.getElementById("footer-year");
+      if (el) el.textContent = String(new Date().getFullYear());
+    })();
+
     // Live clock (Moscow time)
     (function () {
       const el = document.getElementById("clock");
@@ -1188,6 +1328,69 @@
       }
       tick();
       setInterval(tick, 1000);
+    })();
+
+    // Уникальные креативы в базе — набегающее число рядом с часами.
+    //
+    // Источник: assets/creatives.json на нашем же origin (формат {"creatives": 2400000}).
+    // Читать дашборд digital-spy.ru прямо из браузера нельзя: страница отдаёт пустую
+    // React-оболочку (числа в HTML нет), домен не присылает Access-Control-Allow-Origin,
+    // и сам дашборд закрыт логином. Поэтому число снимает суточная задача на сервере и
+    // складывает в этот JSON, а лендинг просто его читает. Если файла нет или он не
+    // доступен — остаётся значение из data-creatives, счётчик никогда не показывает 0.
+    (function () {
+      const el = document.getElementById("creatives-count");
+      if (!el) return;
+
+      const CACHE_KEY = "octospy-creatives";
+      const SRC = "assets/creatives.json";
+      const fmt = new Intl.NumberFormat("ru-RU");
+      const fallback = parseInt(el.dataset.creatives, 10);
+      const today = new Date().toISOString().slice(0, 10);
+
+      function read(key) {
+        try { return JSON.parse(localStorage.getItem(key) || "null"); } catch (e) { return null; }
+      }
+      function write(value) {
+        try { localStorage.setItem(CACHE_KEY, JSON.stringify({ value, day: today })); } catch (e) {}
+      }
+
+      const cached = read(CACHE_KEY);
+      const startValue = cached && Number.isFinite(cached.value) ? cached.value : fallback;
+      if (!Number.isFinite(startValue)) return;
+
+      // Показываем то, что уже знаем — сразу, без ожидания сети
+      show(startValue);
+
+      // Запрос не чаще раза в сутки
+      if (!cached || cached.day !== today) {
+        fetch(SRC, { cache: "no-cache" })
+          .then((r) => (r.ok ? r.json() : null))
+          .then((data) => {
+            const next = data && parseInt(data.creatives, 10);
+            if (!Number.isFinite(next)) return;
+            write(next);
+            if (next !== startValue) el.textContent = fmt.format(next);
+          })
+          .catch(() => {}); // молча остаёмся на прежнем числе
+      }
+
+      function show(total) {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          el.textContent = fmt.format(total);
+          return;
+        }
+        const DUR = 1800;
+        let start = null;
+        function frame(ts) {
+          if (start === null) start = ts;
+          const p = Math.min(1, (ts - start) / DUR);
+          // ease-out — быстро разгоняется и мягко «дотягивает» до итогового числа
+          el.textContent = fmt.format(Math.round(total * (1 - Math.pow(1 - p, 3))));
+          if (p < 1) requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+      }
     })();
 
     // Sticky header reveals once we leave the hero
@@ -1244,45 +1447,6 @@
       if (footer) io.observe(footer);
     })();
 
-    // Footer animated background (same engine as hero)
-    (function () {
-      const footer = document.querySelector(".site-footer");
-      const canvas = document.getElementById("footer-bg");
-      if (!footer || !canvas || !window.OctopusBG) return;
-
-      let saved = "marble";
-      try { saved = localStorage.getItem("octo-bg-style") || "marble"; } catch (e) {}
-      const footerBG = OctopusBG.init(canvas, { mode: 0, style: saved });
-      window.footerBG = footerBG;
-
-      if ("IntersectionObserver" in window) {
-        const io = new IntersectionObserver(
-          ([e]) => footerBG.setActive(e.isIntersecting),
-          { threshold: 0.08 }
-        );
-        io.observe(footer);
-      } else {
-        footerBG.setActive(true);
-      }
-    })();
-
-    // ПРОИЗВОДИТЕЛЬНОСТЬ: WebGL-шейдер героя крутится дорого — гасим его,
-    // как только герой ушёл с экрана, и включаем обратно при возврате.
-    // Только когда фон героя действительно canvas (не видео и не «плетёнка»).
-    (function () {
-      const hero = document.querySelector(".hero");
-      if (!hero || !window.heroBG || !("IntersectionObserver" in window)) return;
-      new IntersectionObserver(
-        ([e]) => {
-          const usesCanvas =
-            !hero.classList.contains("weave-active") &&
-            !hero.classList.contains("video-active");
-          window.heroBG.setActive(e.isIntersecting && usesCanvas);
-        },
-        { threshold: 0.01 }
-      ).observe(hero);
-    })();
-
     // ПРОИЗВОДИТЕЛЬНОСТЬ: CSS-анимации каждого экрана работают только пока экран
     // виден. Секции вне вьюпорта получают .is-anim-paused → animation-play-state:
     // paused для всех вложенных элементов (см. style.css). Так фон/свечения/пульсы
@@ -1299,22 +1463,21 @@
       blocks.forEach((b) => io.observe(b));
     })();
 
-    // Видео-вариант фона героя: «бумеранг» из двух клипов (прямой + реверс) + свет за
-    // курсором. Никаких перемоток — оба клипа проигрываются нативно вперёд по очереди,
-    // поэтому ход туда-обратно идеально плавный. Легче WebGL (аппаратное декодирование).
-    (function () {
-      const hero = document.querySelector(".hero");
-      const fwd = document.getElementById("hero-video");
-      const rev = document.getElementById("hero-video-rev");
-      const glow = document.getElementById("hero-video-glow");
-      if (!hero || !fwd || !rev) { window.heroVideo = { start() {}, stop() {} }; return; }
+    // Видео-фон «бумеранг»: два клипа (прямой + реверс) проигрываются по очереди
+    // нативно вперёд, без перемоток, поэтому ход туда-обратно идеально плавный и цикл
+    // бесшовный. Плюс свет за курсором. Легче WebGL (аппаратное декодирование).
+    // Одна фабрика на два блока: hero и футер.
+    function initVideoBg(root, fwd, rev, glow, opts) {
+      if (!root || !fwd || !rev) return { start() {}, stop() {} };
+      opts = opts || {};
+      const restY = opts.restY === undefined ? 0.42 : opts.restY;
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-      let on = false;      // выбран ли видеорежим
-      let visible = true;  // герой в зоне видимости
+      let on = false;      // включён ли видеофон
+      let visible = true;  // блок в зоне видимости
       let cur = fwd;       // какой клип проигрывается сейчас
 
-      const SPEED = 0.65;  // помедленнее, чтобы фон был спокойнее
+      const SPEED = opts.speed || 0.65; // помедленнее, чтобы фон был спокойнее
       fwd.playbackRate = rev.playbackRate = SPEED;
 
       function show(el) {
@@ -1348,79 +1511,74 @@
       }
       function suspend() { fwd.pause(); rev.pause(); }
 
-      // герой ушёл с экрана → пауза (не тратим ресурсы)
+      // блок ушёл с экрана → пауза (не тратим ресурсы на декодирование)
       if ("IntersectionObserver" in window) {
         new IntersectionObserver(([e]) => {
           visible = e.isIntersecting;
           if (on) { visible ? resume() : suspend(); }
-        }, { threshold: 0.01 }).observe(hero);
+        }, { threshold: 0.01 }).observe(root);
       }
 
-      // свет за курсором — плавно, как на «плетёной глубине»
-      let gx = 0.5, gy = 0.42, tgx = 0.5, tgy = 0.42, raf = null;
+      // Свет за курсором — плавно догоняет позицию мыши. Пишем в CSS-переменные,
+      // которые уходят в translate3d: только композитор, без layout (см. style.css).
+      let gx = 0.5, gy = restY, tgx = 0.5, tgy = restY, raf = null;
       function loop() {
         gx += (tgx - gx) * 0.1; gy += (tgy - gy) * 0.1;
-        if (glow) { glow.style.left = (gx * 100).toFixed(2) + "%"; glow.style.top = (gy * 100).toFixed(2) + "%"; }
+        if (glow) {
+          glow.style.setProperty("--gx", (gx * 100).toFixed(2) + "%");
+          glow.style.setProperty("--gy", (gy * 100).toFixed(2) + "%");
+        }
         if (Math.abs(tgx - gx) > 0.002 || Math.abs(tgy - gy) > 0.002) raf = requestAnimationFrame(loop);
         else raf = null;
       }
       function kick() { if (!raf) raf = requestAnimationFrame(loop); }
-      hero.addEventListener("pointermove", (e) => {
+      root.addEventListener("pointermove", (e) => {
         if (!on) return;
-        const r = hero.getBoundingClientRect();
+        const r = root.getBoundingClientRect();
         tgx = (e.clientX - r.left) / r.width;
         tgy = (e.clientY - r.top) / r.height;
         kick();
       }, { passive: true });
-      hero.addEventListener("pointerleave", () => { tgx = 0.5; tgy = 0.42; kick(); });
+      root.addEventListener("pointerleave", () => { tgx = 0.5; tgy = restY; kick(); });
 
-      window.heroVideo = {
+      return {
         start() { on = true; show(cur); resume(); },
         stop() { on = false; suspend(); },
       };
+    }
+
+    // Фон героя — всегда видео (тумблер смены анимации убран). Canvas-шейдер героя
+    // больше не создаётся вовсе: он был полностью перекрыт видео.
+    (function () {
+      const hero = document.querySelector(".hero");
+      window.heroVideo = initVideoBg(
+        hero,
+        document.getElementById("hero-video"),
+        document.getElementById("hero-video-rev"),
+        document.getElementById("hero-video-glow")
+      );
+      if (hero) hero.classList.add("video-active");
+      if (window.heroBG) window.heroBG.setActive(false);
+      window.heroVideo.start();
     })();
 
-    // Hero background toggle: видео ⇄ вода (canvas) ⇄ плетёная глубина (SVG) ⇄ шёлк (canvas)
+    // Фон футера — анимированный canvas (тот же движок, что раньше в герое)
     (function () {
-      const btn = document.getElementById("bg-toggle");
-      const label = document.getElementById("bg-toggle-label");
-      if (!btn || !window.heroBG) return;
-      const hero = document.querySelector(".hero");
-      const weave = document.getElementById("hero-weave");
-      const NAMES = { video: "видео", marble: "новая" };
-      const ORDER = ["video", "marble"];
+      const footer = document.querySelector(".site-footer");
+      const canvas = document.getElementById("footer-bg");
+      if (!footer || !canvas || !window.OctopusBG) return;
 
-      function apply(style) {
-        const isWeave = style === "weave";
-        const isVideo = style === "video";
-        if (hero) {
-          hero.classList.toggle("weave-active", isWeave);
-          hero.classList.toggle("video-active", isVideo);
-        }
-        if (weave) weave.classList.toggle("is-active", isWeave);
-        const useMainCanvas = !isWeave && !isVideo;
-        window.heroBG.setActive(useMainCanvas);
-        if (useMainCanvas) {
-          window.heroBG.setStyle(style);
-          if (window.footerBG) window.footerBG.setStyle(style);
-        }
-        if (window.heroVideo) { isVideo ? window.heroVideo.start() : window.heroVideo.stop(); }
-        label.textContent = "Анимация: " + (NAMES[style] || style);
+      const footerBG = OctopusBG.init(canvas, { mode: 0, style: "marble" });
+      window.footerBG = footerBG;
+
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(
+          ([e]) => footerBG.setActive(e.isIntersecting),
+          { threshold: 0.08 }
+        ).observe(footer);
+      } else {
+        footerBG.setActive(true);
       }
-
-      let current = "video";
-      try { current = localStorage.getItem("octo-bg-style") || "video"; } catch (e) {}
-      try { const q = new URLSearchParams(location.search).get("bg"); if (q) current = q; } catch (e) {}
-      if (ORDER.indexOf(current) < 0) current = "video";
-      apply(current);
-
-      btn.addEventListener("click", () => {
-        current = ORDER[(ORDER.indexOf(current) + 1) % ORDER.length] || "marble";
-        apply(current);
-        try { localStorage.setItem("octo-bg-style", current); } catch (e) {}
-        btn.classList.add("is-spin");
-        setTimeout(() => btn.classList.remove("is-spin"), 600);
-      });
     })();
 
     // Fullscreen menu window
@@ -1461,6 +1619,232 @@
       );
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape" && menu.classList.contains("is-open")) close();
+      });
+    })();
+
+    // ИИ-ассистент: запросы печатаются и стираются по кругу, как будто их набирает
+    // человек. Скорость слегка «дрожит», иначе набор выглядит машинным.
+    (function () {
+      const el = document.getElementById("ai-query");
+      if (!el) return;
+
+      const QUERIES = [
+        "Динамика бренда ОктоСпай за последний месяц",
+        "Топ креативов по OTS за 30 дней",
+        "Динамика баннеров на маркетплейсах",
+        "Покажи последние размещения",
+      ];
+
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        el.textContent = QUERIES[0];
+        return;
+      }
+
+      const TYPE = 58;     // базовая пауза между символами при наборе
+      const ERASE = 28;    // стираем быстрее, чем печатаем
+      const HOLD = 1700;   // пауза на дописанном запросе
+      const GAP = 420;     // пауза перед новым запросом
+
+      let qi = 0;          // индекс запроса
+      let ci = 0;          // индекс символа
+      let erasing = false;
+      let timer = null;
+      let running = false;
+
+      function tick() {
+        const text = QUERIES[qi];
+        if (!erasing) {
+          ci += 1;
+          el.textContent = text.slice(0, ci);
+          if (ci >= text.length) {
+            erasing = true;
+            timer = setTimeout(tick, HOLD);
+            return;
+          }
+          // ±40% к паузе — набор перестаёт быть метрономом
+          timer = setTimeout(tick, TYPE * (0.8 + Math.random() * 0.6));
+          return;
+        }
+        ci -= 1;
+        el.textContent = text.slice(0, ci);
+        if (ci <= 0) {
+          erasing = false;
+          qi = (qi + 1) % QUERIES.length;
+          timer = setTimeout(tick, GAP);
+          return;
+        }
+        timer = setTimeout(tick, ERASE);
+      }
+
+      function start() { if (!running) { running = true; timer = setTimeout(tick, 500); } }
+      function stop() { running = false; clearTimeout(timer); }
+
+      // печатаем только пока экран виден — вне вьюпорта таймеры не нужны
+      const section = el.closest(".ai");
+      if (section && "IntersectionObserver" in window) {
+        new IntersectionObserver(
+          ([e]) => (e.isIntersecting ? start() : stop()),
+          { threshold: 0.25 }
+        ).observe(section);
+      } else {
+        start();
+      }
+    })();
+
+    // Модальное окно «Получить доступ»: открытие с любой CTA, валидация, отправка.
+    (function () {
+      const modal = document.getElementById("access-modal");
+      const form = document.getElementById("access-form");
+      if (!modal || !form) return;
+
+      const body = modal.querySelector(".access__body");
+      const done = modal.querySelector(".access__done");
+      const dialog = modal.querySelector(".access__dialog");
+      const submit = form.querySelector(".access__submit");
+      let lastFocused = null;
+
+      const MSG = {
+        name: "Укажите, как к вам обращаться",
+        email: "Укажите рабочую почту в формате you@company.ru",
+        phone: "Проверьте номер телефона",
+        consent: "Без согласия мы не можем обработать заявку",
+      };
+
+      function setError(field, message) {
+        const box = form.querySelector('[data-error-for="' + field + '"]');
+        if (box) box.textContent = message || "";
+        const input = form.elements[field];
+        const wrap = input && input.closest(".access__field, .access__consent");
+        if (wrap) wrap.classList.toggle("is-invalid", Boolean(message));
+      }
+
+      function validate() {
+        const v = (n) => (form.elements[n] ? String(form.elements[n].value).trim() : "");
+        const errors = {};
+        if (!v("name")) errors.name = MSG.name;
+        // намеренно мягкая проверка: есть «@», точка в домене и никаких пробелов
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v("email"))) errors.email = MSG.email;
+        const phone = v("phone");
+        // телефон необязателен, но если заполнен — минимум 10 цифр
+        if (phone && (phone.replace(/\D/g, "").length < 10)) errors.phone = MSG.phone;
+        if (!form.elements.consent.checked) errors.consent = MSG.consent;
+
+        ["name", "email", "phone", "consent"].forEach((f) => setError(f, errors[f]));
+        return Object.keys(errors);
+      }
+
+      function open() {
+        lastFocused = document.activeElement;
+        modal.hidden = false;
+        document.body.classList.add("no-scroll");
+        // класс ставим следующим кадром, чтобы сработал transition появления
+        requestAnimationFrame(() => modal.classList.add("is-open"));
+        const first = form.querySelector("input, textarea");
+        if (first) setTimeout(() => first.focus(), 220);
+      }
+
+      function close() {
+        modal.classList.remove("is-open");
+        document.body.classList.remove("no-scroll");
+        const finish = () => {
+          modal.hidden = true;
+          // возвращаем форму в исходное состояние — окно можно открыть снова
+          if (done && body) { done.hidden = true; body.hidden = false; }
+          form.reset();
+          ["name", "email", "phone", "consent"].forEach((f) => setError(f, ""));
+          if (submit) { submit.disabled = false; submit.querySelector("span").textContent = "Отправить заявку"; }
+        };
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { finish(); return; }
+        setTimeout(finish, 450); // ждём анимацию закрытия
+      }
+
+      document.querySelectorAll(".js-access-open").forEach((btn) =>
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          // если открыто меню — сначала закрываем его, чтобы не было двух оверлеев
+          const menu = document.getElementById("menu");
+          if (menu && menu.classList.contains("is-open")) {
+            const closeBtn = menu.querySelector(".js-menu-close");
+            if (closeBtn) closeBtn.click();
+          }
+          open();
+        })
+      );
+      modal.querySelectorAll(".js-access-close").forEach((b) => b.addEventListener("click", close));
+
+      document.addEventListener("keydown", (e) => {
+        if (modal.hidden) return;
+        if (e.key === "Escape") { close(); return; }
+        if (e.key !== "Tab") return;
+        // фокус не должен уходить за пределы окна, пока оно открыто
+        const items = dialog.querySelectorAll(
+          'a[href], button:not([disabled]), input:not([type="hidden"]), textarea, select'
+        );
+        const visible = [...items].filter((el) => el.offsetParent !== null || el.type === "checkbox");
+        if (!visible.length) return;
+        const first = visible[0];
+        const last = visible[visible.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      });
+
+      // снимаем подсветку ошибки, как только поле начали править
+      form.addEventListener("input", (e) => {
+        const name = e.target.name;
+        if (name) setError(name, "");
+      });
+      form.addEventListener("change", (e) => {
+        if (e.target.name === "consent") setError("consent", "");
+      });
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const bad = validate();
+        if (bad.length) {
+          const input = form.elements[bad[0]];
+          if (input && input.focus) input.focus();
+          return;
+        }
+
+        const payload = {
+          name: form.elements.name.value.trim(),
+          company: form.elements.company.value.trim(),
+          email: form.elements.email.value.trim(),
+          phone: form.elements.phone.value.trim(),
+          task: form.elements.task.value.trim(),
+          page: location.href,
+          sentAt: new Date().toISOString(),
+        };
+
+        submit.disabled = true;
+        submit.querySelector("span").textContent = "Отправляем…";
+
+        function succeed() {
+          if (body) body.hidden = true;
+          if (done) done.hidden = false;
+          const btn = done && done.querySelector(".btn-primary");
+          if (btn) btn.focus();
+        }
+        function fail() {
+          submit.disabled = false;
+          submit.querySelector("span").textContent = "Отправить заявку";
+          setError("email", "Не удалось отправить. Попробуйте ещё раз или напишите нам.");
+        }
+
+        const endpoint = form.dataset.endpoint;
+        if (!endpoint) {
+          // ЗАГОТОВКА: эндпоинта ещё нет — показываем успех, заявку пишем в консоль
+          console.info("Заявка (эндпоинт не задан, data-endpoint пуст):", payload);
+          setTimeout(succeed, 500);
+          return;
+        }
+        fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        })
+          .then((r) => (r.ok ? succeed() : fail()))
+          .catch(fail);
       });
     })();
 
@@ -1531,18 +1915,42 @@
       let inView = false;
       let suppressCardClick = false;
 
+      // Кольцевая раскладка: смещение карточки считается по кратчайшей дуге, поэтому
+      // активная карточка всегда в центре, а соседние — слева и справа. Раньше offset
+      // был линейным (i - current), и при current = 0 весь стек уезжал вправо (0-1-2-3).
+      const SIDE = 1; // сколько карточек видно по каждую сторону от центральной
+      const prevOff = new Map();
+
+      function wrap(off) {
+        off = ((off % n) + n) % n;      // 0..n-1
+        return off > n / 2 ? off - n : off; // → кратчайшая дуга, напр. -1..2 при n = 4
+      }
+
       function layout() {
         if (!cards.length) return;
         const w = cards[0].getBoundingClientRect().width || 200;
         const spacing = w * 0.66;
         cards.forEach((card, i) => {
-          const off = i - current;
+          const off = wrap(i - current);
           const abs = Math.abs(off);
+          const hidden = abs > SIDE;
           const scale = off === 0 ? 1 : abs === 1 ? 0.84 : 0.7;
+
+          // Карточка, «перескакивающая» через край кольца, меняет сторону мгновенно —
+          // без этого она бы проехала через весь стек. Скрытую карточку не видно,
+          // поэтому телепорт незаметен.
+          const before = prevOff.get(card);
+          if (before !== undefined && Math.abs(off - before) > SIDE + 1) {
+            card.style.transition = "none";
+            void card.offsetWidth; // форсируем reflow, чтобы новый transform не анимировался
+            requestAnimationFrame(() => { card.style.transition = ""; });
+          }
+          prevOff.set(card, off);
+
           card.style.transform = `translate(calc(-50% + ${off * spacing}px),-50%) scale(${scale})`;
           card.style.zIndex = String(100 - abs);
-          card.style.opacity = abs > 2 ? "0" : "1";
-          card.style.pointerEvents = abs > 2 ? "none" : "auto";
+          card.style.opacity = hidden ? "0" : "1";
+          card.style.pointerEvents = hidden ? "none" : "auto";
           card.classList.toggle("is-active", off === 0);
         });
         syncVideos();
@@ -2125,42 +2533,8 @@
       hero.addEventListener("pointerleave", () => { tx = 0; ty = 0; kick(); });
     })();
 
-    // Интерактив «плетёной глубины»: параллакс-дрейф фона + свет за курсором.
-    (function () {
-      const hero = document.querySelector(".hero");
-      const weave = document.getElementById("hero-weave");
-      if (!hero || !weave) return;
-      const svg = weave.querySelector(".eweave");
-      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      let glow = weave.querySelector(".weave-glow");
-      if (!glow) { glow = document.createElement("div"); glow.className = "weave-glow"; weave.appendChild(glow); }
 
-      let raf = null;
-      let tx = 0, ty = 0, cx = 0, cy = 0;        // параллакс (цель/текущее)
-      let tgx = 0.5, tgy = 0.42, gx = 0.5, gy = 0.42; // позиция света 0..1
-      function loop() {
-        cx += (tx - cx) * 0.08; cy += (ty - cy) * 0.08;
-        gx += (tgx - gx) * 0.10; gy += (tgy - gy) * 0.10;
-        if (svg && !reduce) svg.style.transform = "translate(" + cx.toFixed(2) + "px," + cy.toFixed(2) + "px) scale(1.05)";
-        glow.style.left = (gx * 100).toFixed(2) + "%";
-        glow.style.top = (gy * 100).toFixed(2) + "%";
-        if (Math.abs(tx - cx) > 0.1 || Math.abs(ty - cy) > 0.1 ||
-            Math.abs(tgx - gx) > 0.002 || Math.abs(tgy - gy) > 0.002) raf = requestAnimationFrame(loop);
-        else raf = null;
-      }
-      function kick() { if (!raf) raf = requestAnimationFrame(loop); }
-      hero.addEventListener("pointermove", (e) => {
-        const r = hero.getBoundingClientRect();
-        const nx = (e.clientX - r.left) / r.width - 0.5;
-        const ny = (e.clientY - r.top) / r.height - 0.5;
-        tx = -nx * 26; ty = -ny * 18;            // фон дрейфует навстречу (глубина)
-        tgx = (e.clientX - r.left) / r.width; tgy = (e.clientY - r.top) / r.height;
-        kick();
-      }, { passive: true });
-      hero.addEventListener("pointerleave", () => { tx = 0; ty = 0; tgx = 0.5; tgy = 0.42; kick(); });
-    })();
-
-    // «Что анализирует Октопус»: кольцо сегментов + вкладки (как отдельный блок).
+    // «Что анализирует ОктоСпай»: кольцо сегментов + вкладки (как отдельный блок).
     (function () {
       const block = document.getElementById("analyze");
       if (!block) return;

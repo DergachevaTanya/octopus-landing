@@ -117,6 +117,18 @@
   box-sizing: border-box;
 }
 
+/* Полосы прокрутки скрыты на всём лендинге — и на странице, и во внутренних
+   скроллерах (модалка заявки, карусели). Прокрутка при этом остаётся рабочей:
+   колесом, тачем, клавиатурой. */
+* {
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* старый Edge/IE */
+}
+*::-webkit-scrollbar {          /* Chrome, Safari, новый Edge */
+  width: 0;
+  height: 0;
+}
+
 /* ПРОИЗВОДИТЕЛЬНОСТЬ: пока секция вне вьюпорта (класс ставит JS), все её
    CSS-анимации заморожены — браузер не считает кадры для невидимых экранов. */
 .is-anim-paused,
@@ -300,7 +312,10 @@ body.no-scroll { overflow: hidden; }
   z-index: 3;
   display: flex;
   align-items: center;
-  height: 68px;
+  /* «Закрыть» встаёт в правый верхний угол — там же, где кнопка открытия меню,
+     поэтому закрытие происходит там, где палец/курсор уже находится */
+  justify-content: flex-end;
+  height: var(--header-h);
   padding: 0 var(--pad-x);
 }
 .menu__close {
@@ -377,6 +392,20 @@ body.no-scroll { overflow: hidden; }
 .menu__cta:hover { transform: translateX(-8px); }
 .menu__cta:hover svg { transform: translate(3px, -3px); }
 
+/* «Войти» — второстепенное действие под «Получить доступ»: тот же ряд, но тише */
+.menu__login-item { margin-top: 4px; }
+.menu__list .menu__login {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: clamp(18px, 1.9vw, 26px);
+  font-weight: 500;
+  color: var(--muted);
+}
+.menu__login svg { stroke: currentColor; transition: transform 0.35s var(--ease); }
+.menu__list .menu__login:hover { color: var(--white); transform: translateX(-8px); }
+.menu__login:hover svg { transform: translate(3px, -3px); }
+
 /* staggered reveal of nav items */
 .menu .menu__label,
 .menu .menu__list li {
@@ -390,7 +419,9 @@ body.no-scroll { overflow: hidden; }
 .menu.is-open .menu__list li:nth-child(3) { animation-delay: 0.28s; }
 .menu.is-open .menu__list li:nth-child(4) { animation-delay: 0.34s; }
 .menu.is-open .menu__list li:nth-child(5) { animation-delay: 0.40s; }
-.menu.is-open .menu__list li:nth-child(6) { animation-delay: 0.48s; }
+.menu.is-open .menu__list li:nth-child(6) { animation-delay: 0.46s; }
+.menu.is-open .menu__list li:nth-child(7) { animation-delay: 0.54s; }
+.menu.is-open .menu__list li:nth-child(8) { animation-delay: 0.60s; }
 
 @media (max-width: 720px) {
   .menu__panel {
@@ -402,6 +433,7 @@ body.no-scroll { overflow: hidden; }
   .menu__list { align-items: flex-start; }
   .menu__list a:hover { transform: translateX(8px); }
   .menu__cta:hover { transform: translateX(8px); }
+  .menu__list .menu__login:hover { transform: translateX(8px); }
   .menu__fade {
     background: linear-gradient(180deg, rgba(10, 13, 28, 0.5) 0%, rgba(10, 13, 28, 0.35) 45%, rgba(10, 13, 28, 0.85) 100%);
   }
@@ -463,14 +495,20 @@ body.no-scroll { overflow: hidden; }
 .hero__video.is-active {
   opacity: 1;
 }
-/* Свет за курсором поверх видео — даёт ту же интерактивность, что и на canvas */
+/* Свет за курсором поверх видео.
+   ПРОИЗВОДИТЕЛЬНОСТЬ: позиция задаётся через translate3d по --gx/--gy, а не через
+   left/top. Раньше JS менял left/top каждый кадр при движении мыши — это заставляло
+   браузер пересчитывать layout на всю секцию 60 раз в секунду. Теперь работает
+   только композитор: ни layout, ни paint. */
 .hero__video-glow {
   position: absolute;
-  left: 50%;
-  top: 42%;
+  left: 0;
+  top: 0;
   width: 46vmax;
   height: 46vmax;
-  transform: translate(-50%, -50%);
+  --gx: 50%;
+  --gy: 42%;
+  transform: translate3d(calc(var(--gx) - 50%), calc(var(--gy) - 50%), 0);
   border-radius: 50%;
   pointer-events: none;
   mix-blend-mode: screen;
@@ -480,11 +518,12 @@ body.no-scroll { overflow: hidden; }
     rgba(75, 59, 228, 0.18) 34%,
     rgba(63, 184, 245, 0) 62%
   );
-  will-change: left, top;
+  will-change: transform;
 }
 @media (prefers-reduced-motion: reduce) {
   .hero__video-glow { display: none; }
 }
+
 /* Soft dark scrim for text legibility */
 .hero__scrim {
   position: absolute;
@@ -765,33 +804,37 @@ body.no-scroll { overflow: hidden; }
 }
 
 /* background style toggle */
-.hero__toggle {
+/* Живые данные в подвале героя: время МСК + объём базы креативов */
+.hero__live {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  padding: 9px 16px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: rgba(244, 246, 255, 0.06);
+  gap: clamp(10px, 1.4vw, 18px);
+  flex-wrap: wrap;
+}
+.hero__foot-sep {
+  width: 1px;
+  height: 14px;
+  background: var(--line);
+  flex-shrink: 0;
+}
+.hero__creatives {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+  color: var(--muted);
+}
+.hero__creatives b {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
   color: var(--white);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.03em;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  transition: background 0.35s var(--ease), border-color 0.35s var(--ease), transform 0.35s var(--ease);
+  background: linear-gradient(92deg, var(--sky), var(--indigo) 62%, var(--coral));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
-.hero__toggle:hover {
-  background: rgba(244, 246, 255, 0.13);
-  border-color: rgba(244, 246, 255, 0.3);
-  transform: translateY(-1px);
-}
-.hero__toggle svg {
-  color: var(--sky);
-  transition: transform 0.6s var(--ease);
-}
-.hero__toggle.is-spin svg {
-  transform: rotate(360deg);
+@media (max-width: 720px) {
+  /* на узких экранах подсказка о скролле уступает место цифрам */
+  .hero__scroll { display: none; }
 }
 
 /* =========================================================
@@ -857,11 +900,11 @@ body.no-scroll { overflow: hidden; }
 }
 @media (max-width: 560px) {
   .hero__foot { font-size: 11px; gap: 10px; }
-  .nav__cta span { display: none; }
-  .nav__cta { padding: 11px; }
+  /* «Войти» — короткое слово, оставляем подпись: без неё кнопка читается как иконка */
+  .nav__cta { padding: 10px 14px; }
   .hero__scroll span { display: none; }
-  .hero__toggle { padding: 8px 12px; font-size: 11px; }
-  .hero__toggle #bg-toggle-label { display: none; }
+  .hero__live { gap: 8px; }
+  .hero__creatives { font-size: 10.5px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1097,7 +1140,10 @@ body.no-scroll { overflow: hidden; }
   box-sizing: border-box;
   background: transparent; /* сквозь видно единый светлый фон body */
   color: var(--ink);
-  padding: calc(var(--header-h) + var(--screen-pad-top)) var(--pad-x) var(--screen-pad-bottom);
+  /* Экран должен целиком влезать в 100vh, поэтому отступы здесь плотнее общих
+     --screen-pad-*: внутри блока много контента (заголовок, 4 вкладки, буллиты
+     и карусель телефонов). */
+  padding: calc(var(--header-h) + clamp(12px, 2vh, 26px)) var(--pad-x) clamp(18px, 2.6vh, 36px);
   overflow: visible;
   max-width: 100%;
 }
@@ -1121,26 +1167,28 @@ body.no-scroll { overflow: hidden; }
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-bottom: clamp(24px, 3.5vh, 40px);
+  margin-bottom: clamp(14px, 2vh, 24px);
 }
 .demo__eyebrow {
   align-self: flex-start;
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: 12.5px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: rgba(7, 10, 24, 0.48);
-  margin-bottom: clamp(14px, 2vh, 20px);
+  margin-bottom: clamp(8px, 1.2vh, 14px);
 }
 .demo__title {
   font-weight: 600;
-  font-size: clamp(28px, 3.4vw, 48px);
-  line-height: 1.12;
+  /* шире и мельче, чем на других экранах: так заголовок укладывается в две строки
+     и не отбирает высоту у карусели */
+  font-size: clamp(24px, 2.6vw, 38px);
+  line-height: 1.1;
   letter-spacing: -0.02em;
-  max-width: 22ch;
+  max-width: 30ch;
   margin-inline: auto;
 }
 .demo__accent {
@@ -1150,12 +1198,12 @@ body.no-scroll { overflow: hidden; }
   color: transparent;
 }
 .demo__lead {
-  margin-top: clamp(12px, 2vh, 16px);
-  font-size: clamp(14px, 1.05vw, 16px);
-  line-height: 1.58;
+  margin-top: clamp(7px, 1.1vh, 12px);
+  font-size: clamp(13px, 0.95vw, 15px);
+  line-height: 1.5;
   font-weight: 400;
   color: rgba(7, 10, 24, 0.52);
-  max-width: 52ch;
+  max-width: 66ch;
   margin-inline: auto;
 }
 
@@ -1179,7 +1227,7 @@ body.no-scroll { overflow: hidden; }
 .demo__nav {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: clamp(6px, 0.9vh, 10px);
   /* над каруселью (z-index:1), чтобы выезжающие карточки уходили ЗА вкладки,
      а не наезжали на них */
   position: relative;
@@ -1188,9 +1236,9 @@ body.no-scroll { overflow: hidden; }
 .demo-tab {
   display: flex;
   align-items: flex-start;
-  gap: 14px;
+  gap: 12px;
   width: 100%;
-  padding: 16px 18px;
+  padding: clamp(10px, 1.4vh, 15px) clamp(13px, 1.1vw, 17px);
   border: 1px solid rgba(7, 10, 24, 0.08);
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.55);
@@ -1246,17 +1294,17 @@ body.no-scroll { overflow: hidden; }
 /* bullet points */
 .demo__points {
   list-style: none;
-  margin-top: clamp(20px, 3vh, 28px);
+  margin-top: clamp(10px, 1.6vh, 18px);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: clamp(6px, 0.9vh, 10px);
 }
 .demo__points li {
   display: none;
   align-items: flex-start;
   gap: 10px;
-  font-size: 13.5px;
-  line-height: 1.55;
+  font-size: 13px;
+  line-height: 1.48;
   color: rgba(7, 10, 24, 0.62);
   overflow-wrap: anywhere;
   animation: demo-point-in 0.55s var(--ease) both;
@@ -1296,9 +1344,10 @@ body.no-scroll { overflow: hidden; }
   grid-row: 1 / -1;
   align-self: center;
   position: relative;
-  min-height: clamp(380px, 58vh, 620px);
+  min-height: clamp(320px, 54vh, 600px);
   max-width: 100%;
-  padding: 0 clamp(8px, 2%, 20px) clamp(28px, 7%, 52px) 0;
+  /* нижний отступ — фиксированное место под точки пагинации (см. .demo__dots) */
+  padding: 0 clamp(8px, 2%, 20px) 44px 0;
   overflow: visible;
   opacity: 0;
   transform: translateY(28px) scale(0.98);
@@ -1330,7 +1379,7 @@ body.no-scroll { overflow: hidden; }
   z-index: 1;
   width: 100%;
   height: 100%;
-  min-height: clamp(380px, 58vh, 620px);
+  min-height: clamp(320px, 54vh, 600px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1339,7 +1388,7 @@ body.no-scroll { overflow: hidden; }
   position: relative;
   width: 100%;
   height: 100%;
-  min-height: clamp(380px, 58vh, 620px);
+  min-height: clamp(320px, 54vh, 600px);
   touch-action: pan-y;
 }
 /* мок-макет телефона: светлая рамка + «чёлка» + экран с видео */
@@ -1347,8 +1396,12 @@ body.no-scroll { overflow: hidden; }
   position: absolute;
   left: 50%;
   top: 50%;
-  width: clamp(180px, 21vw, 286px);
-  padding: clamp(7px, 0.7vw, 11px) clamp(6px, 0.55vw, 9px) clamp(9px, 0.9vw, 14px);
+  /* Высота «телефона» = ширина × 1.84 (aspect-ratio экрана), поэтому ограничиваем
+     ширину ещё и через vh — иначе на невысоких экранах карусель вылезает за 100vh.
+     29vh подобрано так, чтобы сцена оставалась не выше левой колонки с вкладками:
+     до этого предела скринкасты растут, не увеличивая высоту всего экрана. */
+  width: min(clamp(190px, 22vw, 300px), 29vh);
+  padding: clamp(6px, 0.6vw, 10px) clamp(5px, 0.5vw, 8px) clamp(8px, 0.8vw, 12px);
   border-radius: clamp(26px, 2.8vw, 40px);
   border: 1px solid rgba(7, 10, 24, 0.14);
   background: linear-gradient(165deg, #fff 0%, #eef1f8 100%);
@@ -1427,13 +1480,17 @@ body.no-scroll { overflow: hidden; }
   color: #fff;
   border-color: transparent;
 }
-.demo__nav-btn--prev { left: clamp(-8px, -1%, 4px); }
-.demo__nav-btn--next { right: clamp(-8px, -1%, 4px); }
+/* Стрелки — ближе к самим экранам, а не по краям сцены */
+.demo__nav-btn--prev { left: clamp(18px, 7%, 74px); }
+.demo__nav-btn--next { right: clamp(18px, 7%, 74px); }
 
+/* Точки закреплены жёстко в пикселях: раньше отступ задавался в процентах, а они
+   считаются от ширины сцены — из-за этого точки уезжали при любом изменении
+   размеров окна. Место под них резервирует padding-bottom у .demo__stage. */
 .demo__dots {
   position: absolute;
   left: 50%;
-  bottom: clamp(0px, 1%, 8px);
+  bottom: 12px;
   transform: translateX(-50%);
   z-index: 3;
   display: flex;
@@ -1455,30 +1512,22 @@ body.no-scroll { overflow: hidden; }
 }
 
 @media (min-width: 1141px) {
-  .demo__stage {
-    /* больше воздуха перед пагинацией без обрезки свечений */
-    padding-bottom: clamp(58px, 9%, 84px);
-  }
   .demo__card {
-    /* делаем карусель чуть уже, чтобы не наезжала на левый блок */
-    width: clamp(170px, 19vw, 260px);
-  }
-  .demo__dots {
-    bottom: clamp(4px, 1.2%, 12px);
+    /* чуть уже, чтобы не наезжала на левый блок, и с ограничением по высоте экрана */
+    width: min(clamp(190px, 20vw, 290px), 29vh);
   }
 }
 
 @media (max-height: 900px) and (min-width: 1141px) {
   .demo {
-    min-height: auto;
-    padding-bottom: clamp(48px, 9vh, 80px);
+    /* min-height: 100svh оставляем: экран должен занимать ровно один вид и не больше */
+    padding-bottom: clamp(16px, 2.4vh, 30px);
   }
   .demo__head {
-    margin-bottom: clamp(16px, 2.5vh, 28px);
+    margin-bottom: clamp(10px, 1.6vh, 18px);
   }
   .demo__stage {
     min-height: auto;
-    padding-bottom: clamp(32px, 6%, 56px);
   }
 }
 
@@ -2906,10 +2955,10 @@ body.no-scroll { overflow: hidden; }
   overflow-x: clip;
   max-width: 100%;
   color: var(--white);
-  padding: calc(68px + clamp(32px, 5vh, 48px)) var(--pad-x) 0;
-  /* зазор перед футером — сквозь него виден общий светлый фон, отделяя футер
-     от предыдущего экрана */
-  margin-top: clamp(28px, 5vh, 64px);
+  padding: calc(var(--header-h) + clamp(32px, 5vh, 48px)) var(--pad-x) 0;
+  /* Никакого зазора перед футером: раньше здесь был margin-top, сквозь который
+     просвечивал светлый фон body — на стыке с тёмным блоком «Преимущества»
+     это читалось как случайная светлая полоса. */
   overflow: hidden;
   background: var(--ink); /* непрозрачная тёмная подложка под canvas футера */
 }
@@ -3024,6 +3073,36 @@ body.no-scroll { overflow: hidden; }
   filter: brightness(1.05);
 }
 
+/* Юридический блок — самая тихая строка на странице */
+.site-footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px clamp(20px, 3vw, 36px);
+  padding: clamp(16px, 2vh, 22px) 0 clamp(20px, 2.6vh, 28px);
+  border-top: 1px solid rgba(244, 246, 255, 0.07);
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: rgba(244, 246, 255, 0.42);
+}
+.site-footer__legal-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px clamp(16px, 2vw, 26px);
+}
+.site-footer__legal-links a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(244, 246, 255, 0.18);
+  transition: color 0.35s var(--ease), border-color 0.35s var(--ease);
+}
+.site-footer__legal-links a:hover {
+  color: var(--white);
+  border-color: rgba(244, 246, 255, 0.45);
+}
+
 @media (max-width: 720px) {
   .site-footer__cta { max-width: none; }
   .site-footer__bottom {
@@ -3034,6 +3113,491 @@ body.no-scroll { overflow: hidden; }
     margin-left: 0;
     flex-wrap: wrap;
   }
+  .site-footer__legal {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* =========================================================
+   ИИ-АССИСТЕНТ — светлый экран с «живой» поисковой строкой
+   ========================================================= */
+.ai {
+  position: relative;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: calc(var(--header-h) + var(--screen-pad-top)) var(--pad-x) var(--screen-pad-bottom);
+  background: transparent; /* сквозь видно единый светлый фон body */
+  color: var(--ink);
+  overflow: hidden;
+  max-width: 100%;
+}
+/* Колонка занимает всю ширину экрана: так подпись блока встаёт в левый верхний
+   угол, как на остальных экранах, а заголовок с контентом остаются по центру. */
+.ai__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.ai__eyebrow {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: clamp(18px, 3vh, 40px);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(7, 10, 24, 0.48);
+}
+
+/* маскот «плывёт на месте» — очень мягко, без резких движений */
+.ai__mascot {
+  width: clamp(96px, 11vw, 150px);
+  margin: clamp(20px, 3.2vh, 36px) 0 clamp(14px, 2.2vh, 24px);
+  animation: ai-swim 9s ease-in-out infinite;
+  filter: drop-shadow(0 16px 34px rgba(75, 59, 228, 0.24));
+}
+.ai__mascot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+@keyframes ai-swim {
+  0%,
+  100% { transform: translate3d(0, 0, 0) rotate(-3deg); }
+  25%  { transform: translate3d(6px, -9px, 0) rotate(1deg); }
+  50%  { transform: translate3d(0, -14px, 0) rotate(4deg); }
+  75%  { transform: translate3d(-6px, -6px, 0) rotate(1deg); }
+}
+
+.ai__title {
+  font-weight: 600;
+  font-size: clamp(26px, 3.2vw, 44px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  max-width: 20ch;
+}
+.ai__accent {
+  background: linear-gradient(92deg, var(--sky) 0%, var(--indigo) 55%, var(--coral) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.ai__lead {
+  margin-top: clamp(10px, 1.6vh, 16px);
+  font-size: clamp(14px, 1.05vw, 16px);
+  line-height: 1.55;
+  color: rgba(7, 10, 24, 0.52);
+  max-width: 54ch;
+}
+
+/* ---------- строка запроса ---------- */
+.ai__search {
+  margin-top: clamp(4px, 0.8vh, 10px);
+  /* компактнее по высоте и ширине; размер текста и лупы при этом не меняется */
+  width: min(100%, 600px);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: clamp(9px, 1vw, 13px);
+  padding: 6px 6px 6px clamp(14px, 1.4vw, 18px);
+  border-radius: 999px;
+  border: 1px solid rgba(11, 16, 36, 0.1);
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow:
+    0 18px 48px rgba(11, 16, 36, 0.12),
+    0 2px 8px rgba(11, 16, 36, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  text-align: left;
+}
+.ai__search-icon {
+  display: inline-flex;
+  color: rgba(11, 16, 36, 0.34);
+}
+.ai__search-icon svg { width: 20px; height: 20px; }
+
+.ai__query {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  min-height: 1.6em;
+  font-size: clamp(14px, 1.15vw, 17px);
+  line-height: 1.5;
+  color: var(--ink);
+}
+.ai__query-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.ai__caret {
+  flex: 0 0 auto;
+  width: 2px;
+  height: 1.15em;
+  margin-left: 2px;
+  border-radius: 1px;
+  background: var(--indigo);
+  animation: ai-caret 1s step-end infinite;
+}
+@keyframes ai-caret {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.ai__send {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(135deg, var(--sky), var(--indigo) 62%, var(--coral));
+  box-shadow: 0 10px 26px rgba(75, 59, 228, 0.34);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+.ai__send svg { width: 20px; height: 20px; }
+.ai__send:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 16px 34px rgba(75, 59, 228, 0.42);
+}
+
+.ai__chips {
+  list-style: none;
+  margin-top: clamp(16px, 2.4vh, 26px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 10px;
+}
+.ai__chips li {
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(11, 16, 36, 0.1);
+  background: rgba(255, 255, 255, 0.6);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: rgba(11, 16, 36, 0.6);
+}
+
+@media (max-width: 620px) {
+  .ai__title { max-width: none; }
+  .ai__search {
+    gap: 8px;
+    padding: 8px 8px 8px 14px;
+  }
+  .ai__query { font-size: 13.5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ai__mascot { animation: none; }
+  .ai__caret { animation: none; }
+}
+
+/* Секция «Медиаканалы» скрыта — её содержимое переехало карточкой 05 в блок
+   «О платформе». Правило нужно потому, что у секции есть display: flex, который
+   перебивает атрибут hidden. */
+.analyze-block[hidden] { display: none; }
+
+/* =========================================================
+   МОДАЛЬНОЕ ОКНО «Получить доступ»
+   Тёмное стекло на затемнённом фоне, бренд-градиент в акцентах и свечение —
+   тот же язык, что у меню и тёмных секций лендинга.
+   ========================================================= */
+.access {
+  position: fixed;
+  inset: 0;
+  z-index: 200; /* выше меню (100) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 4vh, 48px) var(--pad-x);
+  overflow-y: auto;
+}
+.access[hidden] { display: none; }
+
+.access__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 6, 15, 0.72);
+  backdrop-filter: blur(14px) saturate(1.05);
+  -webkit-backdrop-filter: blur(14px) saturate(1.05);
+  opacity: 0;
+  transition: opacity 0.45s var(--ease);
+}
+.access.is-open .access__backdrop { opacity: 1; }
+
+.access__dialog {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 620px;
+  margin: auto;
+  padding: clamp(26px, 3.4vw, 44px) clamp(22px, 3vw, 44px) clamp(24px, 3vw, 40px);
+  border-radius: clamp(20px, 2.2vw, 30px);
+  border: 1px solid rgba(244, 246, 255, 0.12);
+  background: linear-gradient(168deg, rgba(16, 21, 46, 0.96) 0%, rgba(8, 11, 26, 0.97) 100%);
+  box-shadow:
+    0 40px 120px rgba(2, 4, 12, 0.7),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+  color: var(--white);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(18px) scale(0.985);
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+}
+.access.is-open .access__dialog {
+  opacity: 1;
+  transform: none;
+}
+/* бренд-свечение в углу карточки */
+.access__glow {
+  position: absolute;
+  top: -30%;
+  right: -20%;
+  width: 70%;
+  height: 80%;
+  pointer-events: none;
+  background:
+    radial-gradient(55% 55% at 60% 40%, rgba(63, 184, 245, 0.22), transparent 66%),
+    radial-gradient(50% 50% at 30% 70%, rgba(75, 59, 228, 0.18), transparent 62%);
+}
+
+.access__close {
+  position: absolute;
+  top: clamp(14px, 1.6vw, 20px);
+  right: clamp(14px, 1.6vw, 20px);
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(244, 246, 255, 0.16);
+  background: rgba(244, 246, 255, 0.06);
+  color: var(--white);
+  cursor: pointer;
+  transition: background 0.35s var(--ease), border-color 0.35s var(--ease), transform 0.35s var(--ease);
+}
+.access__close:hover {
+  background: rgba(244, 246, 255, 0.14);
+  border-color: rgba(244, 246, 255, 0.34);
+  transform: rotate(90deg);
+}
+
+.access__body,
+.access__done {
+  position: relative;
+  z-index: 1;
+}
+.access__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(244, 246, 255, 0.6);
+}
+.access__title {
+  font-weight: 700;
+  font-size: clamp(22px, 2.4vw, 32px);
+  line-height: 1.14;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  max-width: 24ch;
+}
+.access__accent {
+  background: linear-gradient(92deg, var(--sky), var(--indigo) 55%, var(--coral));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.access__lead {
+  font-size: clamp(13.5px, 1vw, 15px);
+  line-height: 1.6;
+  color: var(--muted);
+  margin-bottom: clamp(20px, 2.6vh, 28px);
+  max-width: 46ch;
+}
+
+/* ---------- поля ---------- */
+.access__form {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 1.8vh, 18px);
+}
+.access__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(12px, 1.4vw, 18px);
+}
+.access__field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+.access__label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(244, 246, 255, 0.56);
+}
+.access__label i {
+  font-style: normal;
+  color: var(--coral);
+  margin-left: 2px;
+}
+.access__field input,
+.access__field textarea {
+  width: 100%;
+  padding: 13px 15px;
+  border-radius: 13px;
+  border: 1px solid rgba(244, 246, 255, 0.14);
+  background: rgba(244, 246, 255, 0.045);
+  color: var(--white);
+  font-family: var(--font-family);
+  font-size: 14.5px;
+  line-height: 1.45;
+  transition: border-color 0.3s var(--ease), background 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.access__field textarea { resize: vertical; min-height: 84px; }
+.access__field input::placeholder,
+.access__field textarea::placeholder { color: rgba(244, 246, 255, 0.3); }
+.access__field input:focus,
+.access__field textarea:focus {
+  outline: none;
+  border-color: rgba(63, 184, 245, 0.6);
+  background: rgba(244, 246, 255, 0.07);
+  box-shadow: 0 0 0 4px rgba(63, 184, 245, 0.12);
+}
+/* невалидное поле подсвечивается только после попытки отправки (класс ставит JS) */
+.access__field.is-invalid input,
+.access__field.is-invalid textarea {
+  border-color: rgba(255, 91, 46, 0.62);
+  box-shadow: 0 0 0 4px rgba(255, 91, 46, 0.1);
+}
+.access__error {
+  font-size: 11.5px;
+  line-height: 1.35;
+  color: #ff8a68;
+  min-height: 0;
+}
+.access__error--consent { margin-top: -6px; }
+
+/* ---------- согласие ---------- */
+.access__consent {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: 11px;
+  cursor: pointer;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+/* нативный чекбокс скрыт, но остаётся фокусируемым для клавиатуры */
+.access__consent input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.access__checkbox {
+  width: 19px;
+  height: 19px;
+  margin-top: 1px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: 1px solid rgba(244, 246, 255, 0.24);
+  background: rgba(244, 246, 255, 0.05);
+  color: transparent;
+  transition: background 0.28s var(--ease), border-color 0.28s var(--ease), color 0.28s var(--ease);
+}
+.access__consent input:checked ~ .access__checkbox {
+  background: linear-gradient(135deg, var(--sky), var(--indigo));
+  border-color: transparent;
+  color: #fff;
+}
+.access__consent input:focus-visible ~ .access__checkbox {
+  box-shadow: 0 0 0 4px rgba(63, 184, 245, 0.22);
+}
+.access__consent.is-invalid .access__checkbox {
+  border-color: rgba(255, 91, 46, 0.66);
+}
+.access__consent-text a {
+  color: rgba(244, 246, 255, 0.82);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(244, 246, 255, 0.28);
+  transition: color 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.access__consent-text a:hover {
+  color: var(--white);
+  border-color: rgba(244, 246, 255, 0.6);
+}
+
+.access__submit {
+  align-self: flex-start;
+  margin-top: 4px;
+}
+.access__submit[disabled] {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* ---------- экран «отправлено» ---------- */
+.access__done {
+  text-align: center;
+  padding: clamp(12px, 2vh, 24px) 0;
+}
+.access__done[hidden] { display: none; }
+.access__done .access__title,
+.access__done .access__lead {
+  max-width: none;
+  margin-inline: auto;
+}
+.access__done .btn-primary { margin: 6px auto 0; }
+.access__done-mark {
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+  background: linear-gradient(135deg, var(--sky), var(--indigo) 62%, var(--coral));
+  box-shadow: 0 14px 40px rgba(75, 59, 228, 0.4);
+}
+
+@media (max-width: 620px) {
+  .access__row { grid-template-columns: 1fr; }
+  .access__title { max-width: none; }
+  .access__submit { align-self: stretch; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .access__backdrop,
+  .access__dialog { transition: none; }
+  .access__close:hover { transform: none; }
 }
 
 /* =========================================================
@@ -3928,4 +4492,158 @@ body.no-scroll { overflow: hidden; }
   .analyze-tab { transition: none; animation: none !important; }
   .analyze-block__mascot-inner { transition: none; }
   .analyze-panel { filter: none; }
+}
+
+
+/* =========================================================
+   МОБИЛЬНАЯ КОМПАКТНОСТЬ
+   Экраны телефона низкие, поэтому здесь всё уплотняется: меньше отступов,
+   иконки уходят в одну строку с заголовками, карусель и модалка ужимаются
+   до одной видимой части экрана. Блок идёт последним, чтобы перекрывать
+   базовые правила без !important.
+   ========================================================= */
+@media (max-width: 720px) {
+  /* ---------- 1. Логотип и заголовок первого экрана ---------- */
+  .site-header__logo { height: 34px; }
+  /* заголовок героя на телефоне читался мелко для первого экрана */
+  .hero__title { font-size: clamp(30px, 8.4vw, 44px); }
+
+  /* ---------- 2. О платформе ---------- */
+  .about__sticky {
+    /* меньше воздуха между hero и плашкой «О платформе» */
+    padding: clamp(28px, 5vh, 48px) 0 clamp(40px, 7vh, 64px);
+  }
+  /* иконка встаёт в одну строку с номером и заголовком, текст — во всю ширину.
+     display: contents «растворяет» обёртку, и её дети попадают в грид карточки. */
+  .about-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 14px;
+    row-gap: 0;
+    padding: 20px 18px;
+    border-radius: 18px;
+  }
+  .about-card__body { display: contents; }
+  .about-card__icon {
+    /* иконка стоит ровно напротив заголовка: их центры на одной горизонтали */
+    grid-column: 1;
+    grid-row: 2;
+    align-self: center;
+    width: 42px;
+    height: 42px;
+    margin-bottom: 0;
+  }
+  /* Строки задаём каждому элементу явно: при display: contents авторазмещение
+     иначе бросает абзац в первую свободную ячейку — он оказывался над иконкой. */
+  .about-card__num { grid-column: 2; grid-row: 1; }
+  .about-card h3 {
+    grid-column: 2;
+    grid-row: 2;
+    margin-top: 3px;
+    min-height: 0; /* резерв под две строки на телефоне только мешает */
+    font-size: 19px;
+  }
+  .about-card p {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    margin-top: 12px;
+  }
+  .about-card__list {
+    grid-column: 1 / -1;
+    grid-row: 4;
+    margin-top: 14px;
+    gap: 9px;
+  }
+  .about-card__list li { font-size: 14px; }
+
+  /* ---------- 3. Преимущества ---------- */
+  .adv-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 12px;
+    row-gap: 0;
+    align-items: center;
+    min-height: 0;
+    padding: 16px;
+  }
+  .adv-card__body { display: contents; }
+  .adv-card__icon {
+    grid-column: 1;
+    grid-row: 1;
+    width: 40px;
+    height: 40px;
+  }
+  .adv-card__body h3 {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .adv-card__body p {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin-top: 10px;
+  }
+
+  /* ---------- 4. ИИ-ассистент ---------- */
+  .ai__eyebrow {
+    /* подпись блока стоит заметно выше заголовка */
+    margin-bottom: clamp(40px, 8vh, 72px);
+  }
+  .ai__mascot { margin: clamp(16px, 2.6vh, 24px) 0 clamp(12px, 2vh, 18px); }
+
+  /* ---------- 5. Как это работает ---------- */
+  .demo__head { margin-bottom: 14px; }
+  .demo__title { font-size: clamp(22px, 5.4vw, 30px); }
+  .demo__lead { font-size: 13.5px; margin-top: 8px; }
+  .demo__body { gap: 12px; }
+  .demo-tab { padding: 10px 13px; }
+  .demo-tab__desc { font-size: 11.5px; }
+  .demo__points { gap: 7px; }
+  .demo__points li { font-size: 12.5px; }
+  /* карусель заметно компактнее: «телефоны» меньше и сцена под них ниже */
+  .demo__card { width: clamp(150px, 42vw, 210px); }
+  .demo__stage {
+    min-height: clamp(320px, 84vw, 440px);
+    padding: 0 0 40px;
+  }
+  .demo__carousel,
+  .demo__cards { min-height: clamp(310px, 82vw, 430px); }
+  .demo__nav-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+  .demo__nav-btn--prev { left: 2px; }
+  .demo__nav-btn--next { right: 2px; }
+
+  /* ---------- 6. Модалка заявки ---------- */
+  .access { padding: 12px; align-items: flex-start; }
+  .access__dialog {
+    padding: 20px 16px 18px;
+    border-radius: 20px;
+    max-height: calc(100svh - 24px);
+    overflow-y: auto;
+  }
+  .access__close { top: 10px; right: 10px; width: 32px; height: 32px; }
+  .access__eyebrow { margin-bottom: 8px; font-size: 10.5px; }
+  .access__title { font-size: 20px; margin-bottom: 6px; }
+  .access__lead {
+    font-size: 13px;
+    line-height: 1.45;
+    margin-bottom: 14px;
+  }
+  .access__form { gap: 10px; }
+  .access__row { gap: 10px; }
+  .access__field { gap: 5px; }
+  .access__label { font-size: 11px; }
+  .access__field input,
+  .access__field textarea {
+    padding: 10px 12px;
+    font-size: 14px;
+    border-radius: 11px;
+  }
+  .access__field textarea { min-height: 58px; }
+  .access__consent { font-size: 11.5px; gap: 9px; }
+  .access__submit { margin-top: 2px; padding: 13px 22px; }
+  .access__done { padding: 6px 0; }
+  .access__done-mark { width: 46px; height: 46px; margin-bottom: 14px; }
 }
