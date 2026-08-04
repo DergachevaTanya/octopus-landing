@@ -1060,9 +1060,30 @@ body.no-scroll { overflow: hidden; }
   background: var(--coral);
 }
 
+/* «Медийная» пара карточек (02 Digital и 03 Офлайн) — общий холодный цвет,
+   чтобы они читались как один смысловой блок рядом с 01 и 04 */
+.about-card--media {
+  background: linear-gradient(180deg, #f2f5ff 0%, #e9eeff 100%);
+  border-color: rgba(75, 59, 228, 0.14);
+  box-shadow: 0 30px 60px -34px rgba(35, 45, 130, 0.28), 0 2px 10px rgba(11, 16, 36, 0.04);
+}
+.about-card--media .about-card__num { color: rgba(75, 59, 228, 0.55); }
+.about-card--media p { color: rgba(17, 22, 60, 0.62); }
+.about-card--media .about-card__icon path,
+.about-card--media .about-card__icon circle,
+.about-card--media .about-card__icon rect,
+.about-card--media .about-card__icon line,
+.about-card--media .about-card__icon polyline {
+  stroke: url(#about-icon-grad-cool);
+}
+.about-card--media .about-card__icon [fill="currentColor"] {
+  fill: url(#about-icon-grad-cool);
+}
+
 /* перелив того же градиента, что и выделение ключевых фраз в заголовках */
 .about-card__icon path,
 .about-card__icon circle,
+.about-card__icon rect,
 .about-card__icon line,
 .about-card__icon polyline {
   stroke: url(#about-icon-grad);
@@ -1074,6 +1095,7 @@ body.no-scroll { overflow: hidden; }
 /* icon line-draw on reveal (pathLength normalized to 1) */
 .about-card__icon path,
 .about-card__icon circle,
+.about-card__icon rect,
 .about-card__icon line,
 .about-card__icon polyline {
   stroke-dasharray: 1;
@@ -1082,6 +1104,7 @@ body.no-scroll { overflow: hidden; }
 }
 .about-card.is-in .about-card__icon path,
 .about-card.is-in .about-card__icon circle,
+.about-card.is-in .about-card__icon rect,
 .about-card.is-in .about-card__icon line,
 .about-card.is-in .about-card__icon polyline {
   stroke-dashoffset: 0;
@@ -1116,6 +1139,7 @@ body.no-scroll { overflow: hidden; }
   .about-card { opacity: 1; transform: none; }
   .about-card__icon path,
   .about-card__icon circle,
+  .about-card__icon rect,
   .about-card__icon line,
   .about-card__icon polyline { stroke-dashoffset: 0; }
   .about__hint svg path { opacity: 1; }
@@ -1225,8 +1249,11 @@ body.no-scroll { overflow: hidden; }
 
 /* tabs */
 .demo__nav {
-  display: flex;
-  flex-direction: column;
+  /* грид с auto-rows: 1fr — все четыре кнопки одной высоты независимо от того,
+     во сколько строк переносится подпись */
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-auto-rows: 1fr;
   gap: clamp(6px, 0.9vh, 10px);
   /* над каруселью (z-index:1), чтобы выезжающие карточки уходили ЗА вкладки,
      а не наезжали на них */
@@ -4647,3 +4674,4 @@ body.no-scroll { overflow: hidden; }
   .access__done { padding: 6px 0; }
   .access__done-mark { width: 46px; height: 46px; margin-bottom: 14px; }
 }
+

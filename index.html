@@ -68,6 +68,12 @@
         <stop offset="0.55" stop-color="#4b3be4"/>
         <stop offset="1" stop-color="#ff5b2e"/>
       </linearGradient>
+      <!-- Холодный вариант — для «медийной» пары карточек (Digital и Офлайн),
+           чтобы они читались как один смысловой блок -->
+      <linearGradient id="about-icon-grad-cool" x1="0" y1="0" x2="1" y2="0.15">
+        <stop offset="0" stop-color="#3fb8f5"/>
+        <stop offset="1" stop-color="#4b3be4"/>
+      </linearGradient>
     </defs>
   </svg>
 
@@ -102,10 +108,11 @@
     <div class="menu__panel">
       <ul class="menu__list">
         <li><a href="#platform">О платформе</a></li>
-        <li><a href="#results">Результат</a></li>
+        <li><a href="#assistant">ИИ-ассистент</a></li>
+        <li><a href="#results">Что вы получаете</a></li>
         <li><a href="#how">Как это работает</a></li>
         <li><a href="#benefits">Преимущества</a></li>
-        <li><a href="#contacts">Контакты</a></li>
+        <li><a href="#access">Контакты</a></li>
         <li class="menu__cta-item">
           <a href="#access" class="menu__cta js-access-open">
             Получить доступ
@@ -317,7 +324,7 @@
         <div class="about__intro">
           <span class="about__eyebrow"><span class="about__dot"></span> О платформе</span>
           <h2 class="about__title">
-            ОктоСпай — AI-платформа с&nbsp;<span class="accent-c">собственными технологиями мониторинга</span> рекламы для&nbsp;<span class="accent-c">полной картины</span> активности рынка и&nbsp;конкурентов
+            ОктоСпай — ИИ-платформа с&nbsp;<span class="accent-c">собственными технологиями мониторинга</span> рекламы для&nbsp;доступа к&nbsp;<span class="accent-c">полной картине</span> активности рынка и&nbsp;конкурентов
           </h2>
           <span class="about__hint">
             <svg width="34" height="14" viewBox="0 0 34 14" fill="none">
@@ -338,31 +345,48 @@
           </span>
           <div class="about-card__body">
             <span class="about-card__num">01</span>
-            <h3>Рынок меняется каждый час</h3>
-            <p>Рекламный рынок меняется каждый день, а данные о конкурентах распределены между разными каналами и площадками. Чтобы понять, что делают конкуренты, приходится собирать данные из разных источников и тратить много времени на анализ.</p>
+            <h3>Скорость и ИИ-технологии</h3>
+            <p>Рекламный рынок меняется каждый день. Собственная инфраструктура парсинга ОктоСпай непрерывно собирает размещения по ключевым медиаканалам, а ИИ объединяет и анализирует данные в единой системе, формируя полную и актуальную картину активности всего рекламного рынка.</p>
           </div>
         </article>
 
-        <!-- 02 -->
-        <article class="about-card">
+        <!-- 02 — вместе с 03 образуют «медийную» пару: общий холодный цвет -->
+        <article class="about-card about-card--media">
           <span class="about-card__icon">
             <svg viewBox="0 0 64 64" fill="none">
-              <path d="M32 32L14 18M32 32L50 16M32 32L48 48M32 32L16 50" stroke="currentColor" stroke-width="2" stroke-linecap="round" pathLength="1"/>
-              <circle cx="14" cy="18" r="5" stroke="currentColor" stroke-width="2" pathLength="1"/>
-              <circle cx="50" cy="16" r="5" stroke="currentColor" stroke-width="2" pathLength="1"/>
-              <circle cx="16" cy="50" r="5" stroke="currentColor" stroke-width="2" pathLength="1"/>
-              <circle cx="32" cy="32" r="6" stroke="currentColor" stroke-width="2" pathLength="1"/>
-              <circle cx="48" cy="48" r="6.5" fill="currentColor"/>
+              <rect x="6" y="12" width="34" height="26" rx="3" stroke="currentColor" stroke-width="2" pathLength="1"/>
+              <path d="M6 20h34" stroke="currentColor" stroke-width="2" pathLength="1"/>
+              <rect x="44" y="26" width="14" height="26" rx="3" stroke="currentColor" stroke-width="2" pathLength="1"/>
+              <path d="M48.5 48.5h5" stroke="currentColor" stroke-width="2" stroke-linecap="round" pathLength="1"/>
+              <path d="M14 46h20M14 52h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" pathLength="1"/>
+              <circle cx="11" cy="16" r="1.6" fill="currentColor"/>
             </svg>
           </span>
           <div class="about-card__body">
             <span class="about-card__num">02</span>
-            <h3>Решение есть</h3>
-            <p>ОктоСпай автоматизирует сбор и анализ рекламной активности. Собственная технология парсинга собирает размещения по ключевым медиаканалам — ТВ, OOH, OLV, баннеры и маркетплейсы — каждый час, а AI объединяет и анализирует данные в единой системе.</p>
+            <h3>Digital, Mobile &amp;&nbsp;E-com</h3>
+            <p>Полный контроль над цифровой средой. Отслеживайте медийные баннеры, онлайн-видео, а также мобильную рекламу в обычном вебе и на маркетплейсах. Детальный мониторинг диджитал активности помогает вовремя реагировать на изменения на динамичном рынке.</p>
           </div>
         </article>
 
         <!-- 03 -->
+        <article class="about-card about-card--media">
+          <span class="about-card__icon">
+            <svg viewBox="0 0 64 64" fill="none">
+              <rect x="8" y="10" width="48" height="30" rx="3" stroke="currentColor" stroke-width="2" pathLength="1"/>
+              <path d="M24 48h16M32 40v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" pathLength="1"/>
+              <path d="M18 56h28" stroke="currentColor" stroke-width="2" stroke-linecap="round" pathLength="1"/>
+              <path d="M26 19l12 6-12 6V19Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" pathLength="1"/>
+            </svg>
+          </span>
+          <div class="about-card__body">
+            <span class="about-card__num">03</span>
+            <h3>Офлайн-медиа</h3>
+            <p>Непрерывный мониторинг активности в ТВ и наружной рекламе. ОктоСпай собирает данные обо всех активностях в ключевых офлайн каналах, оценивает объемы и инвестиции в разрезе брендов, категорий и отдельных креативов.</p>
+          </div>
+        </article>
+
+        <!-- 04 -->
         <article class="about-card">
           <span class="about-card__icon">
             <svg viewBox="0 0 64 64" fill="none">
@@ -373,66 +397,9 @@
             </svg>
           </span>
           <div class="about-card__body">
-            <span class="about-card__num">03</span>
-            <h3>От данных к&nbsp;аналитике за&nbsp;час</h3>
-            <p>Актуальная картина рынка, данные по конкурентам, объёмам размещений, инвестициям и медиастратегиям — за несколько кликов. То, что раньше требовало недели анализа, теперь доступно за минуты.</p>
-          </div>
-        </article>
-
-        <!-- 04 -->
-        <article class="about-card">
-          <span class="about-card__icon">
-            <svg viewBox="0 0 64 64" fill="none">
-              <ellipse cx="32" cy="17" rx="19" ry="7" stroke="currentColor" stroke-width="2" pathLength="1"/>
-              <path d="M13 17v15c0 3.9 8.5 7 19 7s19-3.1 19-7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" pathLength="1"/>
-              <path d="M13 32v15c0 3.9 8.5 7 19 7s19-3.1 19-7V32" stroke="currentColor" stroke-width="2" stroke-linecap="round" pathLength="1"/>
-              <circle cx="46" cy="46" r="3" fill="currentColor"/>
-            </svg>
-          </span>
-          <div class="about-card__body">
             <span class="about-card__num">04</span>
-            <h3>База, которая растёт каждый час</h3>
-            <p>Миллионы рекламных креативов, десятки тысяч площадок и вся история размещений с первого дня работы системы. Парсинг идёт непрерывно, поэтому вы смотрите не на срез прошлого месяца, а на рынок прямо сейчас.</p>
-          </div>
-        </article>
-
-        <!-- 05 — что анализирует ОктоСпай (переехало из отдельной секции «Медиаканалы») -->
-        <article class="about-card about-card--channels">
-          <span class="about-card__icon">
-            <svg viewBox="0 0 64 64" fill="none">
-              <path d="M32 8L56 21L32 34L8 21L32 8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" pathLength="1"/>
-              <path d="M8 32L32 45L56 32" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/>
-              <path d="M8 43L32 56L56 43" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/>
-            </svg>
-          </span>
-          <div class="about-card__body">
-            <span class="about-card__num">05</span>
-            <h3>Что анализирует ОктоСпай</h3>
-            <p>Пять медиаканалов в одной сопоставимой витрине.</p>
-            <ul class="about-card__list">
-              <li>Наружная реклама — OOH</li>
-              <li>Баннерная реклама — Display</li>
-              <li>Онлайн-видео — OLV</li>
-              <li>Реклама на маркетплейсах</li>
-              <li>Телевидение — TV</li>
-            </ul>
-          </div>
-        </article>
-
-        <!-- 06 -->
-        <article class="about-card">
-          <span class="about-card__icon">
-            <svg viewBox="0 0 64 64" fill="none">
-              <circle cx="32" cy="32" r="21" stroke="currentColor" stroke-width="2" pathLength="1"/>
-              <circle cx="32" cy="32" r="11" stroke="currentColor" stroke-width="2" pathLength="1"/>
-              <path d="M32 11v8M32 45v8M11 32h8M45 32h8" stroke="currentColor" stroke-width="2" stroke-linecap="round" pathLength="1"/>
-              <circle cx="32" cy="32" r="3.4" fill="currentColor"/>
-            </svg>
-          </span>
-          <div class="about-card__body">
-            <span class="about-card__num">06</span>
-            <h3>Решения вместо догадок</h3>
-            <p>Медиаплан на фактах, а не на оценках: контроль доли голоса, быстрая реакция на запуски конкурентов и понятная защита бюджета перед бизнесом — всё на одних и тех же данных.</p>
+            <h3>Единая аналитика</h3>
+            <p>Внутренняя архитектура платформы мгновенно сводит разрозненную статистику офлайн и онлайн медиаканалов. Оценивайте долю голоса, бюджеты и пересечения каналов без рутины и задержек — получайте готовые сводки по брендам и категориям.</p>
           </div>
         </article>
 
@@ -494,7 +461,7 @@
       <span class="ai__eyebrow"><span class="section-dot"></span> ИИ-ассистент</span>
 
       <h2 class="ai__title" id="ai-title">
-        Спросите о рынке словами — <span class="ai__accent">ответ соберётся сам</span>
+        Просто задайте вопрос — <span class="ai__accent">ответ соберётся сам</span>
       </h2>
       <p class="ai__lead">
         Ассистент понимает запрос на обычном языке: сам подберёт бренды, каналы
@@ -526,9 +493,9 @@
 
       <ul class="ai__chips">
         <li>Доля голоса</li>
-        <li>Медиасплит конкурентов</li>
+        <li>Медиасплит конкурента</li>
         <li>Топ креативов</li>
-        <li>Сезонность категории</li>
+        <li>Динамика в категории</li>
       </ul>
     </div>
   </section>
@@ -642,43 +609,43 @@
         <article class="results__step">
           <span class="results__num">01</span><span class="results__dot" aria-hidden="true"></span>
           <h3>Исчерпывающая аналитика</h3>
-          <p>Полная картина рекламной активности рынка и&nbsp;конкурентов в&nbsp;одном окне — без слепых зон.</p>
+          <p>Полная картина рекламной активности рынка и&nbsp;конкурентов в&nbsp;одном окне — без слепых зон</p>
         </article>
 
         <article class="results__step">
           <span class="results__num">02</span><span class="results__dot" aria-hidden="true"></span>
           <h3>Свежие данные</h3>
-          <p>Обновления уже через час после запуска кампаний — вы узнаёте о&nbsp;движениях рынка раньше всех.</p>
+          <p>Обновления уже через час после запуска кампаний — вы узнаёте об&nbsp;изменениях рынка раньше всех</p>
         </article>
 
         <article class="results__step">
           <span class="results__num">03</span><span class="results__dot" aria-hidden="true"></span>
           <h3>Анализ динамики выходов</h3>
-          <p>Видно, как меняется активность брендов день за&nbsp;днём и&nbsp;сезон за&nbsp;сезоном.</p>
+          <p>Активность брендов день за&nbsp;днём и&nbsp;сезон за&nbsp;сезоном</p>
         </article>
 
         <article class="results__step">
           <span class="results__num">04</span><span class="results__dot" aria-hidden="true"></span>
-          <h3>Статистика по&nbsp;типам медиа</h3>
-          <p>ТВ, наружная, онлайн-видео, баннеры и&nbsp;маркетплейсы — в&nbsp;едином сопоставимом отчёте.</p>
+          <h3>Статистика по&nbsp;ключевым медиа</h3>
+          <p>ТВ, наружная реклама, онлайн-видео, баннеры и&nbsp;маркетплейсы — в&nbsp;едином отчёте</p>
         </article>
 
         <article class="results__step">
           <span class="results__num">05</span><span class="results__dot" aria-hidden="true"></span>
-          <h3>Распределение брендов по&nbsp;категориям</h3>
-          <p>Кто и&nbsp;сколько инвестирует в&nbsp;каждой нише и&nbsp;сегменте рынка.</p>
+          <h3>Активность брендов по&nbsp;категориям</h3>
+          <p>Кто и&nbsp;сколько инвестирует в&nbsp;каждой нише и&nbsp;сегменте рынка</p>
         </article>
 
         <article class="results__step">
           <span class="results__num">06</span><span class="results__dot" aria-hidden="true"></span>
           <h3>Сравнение с&nbsp;конкурентами</h3>
-          <p>Ваша доля голоса против ключевых игроков сегмента — без догадок и&nbsp;домыслов.</p>
+          <p>Ваша доля голоса против ключевых игроков категории — точно и&nbsp;быстро</p>
         </article>
 
         <article class="results__step">
           <span class="results__num">07</span><span class="results__dot" aria-hidden="true"></span>
           <h3>Готовые отчёты и&nbsp;выгрузки</h3>
-          <p>Данные под рукой: дашборды, экспорт и&nbsp;уведомления в&nbsp;Telegram.</p>
+          <p>Данные всегда под рукой: дашборды, экспорт и&nbsp;уведомления в&nbsp;Telegram</p>
         </article>
       </div>
 
@@ -771,7 +738,7 @@
               </span>
               <span class="demo-tab__text">
                 <span class="demo-tab__label">ИИ-ассистент</span>
-                <span class="demo-tab__desc">Ответы о рынке в свободной форме</span>
+                <span class="demo-tab__desc">Сложные отчёты простым языком</span>
               </span>
             </button>
             <button class="demo-tab" type="button" role="tab" aria-selected="false" data-demo="1" id="demo-tab-1" aria-controls="demo-panel">
@@ -791,13 +758,14 @@
             <button class="demo-tab" type="button" role="tab" aria-selected="false" data-demo="2" id="demo-tab-2" aria-controls="demo-panel">
               <span class="demo-tab__icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none">
-                  <path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M13.7 21a2 2 0 0 1-3.4 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <rect x="3" y="4" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M7 13.5l3.2-3.6 2.4 2.4L17 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M8 20.5h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
                 </svg>
               </span>
               <span class="demo-tab__text">
-                <span class="demo-tab__label">Мониторинг</span>
-                <span class="demo-tab__desc">Свежие выходы и уведомления</span>
+                <span class="demo-tab__label">Тактический уровень и креативы</span>
+                <span class="demo-tab__desc">Гранулярность до уровня отдельного креатива</span>
               </span>
             </button>
             <button class="demo-tab" type="button" role="tab" aria-selected="false" data-demo="3" id="demo-tab-3" aria-controls="demo-panel">
@@ -815,16 +783,15 @@
         </div>
 
         <ul class="demo__points" id="demo-points" data-active="0" aria-live="polite">
-            <!-- Раздел 1 · ИИ-ассистент — буллиты в документе не заполнены, это черновик -->
-            <li data-demo="0">Вопрос о рынке в свободной форме — без настройки отчётов и фильтров</li>
-            <li data-demo="0">Готовый ответ по бренду, категории и конкурентам за секунды</li>
-            <li data-demo="0">Из ответа — сразу в мониторинг с уже подобранными параметрами</li>
+            <li data-demo="0">Работа с платформой через вопросы и задачи</li>
+            <li data-demo="0">Ассистент подготовит отчёт по бренду, категории и конкурентам за секунды</li>
+            <li data-demo="0">Бесшовная работа с интерфейсом — ассистент сам настроит необходимые фильтры</li>
             <li data-demo="1">Доля голоса и инвестиции: быстрая оценка без сложных отчётов</li>
             <li data-demo="1">Оперативный контроль: новые рекламные активности появляются в отчёте в реальном времени</li>
             <li data-demo="1">Всегда под рукой: удобный доступ с телефона и компьютера</li>
-            <li data-demo="2">Новые рекламные выходы появляются уже через час после запуска кампаний</li>
-            <li data-demo="2">Уведомления о движениях конкурентов прямо в Telegram</li>
-            <li data-demo="2">Контроль категории и ключевых игроков в реальном времени</li>
+            <li data-demo="2">Топ креативов: все креативные материалы в единой базе</li>
+            <li data-demo="2">Параметры размещения: все детали рекламных кампаний в категории</li>
+            <li data-demo="2">Расчёт статистик: оценка объёмов и инвестиций для каждого креатива</li>
             <li data-demo="3">Медиасплит как на ладони: детальное распределение бюджетов конкурентов по каналам</li>
             <li data-demo="3">Единая шкала измерений: анализируйте онлайн и офлайн каналы вместе</li>
             <li data-demo="3">Сравнение трендов: сопоставляйте активность вашего бренда с ключевыми игроками и категорией</li>
@@ -837,9 +804,11 @@
             <button type="button" class="demo__nav-btn demo__nav-btn--prev" aria-label="Предыдущий экран">‹</button>
 
             <div class="demo__cards">
-              <!-- TODO (перезапись роликов под ноунейм-бренды):
+              <!-- TODO (перезапись роликов под ноунейм-бренды, правки 31.07):
                    0 · ИИ-ассистент — нужен новый ролик в мобильной версии по схеме
                        «запрос → ответ → переход на Мониторинг». Пока стоит rec-1.mp4.
+                   1 · Быстрая сводка — «Сводка». Пока стоит rec-2.mp4.
+                   2 · Тактический уровень и креативы — «Мониторинг». Пока стоит rec-3.mp4.
                    3 · Глубокая аналитика — нужен ролик «Флоучарт + Динамика» (старт с
                        загруженного флоу: графики, затем таблица → переход на динамику).
                        Пока стоит rec-4.mp4 (только флоучарт). -->
@@ -858,7 +827,7 @@
               <div class="demo__card" data-demo="2">
                 <span class="demo__phone-notch" aria-hidden="true"></span>
                 <div class="demo__phone-screen">
-                  <video src="assets/rec-3.mp4" muted playsinline preload="metadata" aria-label="Мониторинг выходов"></video>
+                  <video src="assets/rec-3.mp4" muted playsinline preload="metadata" aria-label="Тактический уровень и креативы"></video>
                 </div>
               </div>
               <div class="demo__card" data-demo="3">
@@ -875,7 +844,7 @@
           <div class="demo__dots">
             <button type="button" class="demo__dot is-on" aria-label="ИИ-ассистент"></button>
             <button type="button" class="demo__dot" aria-label="Быстрая сводка"></button>
-            <button type="button" class="demo__dot" aria-label="Мониторинг"></button>
+            <button type="button" class="demo__dot" aria-label="Тактический уровень и креативы"></button>
             <button type="button" class="demo__dot" aria-label="Глубокая аналитика"></button>
           </div>
         </div>
@@ -946,7 +915,7 @@
         </span>
         <div class="adv-card__body">
           <h3>Уникальные данные</h3>
-          <p>Собственная инфраструктура сбора данных в digital и AI-обработка измерений формируют единую картину рекламной активности по всем ключевым медиаканалам.</p>
+          <p>Собственная инфраструктура сбора рекламных активностей в digital и AI-обработка данных формируют единую картину по всем ключевым медиаканалам</p>
         </div>
       </article>
 
@@ -960,7 +929,7 @@
         </span>
         <div class="adv-card__body">
           <h3>Весь медиарынок в&nbsp;одном окне</h3>
-          <p>Все каналы в едином интерфейсе — от баннеров и OLV до маркетплейсов, ТВ и наружной рекламы. Фокусируйтесь на том, что важно вашему бизнесу.</p>
+          <p>Все ключевые медиаканалы в едином интерфейсе — фокусируйтесь на том, что важно вашему бизнесу</p>
         </div>
       </article>
 
@@ -972,7 +941,7 @@
         </span>
         <div class="adv-card__body">
           <h3>Скорость</h3>
-          <p>Данные о новых кампаниях конкурентов появляются в системе уже в течение часа после старта размещения в digital и на маркетплейсах.</p>
+          <p>Данные о новых кампаниях конкурентов появляются в системе со скоростью до 1 часа после запуска размещения</p>
         </div>
       </article>
 
@@ -986,7 +955,7 @@
         </span>
         <div class="adv-card__body">
           <h3>Полноценная аналитика рынка</h3>
-          <p>Не только креативы: оценка объёмов размещений, динамики и рекламных инвестиций по брендам и категориям.</p>
+          <p>Не только креативы: оценка объёмов размещений, динамики и рекламных инвестиций по брендам и категориям</p>
         </div>
       </article>
 
@@ -999,7 +968,7 @@
         </span>
         <div class="adv-card__body">
           <h3>Данные всегда под рукой</h3>
-          <p>Полный доступ к платформе с любого устройства и мгновенные уведомления в Telegram обо всех изменениях рынка.</p>
+          <p>Полный доступ к платформе с любого устройства и мгновенные уведомления в Telegram обо всех изменениях рынка</p>
         </div>
       </article>
 
@@ -1423,7 +1392,9 @@
         const analyzeDark = analyzeOn && analyze && !analyze.classList.contains("is-light");
         // блок «Результат» тёмный, если он в зоне видимости и не включена светлая тема
         const resultsDark = resultsOn && results && !results.classList.contains("theme-light");
-        header.classList.toggle("is-on-dark", (analyzeDark || resultsDark || advOn) && !footerOn);
+        // Футер тоже тёмный: раньше он выключал тёмную шапку, и на стыке с
+        // «Преимуществами» светлая полоса хедера читалась как дырка между блоками
+        header.classList.toggle("is-on-dark", analyzeDark || resultsDark || advOn || footerOn);
       }
 
       document.addEventListener("results-depth-change", sync);
@@ -1603,6 +1574,9 @@
       document.querySelectorAll(".js-menu-close").forEach((b) => b.addEventListener("click", close));
       menu.querySelectorAll(".menu__list a").forEach((a) =>
         a.addEventListener("click", (e) => {
+          // «Получить доступ» открывает модалку (js-access-open) — прокручивать
+          // страницу под ней не нужно
+          if (a.classList.contains("js-access-open")) return;
           const href = a.getAttribute("href") || "";
           const target = href.startsWith("#") && href.length > 1
             ? document.getElementById(href.slice(1)) : null;
