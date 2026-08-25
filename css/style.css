@@ -1004,6 +1004,11 @@ body.no-scroll { overflow: hidden; }
 }
 .about-card.is-in { opacity: 1; transform: none; }
 
+/* десктоп: чуть больше воздуха под текстом в карточках «О платформе» */
+@media (min-width: 769px) {
+  .about-card { padding-bottom: clamp(36px, 3.3vw, 54px); }
+}
+
 .about-card__icon {
   display: block;
   width: 60px;
