@@ -1324,6 +1324,9 @@ body.no-scroll { overflow: hidden; }
 }
 
 /* bullet points */
+/* СКРЫТО: подписи под табами блока «Как это работает».
+   Чтобы вернуть — снять класс is-hidden и атрибут hidden с #demo-points в index.html. */
+.demo__points.is-hidden { display: none; }
 .demo__points {
   list-style: none;
   margin-top: clamp(10px, 1.6vh, 18px);
